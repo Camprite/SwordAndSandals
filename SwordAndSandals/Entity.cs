@@ -22,5 +22,23 @@ namespace SwordAndSandals
         {
             return Strenght;
         }
+
+        public Entity(int id, int xPos, bool arenaSide, int health, int stamina, int @int, int strenght, int agility, int vitality)
+        {
+            Id = id;
+            XPos = xPos;
+            ArenaSide = arenaSide;
+            Health = health;
+            Stamina = stamina;
+            Int = @int;
+            Strenght = strenght;
+            Agility = agility;
+            Vitality = vitality;
+        }
+
+        public virtual void LevelUp()
+        {
+            
+        }
     }
 }

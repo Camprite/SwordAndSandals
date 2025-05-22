@@ -1,4 +1,6 @@
-﻿namespace SwordAndSandals
+﻿using System.Security.Cryptography.X509Certificates;
+
+namespace SwordAndSandals
 {
     partial class Form1
     {
@@ -416,33 +418,34 @@
 
         #endregion
 
-        private Label label1;
-        private Label label2;
-        private PictureBox pictureBox1;
-        private PictureBox pictureBox2;
-        private Button button1;
-        private Button button2;
-        private ProgressBar progressBar1;
-        private ProgressBar progressBar2;
-        private ProgressBar progressBar3;
-        private ProgressBar progressBar4;
-        private Button button3;
-        private Button button4;
-        private Button button5;
-        private Button button6;
-        private Button button7;
-        private Button button8;
-        private Label label4;
-        private Label label6;
-        private ComboBox comboBox1;
+        public Label label1;
+        public Label label2;
+        public PictureBox pictureBox1;
+        public PictureBox pictureBox2;
+        public Button button1;
+        public Button button2;
+        public ProgressBar progressBar1;
+        public ProgressBar progressBar2;
+        public ProgressBar progressBar3;
+        public ProgressBar progressBar4;
+        public Button button3;
+        public Button button4;
+        public Button button5;
+        public Button button6;
+        public Button button7;
+        public Button button8;
+        public Label label4;
+        public Label label6;
+        public ComboBox comboBox1;
         private ComboBox comboBox2;
-        private Button button10;
-        private Label label7;
-        private Button button9;
-        private Label label8;
-        private Label label10;
-        private Label label9;
-        private Panel panel1;
-        private Panel panel2;
+        public Button button10;
+        public Label label7;
+        public Button button9;
+        public Label label8;
+        public Label label10;
+        public Label label9;
+        public Panel panel1;
+        public Panel panel2;
     }
+
 }

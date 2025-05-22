@@ -1,10 +1,20 @@
+using System.Drawing.Text;
+
 namespace SwordAndSandals
 {
     public partial class Form1 : Form
     {
+        private Warrior warrior;
+        private Warrior warrior2;
+        
+       
         public Form1()
         {
             InitializeComponent();
+        }
+
+        public void InitializeArmour()
+        {
         }
 
         private void label1_Click(object sender, EventArgs e)
