@@ -16,8 +16,9 @@ namespace SwordAndSandals
         public ArmourEnum ArmourType { get; set; }
         public int Defence { get; set; }
         public string IconPath { get; set; }
+        public int Price { get; set; }
 
-        public Armour(int id, string name, string description, ArmourEnum armourType, int defence, string iconPath)
+        public Armour(int id, string name, string description, ArmourEnum armourType, int defence, string iconPath, int Price)
         {
             Id = id;
             Name = name;
@@ -25,6 +26,7 @@ namespace SwordAndSandals
             ArmourType = armourType;
             Defence = defence;
             this.IconPath = iconPath;
+            this.Price = Price;
         }
     }
 }

@@ -31,369 +31,365 @@ namespace SwordAndSandals
         /// </summary>
         private void InitializeComponent()
         {
-            label1 = new Label();
-            label2 = new Label();
-            pictureBox1 = new PictureBox();
-            pictureBox2 = new PictureBox();
-            button1 = new Button();
-            button2 = new Button();
-            progressBar1 = new ProgressBar();
-            progressBar2 = new ProgressBar();
-            progressBar3 = new ProgressBar();
-            progressBar4 = new ProgressBar();
-            button3 = new Button();
-            button4 = new Button();
-            button5 = new Button();
-            button6 = new Button();
-            button7 = new Button();
-            button8 = new Button();
-            label4 = new Label();
-            label6 = new Label();
-            button10 = new Button();
-            label7 = new Label();
-            comboBox1 = new ComboBox();
-            label10 = new Label();
-            label9 = new Label();
-            button9 = new Button();
-            label8 = new Label();
-            comboBox2 = new ComboBox();
-            panel1 = new Panel();
-            panel2 = new Panel();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
-            panel1.SuspendLayout();
-            panel2.SuspendLayout();
+            labelLeftWarrior = new Label();
+            labelRightWarrior = new Label();
+            WarriorboxLeft = new PictureBox();
+            WarriorboxRight = new PictureBox();
+            btnLeftAtack = new Button();
+            btnRightAtack = new Button();
+            pbLeftHP = new ProgressBar();
+            pbLeftMana = new ProgressBar();
+            pbRightHP = new ProgressBar();
+            pbRightMana = new ProgressBar();
+            btnLeftRest = new Button();
+            btnRightRest = new Button();
+            btnLeftForward = new Button();
+            btnRightForward = new Button();
+            btnLeftBack = new Button();
+            btnEightBack = new Button();
+            labelHealthRight = new Label();
+            labelManaRight = new Label();
+            btnLeftUse = new Button();
+            labelSpelLeft = new Label();
+            cmbboxLeftSpell = new ComboBox();
+            labelManaLeft = new Label();
+            labelHealthLeft = new Label();
+            btnRightUse = new Button();
+            labelSpelRight = new Label();
+            cmbboxRightSpell = new ComboBox();
+            panelRightWarrior = new Panel();
+            panelLeftWarrior = new Panel();
+            ((System.ComponentModel.ISupportInitialize)WarriorboxLeft).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)WarriorboxRight).BeginInit();
+            panelRightWarrior.SuspendLayout();
+            panelLeftWarrior.SuspendLayout();
             SuspendLayout();
             // 
-            // label1
+            // labelLeftWarrior
             // 
-            label1.AutoSize = true;
-            label1.BackColor = Color.DarkGray;
-            label1.Location = new Point(268, 2);
-            label1.Margin = new Padding(2, 0, 2, 0);
-            label1.Name = "label1";
-            label1.Size = new Size(38, 15);
-            label1.TabIndex = 0;
-            label1.Text = "label1";
-            label1.Click += label1_Click;
+            labelLeftWarrior.AutoSize = true;
+            labelLeftWarrior.BackColor = Color.DarkGray;
+            labelLeftWarrior.Location = new Point(268, 2);
+            labelLeftWarrior.Margin = new Padding(2, 0, 2, 0);
+            labelLeftWarrior.Name = "labelLeftWarrior";
+            labelLeftWarrior.Size = new Size(38, 15);
+            labelLeftWarrior.TabIndex = 0;
+            labelLeftWarrior.Text = "label1";
             // 
-            // label2
+            // labelRightWarrior
             // 
-            label2.AutoSize = true;
-            label2.BackColor = Color.DarkGray;
-            label2.Location = new Point(67, 2);
-            label2.Margin = new Padding(2, 0, 2, 0);
-            label2.Name = "label2";
-            label2.Size = new Size(38, 15);
-            label2.TabIndex = 1;
-            label2.Text = "label2";
+            labelRightWarrior.AutoSize = true;
+            labelRightWarrior.BackColor = Color.DarkGray;
+            labelRightWarrior.Location = new Point(67, 2);
+            labelRightWarrior.Margin = new Padding(2, 0, 2, 0);
+            labelRightWarrior.Name = "labelRightWarrior";
+            labelRightWarrior.Size = new Size(38, 15);
+            labelRightWarrior.TabIndex = 1;
+            labelRightWarrior.Text = "label2";
             // 
-            // pictureBox1
+            // WarriorboxLeft
             // 
-            pictureBox1.BackgroundImage = Properties.Resources.gladiatorwyciety;
-            pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
-            pictureBox1.Location = new Point(223, 19);
-            pictureBox1.Margin = new Padding(2);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(134, 207);
-            pictureBox1.TabIndex = 2;
-            pictureBox1.TabStop = false;
-            pictureBox1.Click += pictureBox1_Click;
+            WarriorboxLeft.BackgroundImage = Properties.Resources.gladiatorwyciety;
+            WarriorboxLeft.BackgroundImageLayout = ImageLayout.Zoom;
+            WarriorboxLeft.Location = new Point(223, 19);
+            WarriorboxLeft.Margin = new Padding(2);
+            WarriorboxLeft.Name = "WarriorboxLeft";
+            WarriorboxLeft.Size = new Size(134, 207);
+            WarriorboxLeft.TabIndex = 2;
+            WarriorboxLeft.TabStop = false;
             // 
-            // pictureBox2
+            // WarriorboxRight
             // 
-            pictureBox2.BackColor = Color.Transparent;
-            pictureBox2.BackgroundImage = Properties.Resources.gladiatorwycietylewy;
-            pictureBox2.BackgroundImageLayout = ImageLayout.Zoom;
-            pictureBox2.Location = new Point(12, 19);
-            pictureBox2.Margin = new Padding(2);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(139, 207);
-            pictureBox2.TabIndex = 3;
-            pictureBox2.TabStop = false;
+            WarriorboxRight.BackColor = Color.Transparent;
+            WarriorboxRight.BackgroundImage = Properties.Resources.gladiatorwycietylewy;
+            WarriorboxRight.BackgroundImageLayout = ImageLayout.Zoom;
+            WarriorboxRight.Location = new Point(12, 19);
+            WarriorboxRight.Margin = new Padding(2);
+            WarriorboxRight.Name = "WarriorboxRight";
+            WarriorboxRight.Size = new Size(139, 207);
+            WarriorboxRight.TabIndex = 3;
+            WarriorboxRight.TabStop = false;
             // 
-            // button1
+            // btnLeftAtack
             // 
-            button1.BackColor = SystemColors.ActiveBorder;
-            button1.Location = new Point(141, 113);
-            button1.Margin = new Padding(2);
-            button1.Name = "button1";
-            button1.Size = new Size(78, 20);
-            button1.TabIndex = 4;
-            button1.Text = "Atak";
-            button1.UseVisualStyleBackColor = false;
-            button1.Click += button1_Click;
+            btnLeftAtack.BackColor = SystemColors.ActiveBorder;
+            btnLeftAtack.Location = new Point(141, 113);
+            btnLeftAtack.Margin = new Padding(2);
+            btnLeftAtack.Name = "btnLeftAtack";
+            btnLeftAtack.Size = new Size(78, 20);
+            btnLeftAtack.TabIndex = 4;
+            btnLeftAtack.Text = "Atak";
+            btnLeftAtack.UseVisualStyleBackColor = false;
+            btnLeftAtack.Click += AtackLeft_Click;
             // 
-            // button2
+            // btnRightAtack
             // 
-            button2.BackColor = Color.DarkGray;
-            button2.Location = new Point(155, 116);
-            button2.Margin = new Padding(2);
-            button2.Name = "button2";
-            button2.Size = new Size(78, 20);
-            button2.TabIndex = 5;
-            button2.Text = "Atak";
-            button2.UseVisualStyleBackColor = false;
-            button2.Click += button2_Click;
+            btnRightAtack.BackColor = Color.DarkGray;
+            btnRightAtack.Location = new Point(155, 116);
+            btnRightAtack.Margin = new Padding(2);
+            btnRightAtack.Name = "btnRightAtack";
+            btnRightAtack.Size = new Size(78, 20);
+            btnRightAtack.TabIndex = 5;
+            btnRightAtack.Text = "Atak";
+            btnRightAtack.UseVisualStyleBackColor = false;
+            btnRightAtack.Click += AtackRight_Click;
             // 
-            // progressBar1
+            // pbLeftHP
             // 
-            progressBar1.BackColor = SystemColors.ActiveBorder;
-            progressBar1.Location = new Point(109, 36);
-            progressBar1.Margin = new Padding(2);
-            progressBar1.Name = "progressBar1";
-            progressBar1.Size = new Size(105, 20);
-            progressBar1.TabIndex = 6;
+            pbLeftHP.BackColor = SystemColors.ActiveBorder;
+            pbLeftHP.Location = new Point(109, 36);
+            pbLeftHP.Margin = new Padding(2);
+            pbLeftHP.Name = "pbLeftHP";
+            pbLeftHP.Size = new Size(105, 20);
+            pbLeftHP.TabIndex = 6;
             // 
-            // progressBar2
+            // pbLeftMana
             // 
-            progressBar2.BackColor = SystemColors.ActiveBorder;
-            progressBar2.Location = new Point(109, 68);
-            progressBar2.Margin = new Padding(2);
-            progressBar2.Name = "progressBar2";
-            progressBar2.Size = new Size(105, 20);
-            progressBar2.TabIndex = 7;
+            pbLeftMana.BackColor = SystemColors.ActiveBorder;
+            pbLeftMana.Location = new Point(109, 68);
+            pbLeftMana.Margin = new Padding(2);
+            pbLeftMana.Name = "pbLeftMana";
+            pbLeftMana.Size = new Size(105, 20);
+            pbLeftMana.TabIndex = 7;
             // 
-            // progressBar3
+            // pbRightHP
             // 
-            progressBar3.BackColor = Color.DarkGray;
-            progressBar3.Location = new Point(157, 35);
-            progressBar3.Margin = new Padding(2);
-            progressBar3.Name = "progressBar3";
-            progressBar3.Size = new Size(105, 20);
-            progressBar3.TabIndex = 8;
+            pbRightHP.BackColor = Color.DarkGray;
+            pbRightHP.Location = new Point(157, 35);
+            pbRightHP.Margin = new Padding(2);
+            pbRightHP.Name = "pbRightHP";
+            pbRightHP.Size = new Size(105, 20);
+            pbRightHP.TabIndex = 8;
             // 
-            // progressBar4
+            // pbRightMana
             // 
-            progressBar4.BackColor = Color.DarkGray;
-            progressBar4.Location = new Point(155, 74);
-            progressBar4.Margin = new Padding(2);
-            progressBar4.Name = "progressBar4";
-            progressBar4.Size = new Size(105, 20);
-            progressBar4.TabIndex = 9;
+            pbRightMana.BackColor = Color.DarkGray;
+            pbRightMana.Location = new Point(155, 74);
+            pbRightMana.Margin = new Padding(2);
+            pbRightMana.Name = "pbRightMana";
+            pbRightMana.Size = new Size(105, 20);
+            pbRightMana.TabIndex = 9;
             // 
-            // button3
+            // btnLeftRest
             // 
-            button3.BackColor = SystemColors.ActiveBorder;
-            button3.Location = new Point(127, 137);
-            button3.Margin = new Padding(2);
-            button3.Name = "button3";
-            button3.Size = new Size(92, 20);
-            button3.TabIndex = 10;
-            button3.Text = "Odpoczynek";
-            button3.UseVisualStyleBackColor = false;
+            btnLeftRest.BackColor = SystemColors.ActiveBorder;
+            btnLeftRest.Location = new Point(127, 137);
+            btnLeftRest.Margin = new Padding(2);
+            btnLeftRest.Name = "btnLeftRest";
+            btnLeftRest.Size = new Size(92, 20);
+            btnLeftRest.TabIndex = 10;
+            btnLeftRest.Text = "Odpoczynek";
+            btnLeftRest.UseVisualStyleBackColor = false;
             // 
-            // button4
+            // btnRightRest
             // 
-            button4.BackColor = Color.DarkGray;
-            button4.Location = new Point(155, 140);
-            button4.Margin = new Padding(2);
-            button4.Name = "button4";
-            button4.Size = new Size(92, 20);
-            button4.TabIndex = 11;
-            button4.Text = "Odpoczynek";
-            button4.UseVisualStyleBackColor = false;
+            btnRightRest.BackColor = Color.DarkGray;
+            btnRightRest.Location = new Point(155, 140);
+            btnRightRest.Margin = new Padding(2);
+            btnRightRest.Name = "btnRightRest";
+            btnRightRest.Size = new Size(92, 20);
+            btnRightRest.TabIndex = 11;
+            btnRightRest.Text = "Odpoczynek";
+            btnRightRest.UseVisualStyleBackColor = false;
             // 
-            // button5
+            // btnLeftForward
             // 
-            button5.BackColor = SystemColors.ActiveBorder;
-            button5.Location = new Point(141, 161);
-            button5.Margin = new Padding(2);
-            button5.Name = "button5";
-            button5.Size = new Size(78, 20);
-            button5.TabIndex = 12;
-            button5.Text = "Naprzód";
-            button5.UseVisualStyleBackColor = false;
-            button5.Click += button5_Click;
+            btnLeftForward.BackColor = SystemColors.ActiveBorder;
+            btnLeftForward.Location = new Point(141, 161);
+            btnLeftForward.Margin = new Padding(2);
+            btnLeftForward.Name = "btnLeftForward";
+            btnLeftForward.Size = new Size(78, 20);
+            btnLeftForward.TabIndex = 12;
+            btnLeftForward.Text = "Naprzód";
+            btnLeftForward.UseVisualStyleBackColor = false;
+            btnLeftForward.Click += ForwardLeft_Click;
             // 
-            // button6
+            // btnRightForward
             // 
-            button6.BackColor = Color.DarkGray;
-            button6.Location = new Point(155, 164);
-            button6.Margin = new Padding(2);
-            button6.Name = "button6";
-            button6.Size = new Size(78, 20);
-            button6.TabIndex = 13;
-            button6.Text = "Naprzód";
-            button6.UseVisualStyleBackColor = false;
-            button6.Click += button6_Click;
+            btnRightForward.BackColor = Color.DarkGray;
+            btnRightForward.Location = new Point(155, 164);
+            btnRightForward.Margin = new Padding(2);
+            btnRightForward.Name = "btnRightForward";
+            btnRightForward.Size = new Size(78, 20);
+            btnRightForward.TabIndex = 13;
+            btnRightForward.Text = "Naprzód";
+            btnRightForward.UseVisualStyleBackColor = false;
+            btnRightForward.Click += ForwardRight_Click;
             // 
-            // button7
+            // btnLeftBack
             // 
-            button7.BackColor = SystemColors.ActiveBorder;
-            button7.Location = new Point(54, 161);
-            button7.Margin = new Padding(2);
-            button7.Name = "button7";
-            button7.Size = new Size(78, 20);
-            button7.TabIndex = 14;
-            button7.Text = "Wycofaj";
-            button7.UseVisualStyleBackColor = false;
+            btnLeftBack.BackColor = SystemColors.ActiveBorder;
+            btnLeftBack.Location = new Point(54, 161);
+            btnLeftBack.Margin = new Padding(2);
+            btnLeftBack.Name = "btnLeftBack";
+            btnLeftBack.Size = new Size(78, 20);
+            btnLeftBack.TabIndex = 14;
+            btnLeftBack.Text = "Wycofaj";
+            btnLeftBack.UseVisualStyleBackColor = false;
             // 
-            // button8
+            // btnEightBack
             // 
-            button8.BackColor = Color.DarkGray;
-            button8.Location = new Point(246, 164);
-            button8.Margin = new Padding(2);
-            button8.Name = "button8";
-            button8.Size = new Size(78, 20);
-            button8.TabIndex = 15;
-            button8.Text = "Wycofaj";
-            button8.UseVisualStyleBackColor = false;
-            button8.Click += button8_Click;
+            btnEightBack.BackColor = Color.DarkGray;
+            btnEightBack.Location = new Point(246, 164);
+            btnEightBack.Margin = new Padding(2);
+            btnEightBack.Name = "btnEightBack";
+            btnEightBack.Size = new Size(78, 20);
+            btnEightBack.TabIndex = 15;
+            btnEightBack.Text = "Wycofaj";
+            btnEightBack.UseVisualStyleBackColor = false;
+            btnEightBack.Click += BackRight_Click;
             // 
-            // label4
+            // labelHealthRight
             // 
-            label4.AutoSize = true;
-            label4.BackColor = Color.DarkGray;
-            label4.Location = new Point(157, 19);
-            label4.Margin = new Padding(2, 0, 2, 0);
-            label4.Name = "label4";
-            label4.Size = new Size(73, 15);
-            label4.TabIndex = 17;
-            label4.Text = "Punkty życia";
+            labelHealthRight.AutoSize = true;
+            labelHealthRight.BackColor = Color.DarkGray;
+            labelHealthRight.Location = new Point(157, 19);
+            labelHealthRight.Margin = new Padding(2, 0, 2, 0);
+            labelHealthRight.Name = "labelHealthRight";
+            labelHealthRight.Size = new Size(73, 15);
+            labelHealthRight.TabIndex = 17;
+            labelHealthRight.Text = "Punkty życia";
             // 
-            // label6
+            // labelManaRight
             // 
-            label6.AutoSize = true;
-            label6.BackColor = Color.DarkGray;
-            label6.Location = new Point(157, 58);
-            label6.Margin = new Padding(2, 0, 2, 0);
-            label6.Name = "label6";
-            label6.Size = new Size(37, 15);
-            label6.TabIndex = 19;
-            label6.Text = "Mana";
+            labelManaRight.AutoSize = true;
+            labelManaRight.BackColor = Color.DarkGray;
+            labelManaRight.Location = new Point(157, 58);
+            labelManaRight.Margin = new Padding(2, 0, 2, 0);
+            labelManaRight.Name = "labelManaRight";
+            labelManaRight.Size = new Size(37, 15);
+            labelManaRight.TabIndex = 19;
+            labelManaRight.Text = "Mana";
             // 
-            // button10
+            // btnLeftUse
             // 
-            button10.BackColor = SystemColors.ActiveBorder;
-            button10.Location = new Point(139, 202);
-            button10.Margin = new Padding(2);
-            button10.Name = "button10";
-            button10.Size = new Size(78, 20);
-            button10.TabIndex = 21;
-            button10.Text = "Użyj";
-            button10.UseVisualStyleBackColor = false;
+            btnLeftUse.BackColor = SystemColors.ActiveBorder;
+            btnLeftUse.Location = new Point(139, 202);
+            btnLeftUse.Margin = new Padding(2);
+            btnLeftUse.Name = "btnLeftUse";
+            btnLeftUse.Size = new Size(78, 20);
+            btnLeftUse.TabIndex = 21;
+            btnLeftUse.Text = "Użyj";
+            btnLeftUse.UseVisualStyleBackColor = false;
             // 
-            // label7
+            // labelSpelLeft
             // 
-            label7.AutoSize = true;
-            label7.BackColor = SystemColors.ActiveBorder;
-            label7.Location = new Point(5, 194);
-            label7.Margin = new Padding(2, 0, 2, 0);
-            label7.Name = "label7";
-            label7.Size = new Size(50, 15);
-            label7.TabIndex = 20;
-            label7.Text = "Zaklecie";
+            labelSpelLeft.AutoSize = true;
+            labelSpelLeft.BackColor = SystemColors.ActiveBorder;
+            labelSpelLeft.Location = new Point(5, 194);
+            labelSpelLeft.Margin = new Padding(2, 0, 2, 0);
+            labelSpelLeft.Name = "labelSpelLeft";
+            labelSpelLeft.Size = new Size(50, 15);
+            labelSpelLeft.TabIndex = 20;
+            labelSpelLeft.Text = "Zaklecie";
             // 
-            // comboBox1
+            // cmbboxLeftSpell
             // 
-            comboBox1.BackColor = SystemColors.ActiveBorder;
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(5, 203);
-            comboBox1.Margin = new Padding(2);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(129, 23);
-            comboBox1.TabIndex = 19;
+            cmbboxLeftSpell.BackColor = SystemColors.ActiveBorder;
+            cmbboxLeftSpell.FormattingEnabled = true;
+            cmbboxLeftSpell.Location = new Point(5, 203);
+            cmbboxLeftSpell.Margin = new Padding(2);
+            cmbboxLeftSpell.Name = "cmbboxLeftSpell";
+            cmbboxLeftSpell.Size = new Size(129, 23);
+            cmbboxLeftSpell.TabIndex = 19;
             // 
-            // label10
+            // labelManaLeft
             // 
-            label10.AutoSize = true;
-            label10.BackColor = SystemColors.ActiveBorder;
-            label10.Location = new Point(109, 55);
-            label10.Margin = new Padding(2, 0, 2, 0);
-            label10.Name = "label10";
-            label10.Size = new Size(37, 15);
-            label10.TabIndex = 18;
-            label10.Text = "Mana";
-            label10.Click += label10_Click;
+            labelManaLeft.AutoSize = true;
+            labelManaLeft.BackColor = SystemColors.ActiveBorder;
+            labelManaLeft.Location = new Point(109, 55);
+            labelManaLeft.Margin = new Padding(2, 0, 2, 0);
+            labelManaLeft.Name = "labelManaLeft";
+            labelManaLeft.Size = new Size(37, 15);
+            labelManaLeft.TabIndex = 18;
+            labelManaLeft.Text = "Mana";
             // 
-            // label9
+            // labelHealthLeft
             // 
-            label9.AutoSize = true;
-            label9.BackColor = SystemColors.ActiveBorder;
-            label9.Location = new Point(109, 19);
-            label9.Margin = new Padding(2, 0, 2, 0);
-            label9.Name = "label9";
-            label9.RightToLeft = RightToLeft.No;
-            label9.Size = new Size(73, 15);
-            label9.TabIndex = 16;
-            label9.Text = "Punkty życia";
-            label9.Click += label3_Click;
+            labelHealthLeft.AutoSize = true;
+            labelHealthLeft.BackColor = SystemColors.ActiveBorder;
+            labelHealthLeft.Location = new Point(109, 19);
+            labelHealthLeft.Margin = new Padding(2, 0, 2, 0);
+            labelHealthLeft.Name = "labelHealthLeft";
+            labelHealthLeft.RightToLeft = RightToLeft.No;
+            labelHealthLeft.Size = new Size(73, 15);
+            labelHealthLeft.TabIndex = 16;
+            labelHealthLeft.Text = "Punkty życia";
             // 
-            // button9
+            // btnRightUse
             // 
-            button9.BackColor = Color.DarkGray;
-            button9.Location = new Point(294, 205);
-            button9.Margin = new Padding(2);
-            button9.Name = "button9";
-            button9.Size = new Size(78, 20);
-            button9.TabIndex = 22;
-            button9.Text = "Uzyj";
-            button9.UseVisualStyleBackColor = false;
+            btnRightUse.BackColor = Color.DarkGray;
+            btnRightUse.Location = new Point(294, 205);
+            btnRightUse.Margin = new Padding(2);
+            btnRightUse.Name = "btnRightUse";
+            btnRightUse.Size = new Size(78, 20);
+            btnRightUse.TabIndex = 22;
+            btnRightUse.Text = "Uzyj";
+            btnRightUse.UseVisualStyleBackColor = false;
             // 
-            // label8
+            // labelSpelRight
             // 
-            label8.AutoSize = true;
-            label8.BackColor = Color.DarkGray;
-            label8.Location = new Point(155, 189);
-            label8.Margin = new Padding(2, 0, 2, 0);
-            label8.Name = "label8";
-            label8.Size = new Size(50, 15);
-            label8.TabIndex = 21;
-            label8.Text = "Zaklecie";
-            label8.Click += label8_Click;
+            labelSpelRight.AutoSize = true;
+            labelSpelRight.BackColor = Color.DarkGray;
+            labelSpelRight.Location = new Point(155, 189);
+            labelSpelRight.Margin = new Padding(2, 0, 2, 0);
+            labelSpelRight.Name = "labelSpelRight";
+            labelSpelRight.Size = new Size(50, 15);
+            labelSpelRight.TabIndex = 21;
+            labelSpelRight.Text = "Zaklecie";
+            labelSpelRight.Click += SpelRight_Click;
             // 
-            // comboBox2
+            // cmbboxRightSpell
             // 
-            comboBox2.BackColor = Color.DarkGray;
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Location = new Point(155, 206);
-            comboBox2.Margin = new Padding(2);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(129, 23);
-            comboBox2.TabIndex = 20;
+            cmbboxRightSpell.BackColor = Color.DarkGray;
+            cmbboxRightSpell.FormattingEnabled = true;
+            cmbboxRightSpell.Location = new Point(155, 206);
+            cmbboxRightSpell.Margin = new Padding(2);
+            cmbboxRightSpell.Name = "cmbboxRightSpell";
+            cmbboxRightSpell.Size = new Size(129, 23);
+            cmbboxRightSpell.TabIndex = 20;
             // 
-            // panel1
+            // panelRightWarrior
             // 
-            panel1.BackColor = Color.Transparent;
-            panel1.Controls.Add(button9);
-            panel1.Controls.Add(pictureBox2);
-            panel1.Controls.Add(label8);
-            panel1.Controls.Add(button4);
-            panel1.Controls.Add(comboBox2);
-            panel1.Controls.Add(button6);
-            panel1.Controls.Add(progressBar4);
-            panel1.Controls.Add(label2);
-            panel1.Controls.Add(button8);
-            panel1.Controls.Add(label6);
-            panel1.Controls.Add(progressBar3);
-            panel1.Controls.Add(button2);
-            panel1.Controls.Add(label4);
-            panel1.Location = new Point(740, 296);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(381, 237);
-            panel1.TabIndex = 22;
+            panelRightWarrior.BackColor = Color.Transparent;
+            panelRightWarrior.Controls.Add(btnRightUse);
+            panelRightWarrior.Controls.Add(WarriorboxRight);
+            panelRightWarrior.Controls.Add(labelSpelRight);
+            panelRightWarrior.Controls.Add(btnRightRest);
+            panelRightWarrior.Controls.Add(cmbboxRightSpell);
+            panelRightWarrior.Controls.Add(btnRightForward);
+            panelRightWarrior.Controls.Add(pbRightMana);
+            panelRightWarrior.Controls.Add(labelRightWarrior);
+            panelRightWarrior.Controls.Add(btnEightBack);
+            panelRightWarrior.Controls.Add(labelManaRight);
+            panelRightWarrior.Controls.Add(pbRightHP);
+            panelRightWarrior.Controls.Add(btnRightAtack);
+            panelRightWarrior.Controls.Add(labelHealthRight);
+            panelRightWarrior.Location = new Point(740, 277);
+            panelRightWarrior.Name = "panelRightWarrior";
+            panelRightWarrior.Size = new Size(381, 256);
+            panelRightWarrior.TabIndex = 22;
             // 
-            // panel2
+            // panelLeftWarrior
             // 
-            panel2.BackColor = Color.Transparent;
-            panel2.Controls.Add(button10);
-            panel2.Controls.Add(pictureBox1);
-            panel2.Controls.Add(label7);
-            panel2.Controls.Add(label1);
-            panel2.Controls.Add(comboBox1);
-            panel2.Controls.Add(progressBar2);
-            panel2.Controls.Add(progressBar1);
-            panel2.Controls.Add(button1);
-            panel2.Controls.Add(label9);
-            panel2.Controls.Add(label10);
-            panel2.Controls.Add(button5);
-            panel2.Controls.Add(button3);
-            panel2.Controls.Add(button7);
-            panel2.Location = new Point(332, 296);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(362, 237);
-            panel2.TabIndex = 23;
+            panelLeftWarrior.BackColor = Color.Transparent;
+            panelLeftWarrior.Controls.Add(btnLeftUse);
+            panelLeftWarrior.Controls.Add(WarriorboxLeft);
+            panelLeftWarrior.Controls.Add(labelSpelLeft);
+            panelLeftWarrior.Controls.Add(labelLeftWarrior);
+            panelLeftWarrior.Controls.Add(cmbboxLeftSpell);
+            panelLeftWarrior.Controls.Add(pbLeftMana);
+            panelLeftWarrior.Controls.Add(pbLeftHP);
+            panelLeftWarrior.Controls.Add(btnLeftAtack);
+            panelLeftWarrior.Controls.Add(labelHealthLeft);
+            panelLeftWarrior.Controls.Add(labelManaLeft);
+            panelLeftWarrior.Controls.Add(btnLeftForward);
+            panelLeftWarrior.Controls.Add(btnLeftRest);
+            panelLeftWarrior.Controls.Add(btnLeftBack);
+            panelLeftWarrior.Location = new Point(332, 277);
+            panelLeftWarrior.Name = "panelLeftWarrior";
+            panelLeftWarrior.Size = new Size(362, 256);
+            panelLeftWarrior.TabIndex = 23;
             // 
             // Form1
             // 
@@ -402,50 +398,50 @@ namespace SwordAndSandals
             BackgroundImage = Properties.Resources.battleBackground;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1420, 583);
-            Controls.Add(panel2);
-            Controls.Add(panel1);
+            Controls.Add(panelLeftWarrior);
+            Controls.Add(panelRightWarrior);
             Name = "Form1";
             Text = "SwordAndSandals";
             Load += Form1_Load;
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
-            panel2.ResumeLayout(false);
-            panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)WarriorboxLeft).EndInit();
+            ((System.ComponentModel.ISupportInitialize)WarriorboxRight).EndInit();
+            panelRightWarrior.ResumeLayout(false);
+            panelRightWarrior.PerformLayout();
+            panelLeftWarrior.ResumeLayout(false);
+            panelLeftWarrior.PerformLayout();
             ResumeLayout(false);
         }
 
         #endregion
 
-        public Label label1;
-        public Label label2;
-        public PictureBox pictureBox1;
-        public PictureBox pictureBox2;
-        public Button button1;
-        public Button button2;
-        public ProgressBar progressBar1;
-        public ProgressBar progressBar2;
-        public ProgressBar progressBar3;
-        public ProgressBar progressBar4;
-        public Button button3;
-        public Button button4;
-        public Button button5;
-        public Button button6;
-        public Button button7;
-        public Button button8;
-        public Label label4;
-        public Label label6;
-        public ComboBox comboBox1;
-        private ComboBox comboBox2;
-        public Button button10;
-        public Label label7;
-        public Button button9;
-        public Label label8;
-        public Label label10;
-        public Label label9;
-        public Panel panel1;
-        public Panel panel2;
+        public Label labelLeftWarrior;
+        public Label labelRightWarrior;
+        public PictureBox WarriorboxLeft;
+        public PictureBox WarriorboxRight;
+        public Button btnLeftAtack;
+        public Button btnRightAtack;
+        public ProgressBar pbLeftHP;
+        public ProgressBar pbLeftMana;
+        public ProgressBar pbRightHP;
+        public ProgressBar pbRightMana;
+        public Button btnLeftRest;
+        public Button btnRightRest;
+        public Button btnLeftForward;
+        public Button btnRightForward;
+        public Button btnLeftBack;
+        public Button btnEightBack;
+        public Label labelHealthRight;
+        public Label labelManaRight;
+        public ComboBox cmbboxLeftSpell;
+        private ComboBox cmbboxRightSpell;
+        public Button btnLeftUse;
+        public Label labelSpelLeft;
+        public Button btnRightUse;
+        public Label labelSpelRight;
+        public Label labelManaLeft;
+        public Label labelHealthLeft;
+        public Panel panelRightWarrior;
+        public Panel panelLeftWarrior;
     }
 
 }

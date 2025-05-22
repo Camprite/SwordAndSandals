@@ -16,9 +16,12 @@ namespace SwordAndSandals
         public int yPadding { get; set; } = 0;
         public int Rotate {  get; set; } = 0;
         public string Path { get; set; }
+        public int Price {  get; set; }
+
+        public int Damage {  get; set; }
 
         public Weapon(int id, string name, string description, WeaponEnum weaponEnum, int xPadding, 
-            int yPadding, int rotate, string path)
+            int yPadding, int rotate, string path, int price, int damage)
         {
             Id = id;
             Name = name;
@@ -28,6 +31,9 @@ namespace SwordAndSandals
             this.yPadding = yPadding;
             Rotate = rotate;
             Path = path;
+            Price = price; 
+            Damage = damage;
+
         }
     }
 }
