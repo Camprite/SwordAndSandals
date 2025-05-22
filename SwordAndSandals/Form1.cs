@@ -196,48 +196,8 @@ namespace SwordAndSandals
             isPlayerTurn = true;
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-
-        }
-
-        private void AtackLeft_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void AtackRight_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ForwardLeft_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ForwardRight_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void BackRight_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void SpelRight_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
         
+
 
     }
 }
