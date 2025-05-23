@@ -396,7 +396,6 @@ namespace SwordAndSandals
             Controls.Add(panelRightWarrior);
             Name = "Form1";
             Text = "SwordAndSandals";
-            Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)WarriorboxLeft).EndInit();
             ((System.ComponentModel.ISupportInitialize)WarriorboxRight).EndInit();
             panelRightWarrior.ResumeLayout(false);
