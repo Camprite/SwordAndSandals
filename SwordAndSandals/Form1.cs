@@ -151,11 +151,6 @@ namespace SwordAndSandals
 
             int Damage = battleController.PlayerAttack();
             UpdateHealthBar(Bot);
-            
-            //MessageBox.Show($"Zadano {damageDealt} obra¿eñ. Zdrowie przeciwnika: {warrior2.ActualHealth}");
-            
-            
-            
             UpdateManaBar(Player);
             battleController.EndPlayerTurn();
             CheckFightStatus();
@@ -166,11 +161,19 @@ namespace SwordAndSandals
 
         public void CheckFightStatus()
         {
-            string status = battleController.CheckFightStatus();
-            if (!string.IsNullOrEmpty(status))
+            int status = battleController.CheckFightStatus();
+            if (status == 1)
             {
-                MessageBox.Show(status);
+                MessageBox.Show("Wygra³eœ!");
+                ResetGame();
             }
+            else if (status == -1)
+            {
+                MessageBox.Show("Przegra³eœ!");
+                ResetGame();
+            }
+
+            
         }
 
         private void MoveForward(object sender, EventArgs e)
@@ -183,7 +186,6 @@ namespace SwordAndSandals
 
             var currentLocation = panelLeftWarrior.Location;
             var destinationLocation = currentLocation.X + MoveStep;
-            //panelLeftWarrior.Location = new Point(currentLocation.X + MoveStep, currentLocation.Y);
 
             animationTimer.Tick += (s, e) =>
             {
@@ -230,34 +232,57 @@ namespace SwordAndSandals
         private void BotTurn()
         {
             if (Bot.IsDead) return;
-            
 
-            if (battleController.CanAttack(panelRightWarrior.Location, panelLeftWarrior.Location))
+            if (Bot.ActualStamina >= 10)
             {
-               
-                int damage = Bot.Damage();
-                Player.TakeDamage(damage);
-                MessageBox.Show($"Bot zada³ {damage} obra¿eñ. Twoje zdrowie: {Player.ActualHealth}");
-            }
-            else if(Bot.ActualStamina >= 10)
-            {
-                if (panelRightWarrior.Location.X > panelLeftWarrior.Location.X)
-                    panelRightWarrior.Location = battleController.MoveBackward(panelRightWarrior.Location, Bot);
+
+
+                if (battleController.CanAttack(panelRightWarrior.Location, panelLeftWarrior.Location))
+                {
+
+                    int damage = battleController.BotAttack();
+                    Player.TakeDamage(damage);
+                    MessageBox.Show($"Bot zada³ {damage} obra¿eñ. Twoje zdrowie: {Player.ActualHealth}");
+                    UpdateManaBar(Bot);
+                    UpdateHealthBar(Player);
+                }
                 else
-                    panelRightWarrior.Location = battleController.MoveForward(panelRightWarrior.Location, Bot);
+                {
+                    if (panelRightWarrior.Location.X > panelLeftWarrior.Location.X)
+                        panelRightWarrior.Location = battleController.MoveBackward(panelRightWarrior.Location, Bot);
+                    else
+                        panelRightWarrior.Location = battleController.MoveForward(panelRightWarrior.Location, Bot);
 
-                UpdateManaBar(Bot);
-            }
-            else
+                    UpdateManaBar(Bot);
+                }
+
+            }else
             {
                 battleController.Rest(Bot);
-                UpdateManaBar(Bot);
             }
 
             battleController.isPlayerTurn = true;
             CheckFightStatus();
         }
 
+
+        public void ResetGame()
+        {
+            panelLeftWarrior.Location = new Point(332, 277);
+            panelRightWarrior.Location = new Point(740, 277);
+
+            InitializeHeroesAndArmours(); 
+            InitializeControls();         
+
+            
+            UpdateHealthBar(Player);
+            UpdateManaBar(Player);
+            UpdateHealthBar(Bot);
+            UpdateManaBar(Bot);
+
+            
+            battleController.isPlayerTurn = true;
+        }
         
 
 

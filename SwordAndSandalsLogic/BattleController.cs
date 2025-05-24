@@ -44,7 +44,7 @@ namespace SwordAndSandalsLogic
 
         public int BotAttack()
         {
-            if (Bot.IsDead || Bot.ActualStamina < 10);
+            if (Bot.IsDead || Bot.ActualStamina < 10) return 0;
 
             int damage = Bot.Damage();
             Player.TakeDamage(damage);
@@ -66,25 +66,23 @@ namespace SwordAndSandalsLogic
             return newX >= 0 ? new Point(newX, CurrentPosition.Y) : CurrentPosition;
         }
 
-        public string CheckFightStatus()
+        public int CheckFightStatus()
         {
             if (Player.IsDead)
             {
-                //MessageBox.Show("Przegrałeś");
-                return "";
+                return -1;
             }
             else if (Bot.IsDead)
             {
-                //MessageBox.Show("Wygrałeś!");
-                return "";
+                return 1;
             }
-            return null;
+            return 0;
 
         }
 
         public int Rest(Warrior warrior)
         {
-            return warrior.ActualStamina += 20;
+            return warrior.ActualStamina += 30;
         }
 
         public void EndPlayerTurn()
