@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SwordAndSandals
+namespace SwordAndSandalsLogic
 {
-    internal enum WeaponEnum
+    public enum WeaponEnum
     {
         Mele = 0,
         Sword = 1,

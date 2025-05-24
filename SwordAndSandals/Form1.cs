@@ -1,27 +1,26 @@
 using System.Drawing.Text;
 using Timer = System.Windows.Forms.Timer;
+using SwordAndSandalsLogic;
 
 namespace SwordAndSandals
 {
+    
     public partial class Form1 : Form
     {
-
+        
+    
         private Timer animationTimer;
-
+        private BattleController battleController;
 
         private const int MoveStep = 20;
         private const int AttackRange = 400;
         private bool isPlayerTurn = true;
 
-        
-        private Warrior warrior1;
-        private Warrior warrior2;
+
         
         private Warrior Player;
         private Warrior Bot;
 
-        public const int MoveStep = 10;
-        public const int AttackRange = 400;
 
 
         public Form1()
@@ -201,8 +200,9 @@ namespace SwordAndSandals
                 }
             };
             animationTimer.Start();
-            UpdateManaBar(warrior1);
-            EndPlayerTurn();
+            UpdateManaBar(Player);
+            battleController.EndPlayerTurn();
+            Task.Delay(500).ContinueWith(_ => Invoke(() => BotTurn()));
 
         }
 
@@ -230,12 +230,14 @@ namespace SwordAndSandals
         private void BotTurn()
         {
             if (Bot.IsDead) return;
+            
 
             if (battleController.CanAttack(panelRightWarrior.Location, panelLeftWarrior.Location))
             {
-                int damage = warrior2.Damage();
-                warrior1.TakeDamage(damage);
-                //MessageBox.Show($"Bot zada³ {damage} obra¿eñ. Twoje zdrowie: {warrior1.ActualHealth}");
+               
+                int damage = Bot.Damage();
+                Player.TakeDamage(damage);
+                MessageBox.Show($"Bot zada³ {damage} obra¿eñ. Twoje zdrowie: {Player.ActualHealth}");
             }
             else if(Bot.ActualStamina >= 10)
             {

@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SwordAndSandals
+namespace SwordAndSandalsLogic
 {
-    internal class BattleController
+    public class BattleController
     {
         
         private Warrior Player;
@@ -69,12 +70,12 @@ namespace SwordAndSandals
         {
             if (Player.IsDead)
             {
-                MessageBox.Show("Przegrałeś");
+                //MessageBox.Show("Przegrałeś");
                 return "";
             }
             else if (Bot.IsDead)
             {
-                MessageBox.Show("Wygrałeś!");
+                //MessageBox.Show("Wygrałeś!");
                 return "";
             }
             return null;

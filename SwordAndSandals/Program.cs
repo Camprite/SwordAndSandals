@@ -1,3 +1,5 @@
+
+using SwordAndSandalsLogic;
 namespace SwordAndSandals
 {
     internal static class Program

@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35527.113 d17.12
+VisualStudioVersion = 17.12.35527.113
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwordAndSandals", "SwordAndSandals\SwordAndSandals.csproj", "{83ADC50E-C5CB-49CA-94A0-3295394342F4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwordAndSandalsLogic", "SwordAndSandalsLogic\SwordAndSandalsLogic.csproj", "{B104A90B-75C2-49EB-BB61-D344E75EC510}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{83ADC50E-C5CB-49CA-94A0-3295394342F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{83ADC50E-C5CB-49CA-94A0-3295394342F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{83ADC50E-C5CB-49CA-94A0-3295394342F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B104A90B-75C2-49EB-BB61-D344E75EC510}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B104A90B-75C2-49EB-BB61-D344E75EC510}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B104A90B-75C2-49EB-BB61-D344E75EC510}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B104A90B-75C2-49EB-BB61-D344E75EC510}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

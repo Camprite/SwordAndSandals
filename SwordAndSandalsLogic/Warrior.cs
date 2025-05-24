@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SwordAndSandals
+namespace SwordAndSandalsLogic
 {
-    internal class Warrior : Entity
+    public class Warrior : Entity
     {
         
         public String Name { get; set; }

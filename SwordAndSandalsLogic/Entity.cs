@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SwordAndSandals
+namespace SwordAndSandalsLogic
 {
-    internal class Entity
+    public class Entity
     {
         public int Id { get; set; }
         public int XPos { get; set; }

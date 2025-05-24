@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SwordAndSandals
+namespace SwordAndSandalsLogic
 {
-    internal enum ArmourEnum
+    public enum ArmourEnum
     {
         Helmet = 0,
         Chestplate = 1,

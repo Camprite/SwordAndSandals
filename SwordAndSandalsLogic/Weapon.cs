@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SwordAndSandals
+namespace SwordAndSandalsLogic
 {
-    internal class Weapon
+    public class Weapon
     {
         public int Id {  get; set; }
         public string Name { get; set; }
