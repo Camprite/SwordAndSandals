@@ -120,7 +120,6 @@ namespace SwordAndSandals
             btnLeftAtack.TabIndex = 4;
             btnLeftAtack.Text = "Atak";
             btnLeftAtack.UseVisualStyleBackColor = false;
-            btnLeftAtack.Click += AtackLeft_Click;
             // 
             // btnRightAtack
             // 
@@ -132,7 +131,6 @@ namespace SwordAndSandals
             btnRightAtack.TabIndex = 5;
             btnRightAtack.Text = "Atak";
             btnRightAtack.UseVisualStyleBackColor = false;
-            btnRightAtack.Click += AtackRight_Click;
             // 
             // pbLeftHP
             // 
@@ -202,7 +200,6 @@ namespace SwordAndSandals
             btnLeftForward.TabIndex = 12;
             btnLeftForward.Text = "Naprzód";
             btnLeftForward.UseVisualStyleBackColor = false;
-            btnLeftForward.Click += ForwardLeft_Click;
             // 
             // btnRightForward
             // 
@@ -214,7 +211,6 @@ namespace SwordAndSandals
             btnRightForward.TabIndex = 13;
             btnRightForward.Text = "Naprzód";
             btnRightForward.UseVisualStyleBackColor = false;
-            btnRightForward.Click += ForwardRight_Click;
             // 
             // btnLeftBack
             // 
@@ -237,7 +233,6 @@ namespace SwordAndSandals
             btnEightBack.TabIndex = 15;
             btnEightBack.Text = "Wycofaj";
             btnEightBack.UseVisualStyleBackColor = false;
-            btnEightBack.Click += BackRight_Click;
             // 
             // labelHealthRight
             // 
@@ -337,7 +332,6 @@ namespace SwordAndSandals
             labelSpelRight.Size = new Size(50, 15);
             labelSpelRight.TabIndex = 21;
             labelSpelRight.Text = "Zaklecie";
-            labelSpelRight.Click += SpelRight_Click;
             // 
             // cmbboxRightSpell
             // 
