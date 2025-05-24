@@ -57,8 +57,8 @@ namespace SwordAndSandals
             btnRightUse = new Button();
             labelSpelRight = new Label();
             cmbboxRightSpell = new ComboBox();
-            panelRightWarrior = new Panel();
-            panelLeftWarrior = new Panel();
+            panelRightWarrior = new DoubleBufferedPanel();
+            panelLeftWarrior = new DoubleBufferedPanel();
             ((System.ComponentModel.ISupportInitialize)WarriorboxLeft).BeginInit();
             ((System.ComponentModel.ISupportInitialize)WarriorboxRight).BeginInit();
             panelRightWarrior.SuspendLayout();

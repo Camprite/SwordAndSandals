@@ -1,10 +1,15 @@
 using System.Drawing.Text;
+using Timer = System.Windows.Forms.Timer;
 
 namespace SwordAndSandals
 {
     public partial class Form1 : Form
     {
-        private const int MoveStep = 10;
+
+        private Timer animationTimer;
+
+
+        private const int MoveStep = 20;
         private const int AttackRange = 400;
         private bool isPlayerTurn = true;
 
@@ -16,11 +21,27 @@ namespace SwordAndSandals
         public Form1()
         {
             InitializeComponent();
+            this.DoubleBuffered = true;
+            this.SetStyle(ControlStyles.AllPaintingInWmPaint |
+                          ControlStyles.UserPaint |
+                          ControlStyles.OptimizedDoubleBuffer, true);
+            this.UpdateStyles();
             InitializeHeroesAndArmours();
             InitializeControls();
+            
+        }
+        public class DoubleBufferedPanel : Panel
+        {
+            public DoubleBufferedPanel()
+            {
+                this.DoubleBuffered = true;
+                this.SetStyle(ControlStyles.AllPaintingInWmPaint |
+                              ControlStyles.UserPaint |
+                              ControlStyles.OptimizedDoubleBuffer, true);
+                this.UpdateStyles();
+            }
         }
 
-        
 
         public void InitializeHeroesAndArmours()
         {
@@ -141,10 +162,31 @@ namespace SwordAndSandals
 
         private void MoveForward(object sender, EventArgs e)
         {
+            animationTimer = new Timer();
+            animationTimer = new Timer();
+            animationTimer.Interval = 15; // ~60 FPS
+
             if (!isPlayerTurn) return;
 
             var currentLocation = panelLeftWarrior.Location;
-            panelLeftWarrior.Location = new Point(currentLocation.X + MoveStep, currentLocation.Y);
+            var destinationLocation = currentLocation.X + MoveStep;
+            //panelLeftWarrior.Location = new Point(currentLocation.X + MoveStep, currentLocation.Y);
+
+            animationTimer.Tick += (s, e) =>
+            {
+                if (currentLocation.X <= destinationLocation)
+                {
+                    currentLocation.X++;
+
+                    panelLeftWarrior.Location = new Point(currentLocation.X, currentLocation.Y);
+                }
+                else
+                {
+                    animationTimer.Stop();
+                    return;
+                }
+            };
+            animationTimer.Start();
             UpdateManaBar(warrior1);
             EndPlayerTurn();
 
@@ -178,7 +220,7 @@ namespace SwordAndSandals
             {
                 int damage = warrior2.Damage();
                 warrior1.TakeDamage(damage);
-                MessageBox.Show($"Bot zada³ {damage} obra¿eñ. Twoje zdrowie: {warrior1.ActualHealth}");
+                //MessageBox.Show($"Bot zada³ {damage} obra¿eñ. Twoje zdrowie: {warrior1.ActualHealth}");
             }
             else
             {
