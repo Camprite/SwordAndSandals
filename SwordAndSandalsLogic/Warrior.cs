@@ -24,7 +24,8 @@ namespace SwordAndSandalsLogic
 
         public Warrior(string name, int money, Weapon weapon, Armour helmet, Armour chestplate,
             Armour shield, Armour boots, Armour shoulderguard, Armour gauntlests,
-            Armour greaves, Armour shinguards, CharacterEnum character) : base(1, 0, false, 100, 100, 50, 50, 0, 0, 0, 0)
+            Armour greaves, Armour shinguards, CharacterEnum character, int strenght, int agility,int Int, int vitality) 
+            : base(1, 0, false, 100, 100, 50, 50, strenght, agility, Int, vitality)
         {
             Name = name;
             Money = money;

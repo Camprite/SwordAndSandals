@@ -7,23 +7,24 @@ namespace SwordAndSandals
     
     public partial class Form1 : Form
     {
-        
-    
-        private Timer animationTimer;
-        private BattleController battleController;
-
-        private const int MoveStep = 20;
-        private const int AttackRange = 400;
-        private bool isPlayerTurn = true;
-
-
-        
         private Warrior Player;
         private Warrior Bot;
 
+        //--Dodane pola
+        private string playerName;
+        private int playerStrenght;
+        private int playerAgility;
+        private int playerVitality;
+        private int playerInt;
 
-
-        public Form1()
+        private BattleController battleController;
+        private const int MoveStep = 20;
+        private const int AttackRange = 400;
+        private bool isPlayerTurn = true;
+        private Timer animationTimer;
+       
+        //Dodane argumenty konstruktora
+        public Form1(string Name, int Strenght, int Agility, int Vitality, int Int)
         {
             InitializeComponent();
             this.DoubleBuffered = true;
@@ -31,7 +32,12 @@ namespace SwordAndSandals
                           ControlStyles.UserPaint |
                           ControlStyles.OptimizedDoubleBuffer, true);
             this.UpdateStyles();
-            InitializeHeroesAndArmours();
+            playerName = Name;
+            playerStrenght = Strenght;
+            playerAgility = Agility;
+            playerVitality = Vitality;
+            playerInt = Int;
+            InitializeHeroesAndArmours(playerName,playerStrenght,playerAgility,playerVitality,playerInt);
             InitializeControls();
             
         }
@@ -48,7 +54,7 @@ namespace SwordAndSandals
         }
 
 
-        public void InitializeHeroesAndArmours()
+        public void InitializeHeroesAndArmours(string Name, int Strenght, int Agility, int Vitality, int Int)
         {
             Armour MosesBoots = new Armour(1, "Buty Moj¿esza", "+5 do zwinnoœæi", ArmourEnum.Boots, 5, "", 500);
             Armour HerculesBoots = new Armour(2, "Buty Herkulesa", "+10 do zwinnosci", ArmourEnum.Boots, 5, "", 1000);
@@ -56,8 +62,8 @@ namespace SwordAndSandals
             Weapon ArthursSword = new Weapon(1, "Miecz króla artura", "+5 do ataku", WeaponEnum.Sword, 0, 0, 0, "", 500, 10);
             Weapon ThorsAxe = new Weapon(2, "Topór Thora", "+10 do si³y", WeaponEnum.Axe, 0, 0, 0, "", 1000, 15);
             
-            Player = new Warrior("Steve", 0, ThorsAxe, null, null, null, null, null, null, null, null,CharacterEnum.Human);
-            Bot = new Warrior("John", 0, ArthursSword, null, null, null, null, null, null, null, null,CharacterEnum.Bot);
+            Player = new Warrior(Name, 0, ThorsAxe, null, null, null, null, null, null, null, null,CharacterEnum.Human, playerStrenght, playerAgility, playerVitality, playerInt);
+            Bot = new Warrior("John", 0, ArthursSword, null, null, null, null, null, null, null, null,CharacterEnum.Bot,0,0,0,0);
             battleController = new BattleController(Player, Bot);
         }
 
@@ -271,7 +277,7 @@ namespace SwordAndSandals
             panelLeftWarrior.Location = new Point(332, 277);
             panelRightWarrior.Location = new Point(740, 277);
 
-            InitializeHeroesAndArmours(); 
+            InitializeHeroesAndArmours(playerName, playerStrenght, playerAgility, playerVitality, playerInt);
             InitializeControls();         
 
             
