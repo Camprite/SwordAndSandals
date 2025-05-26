@@ -40,6 +40,10 @@ namespace SwordAndSandals
             Vitality = vitality;
         }
 
+        public Entity()
+        {
+        }
+
         public virtual void TakeDamage(int damage)
         {
             int realDamage = Math.Max(damage, 0);
