@@ -144,13 +144,13 @@
         #endregion
 
         public GroupBox StartGameGB;
-        private Label label1;
-        private TextBox NameTextBox;
-        private Button StartGameButton;
-        private NumericUpDown VitalityUpDown;
-        private NumericUpDown AgilityUpDown;
-        private NumericUpDown StrenghtUpDown;
-        private NumericUpDown IntUpDown;
-        private Label PointsLeftLabel;
+        public Label label1;
+        public TextBox NameTextBox;
+        public Button StartGameButton;
+        public NumericUpDown VitalityUpDown;
+        public NumericUpDown AgilityUpDown;
+        public NumericUpDown StrenghtUpDown;
+        public NumericUpDown IntUpDown;
+        public Label PointsLeftLabel;
     }
 }

@@ -41,6 +41,10 @@ namespace SwordAndSandalsLogic
             Character = character;
         }
 
+        public Warrior()
+        {
+        }
+
         public override int Damage()
         {
             int baseDamage = base.Damage(); // Strength

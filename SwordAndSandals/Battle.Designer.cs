@@ -2,7 +2,7 @@
 
 namespace SwordAndSandals
 {
-    partial class Form1
+    partial class Battle
     {
 
         /// <summary>
@@ -449,7 +449,7 @@ namespace SwordAndSandals
         public Label labelHealthRight;
         public Label labelManaRight;
         public ComboBox cmbboxLeftSpell;
-        private ComboBox cmbboxRightSpell;
+        public ComboBox cmbboxRightSpell;
         public Button btnLeftUse;
         public Label labelSpelLeft;
         public Button btnRightUse;
