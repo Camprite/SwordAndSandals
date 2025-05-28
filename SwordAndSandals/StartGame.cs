@@ -26,21 +26,52 @@ namespace SwordAndSandals
             AgilityUpDown.ValueChanged += UpdatePointsLeft;
             IntUpDown.ValueChanged += UpdatePointsLeft;
             VitalityUpDown.ValueChanged += UpdatePointsLeft;
-            UpdatePointsLeft(null, null);
+            StrenghtUpDown.Maximum = TotalPoints;
+            AgilityUpDown.Maximum = TotalPoints;
+            IntUpDown.Maximum = TotalPoints;
+            VitalityUpDown.Maximum = TotalPoints;
+            
 
+            UpdatePointsLeft(null, null);
+            ResetStatsButton.Click += (s, e) =>
+            {
+                StrenghtUpDown.Value = 0;
+                AgilityUpDown.Value = 0;
+                IntUpDown.Value = 0;
+                VitalityUpDown.Value = 0;
+            };
         }
 
 
         private void UpdatePointsLeft(object sender, EventArgs e)
-        {
+        {   
+            
             int spent = (int)(StrenghtUpDown.Value + AgilityUpDown.Value + IntUpDown.Value + VitalityUpDown.Value);
+
+            if (spent >= TotalPoints)
+            {
+                StrenghtUpDown.Enabled = false;
+                AgilityUpDown.Enabled = false;
+                IntUpDown.Enabled = false;
+                VitalityUpDown.Enabled = false;
+            }
+            else
+            {
+                StrenghtUpDown.Enabled = true;
+                AgilityUpDown.Enabled = true;
+                IntUpDown.Enabled = true;
+                VitalityUpDown.Enabled = true;
+
+            }
+
             int left = TotalPoints - spent;
-            PointsLeftLabel.Text = $"Pozostało jeszcze: {left.ToString()} punktów";
+            PointsLeftLabel.Text = $"{left.ToString()} punktów";
             StartGameButton.Enabled = left == 0;
         }
 
         private void StartGameButton_Click(object sender, EventArgs e)
         {
+
             PlayerName = NameTextBox.Text;
             Int = (int)IntUpDown.Value;
             Strenght = (int)StrenghtUpDown.Value;
@@ -49,6 +80,11 @@ namespace SwordAndSandals
 
             this.DialogResult = DialogResult.OK;
             this.Close();
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
 
         }
     }

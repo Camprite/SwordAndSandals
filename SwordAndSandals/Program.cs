@@ -14,8 +14,8 @@ namespace SwordAndSandals
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            StartGame stargGame = new StartGame();
-            if (stargGame.ShowDialog() == DialogResult.OK)
+            StartGame startGame = new StartGame();
+            if (startGame.ShowDialog() == DialogResult.OK)
             {
                 Warrior Player = new Warrior();
                 Warrior Bot = new Warrior();
@@ -25,11 +25,11 @@ namespace SwordAndSandals
                 BattleController battleController = new BattleController(Player, Bot);
                 FormController formController = new FormController(Player, Bot, battleController, BattleForm);
 
-                formController.StartGame = stargGame;
+                formController.StartGame = startGame;
                 formController.BattleForm = BattleForm;
                 formController.BattleController = battleController;
 
-                formController.InitializeHeroesAndArmours(stargGame);
+                formController.InitializeHeroesAndArmours(startGame);
 
                 formController.BattleController = new BattleController(formController.Player, formController.Bot);
 

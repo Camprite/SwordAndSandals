@@ -33,10 +33,17 @@
             AgilityUpDown = new NumericUpDown();
             StrenghtUpDown = new NumericUpDown();
             IntUpDown = new NumericUpDown();
+            label5 = new Label();
+            label4 = new Label();
+            label6 = new Label();
+            label3 = new Label();
             StartGameButton = new Button();
+            PointsLeftLabel = new Label();
+            label7 = new Label();
+            label2 = new Label();
             label1 = new Label();
             NameTextBox = new TextBox();
-            PointsLeftLabel = new Label();
+            ResetStatsButton = new Button();
             StartGameGB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)VitalityUpDown).BeginInit();
             ((System.ComponentModel.ISupportInitialize)AgilityUpDown).BeginInit();
@@ -47,80 +54,178 @@
             // StartGameGB
             // 
             StartGameGB.BackColor = SystemColors.ActiveBorder;
-            StartGameGB.Controls.Add(PointsLeftLabel);
+            StartGameGB.BackgroundImage = Properties.Resources.backgroundFrame;
+            StartGameGB.BackgroundImageLayout = ImageLayout.Stretch;
             StartGameGB.Controls.Add(VitalityUpDown);
             StartGameGB.Controls.Add(AgilityUpDown);
             StartGameGB.Controls.Add(StrenghtUpDown);
             StartGameGB.Controls.Add(IntUpDown);
+            StartGameGB.Controls.Add(label5);
+            StartGameGB.Controls.Add(label4);
+            StartGameGB.Controls.Add(label6);
+            StartGameGB.Controls.Add(label3);
+            StartGameGB.Controls.Add(ResetStatsButton);
             StartGameGB.Controls.Add(StartGameButton);
+            StartGameGB.Controls.Add(PointsLeftLabel);
+            StartGameGB.Controls.Add(label7);
+            StartGameGB.Controls.Add(label2);
             StartGameGB.Controls.Add(label1);
             StartGameGB.Controls.Add(NameTextBox);
-            StartGameGB.Location = new Point(484, 129);
+            StartGameGB.Location = new Point(317, 68);
             StartGameGB.Name = "StartGameGB";
-            StartGameGB.Size = new Size(444, 336);
+            StartGameGB.Size = new Size(820, 428);
             StartGameGB.TabIndex = 0;
             StartGameGB.TabStop = false;
             // 
             // VitalityUpDown
             // 
-            VitalityUpDown.Location = new Point(28, 216);
+            VitalityUpDown.Location = new Point(320, 238);
             VitalityUpDown.Name = "VitalityUpDown";
             VitalityUpDown.Size = new Size(100, 23);
             VitalityUpDown.TabIndex = 6;
             // 
             // AgilityUpDown
             // 
-            AgilityUpDown.Location = new Point(28, 187);
+            AgilityUpDown.Location = new Point(320, 209);
             AgilityUpDown.Name = "AgilityUpDown";
             AgilityUpDown.Size = new Size(100, 23);
             AgilityUpDown.TabIndex = 5;
             // 
             // StrenghtUpDown
             // 
-            StrenghtUpDown.Location = new Point(28, 158);
+            StrenghtUpDown.Location = new Point(320, 180);
             StrenghtUpDown.Name = "StrenghtUpDown";
             StrenghtUpDown.Size = new Size(100, 23);
             StrenghtUpDown.TabIndex = 4;
             // 
             // IntUpDown
             // 
-            IntUpDown.Location = new Point(28, 129);
+            IntUpDown.Location = new Point(320, 151);
             IntUpDown.Name = "IntUpDown";
             IntUpDown.Size = new Size(100, 23);
             IntUpDown.TabIndex = 3;
             // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.BackColor = Color.Transparent;
+            label5.Font = new Font("Stencil", 12.25F);
+            label5.Location = new Point(149, 237);
+            label5.Name = "label5";
+            label5.Size = new Size(66, 20);
+            label5.TabIndex = 1;
+            label5.Text = "Vitaly";
+            label5.Click += label2_Click;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.BackColor = Color.Transparent;
+            label4.Font = new Font("Stencil", 12.25F);
+            label4.Location = new Point(149, 208);
+            label4.Name = "label4";
+            label4.Size = new Size(74, 20);
+            label4.TabIndex = 1;
+            label4.Text = "Agility";
+            label4.Click += label2_Click;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.BackColor = Color.Transparent;
+            label6.Font = new Font("Stencil", 12.25F);
+            label6.Location = new Point(149, 180);
+            label6.Name = "label6";
+            label6.Size = new Size(96, 20);
+            label6.TabIndex = 1;
+            label6.Text = "Strength";
+            label6.Click += label2_Click;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.BackColor = Color.Transparent;
+            label3.Font = new Font("Stencil", 12.25F);
+            label3.Location = new Point(149, 150);
+            label3.Name = "label3";
+            label3.Size = new Size(37, 20);
+            label3.TabIndex = 1;
+            label3.Text = "Int";
+            label3.Click += label2_Click;
+            // 
             // StartGameButton
             // 
-            StartGameButton.Location = new Point(176, 273);
+            StartGameButton.Font = new Font("Stencil", 18.25F);
+            StartGameButton.Location = new Point(320, 331);
             StartGameButton.Name = "StartGameButton";
-            StartGameButton.Size = new Size(75, 23);
+            StartGameButton.Size = new Size(189, 38);
             StartGameButton.TabIndex = 2;
-            StartGameButton.Text = "Zacznij grę";
+            StartGameButton.Text = "Rozpocznij";
             StartGameButton.UseVisualStyleBackColor = true;
+            // 
+            // PointsLeftLabel
+            // 
+            PointsLeftLabel.AutoSize = true;
+            PointsLeftLabel.BackColor = Color.Transparent;
+            PointsLeftLabel.Font = new Font("Stencil", 12.25F);
+            PointsLeftLabel.Location = new Point(447, 121);
+            PointsLeftLabel.Name = "PointsLeftLabel";
+            PointsLeftLabel.Size = new Size(19, 20);
+            PointsLeftLabel.TabIndex = 1;
+            PointsLeftLabel.Text = "0";
+            PointsLeftLabel.Click += label2_Click;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.BackColor = Color.Transparent;
+            label7.Font = new Font("Stencil", 12.25F);
+            label7.Location = new Point(334, 121);
+            label7.Name = "label7";
+            label7.Size = new Size(107, 20);
+            label7.TabIndex = 1;
+            label7.Text = "Pozostalo:";
+            label7.Click += label2_Click;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.BackColor = Color.Transparent;
+            label2.Font = new Font("Stencil", 12.25F);
+            label2.Location = new Point(149, 121);
+            label2.Name = "label2";
+            label2.Size = new Size(176, 20);
+            label2.TabIndex = 1;
+            label2.Text = "Rozdaj statystyki";
+            label2.Click += label2_Click;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(28, 55);
+            label1.BackColor = Color.Transparent;
+            label1.Font = new Font("Stencil", 16.25F);
+            label1.Location = new Point(149, 68);
             label1.Name = "label1";
-            label1.Size = new Size(75, 15);
+            label1.Size = new Size(158, 26);
             label1.TabIndex = 1;
             label1.Text = "Podaj Nazwe";
             // 
             // NameTextBox
             // 
-            NameTextBox.Location = new Point(28, 73);
+            NameTextBox.Location = new Point(334, 68);
             NameTextBox.Name = "NameTextBox";
-            NameTextBox.Size = new Size(100, 23);
+            NameTextBox.Size = new Size(148, 23);
             NameTextBox.TabIndex = 0;
             // 
-            // PointsLeftLabel
+            // ResetStatsButton
             // 
-            PointsLeftLabel.AutoSize = true;
-            PointsLeftLabel.Location = new Point(28, 111);
-            PointsLeftLabel.Name = "PointsLeftLabel";
-            PointsLeftLabel.Size = new Size(0, 15);
-            PointsLeftLabel.TabIndex = 7;
+            ResetStatsButton.Font = new Font("Stencil", 12.25F);
+            ResetStatsButton.Location = new Point(149, 267);
+            ResetStatsButton.Name = "ResetStatsButton";
+            ResetStatsButton.Size = new Size(96, 26);
+            ResetStatsButton.TabIndex = 2;
+            ResetStatsButton.Text = "Resetuj";
+            ResetStatsButton.UseVisualStyleBackColor = true;
             // 
             // StartGame
             // 
@@ -151,6 +256,13 @@
         public NumericUpDown AgilityUpDown;
         public NumericUpDown StrenghtUpDown;
         public NumericUpDown IntUpDown;
+        public Label label2;
+        public Label label5;
+        public Label label4;
+        public Label label6;
+        public Label label3;
         public Label PointsLeftLabel;
+        public Label label7;
+        public Button ResetStatsButton;
     }
 }
