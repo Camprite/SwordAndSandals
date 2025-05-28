@@ -2,7 +2,7 @@
 
 namespace SwordAndSandals
 {
-    partial class Battle
+    partial class BattleForm
     {
 
         /// <summary>
@@ -59,13 +59,17 @@ namespace SwordAndSandals
             cmbboxRightSpell = new ComboBox();
             panelRightWarrior = new DoubleBufferedPanel();
             panelLeftWarrior = new DoubleBufferedPanel();
-            pictureBox1 = new PictureBox();
+            pictureBoxPlayer = new PictureBox();
+            panel1 = new Panel();
             richTextBox1 = new RichTextBox();
+            pictureBoxBot = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)WarriorboxLeft).BeginInit();
             ((System.ComponentModel.ISupportInitialize)WarriorboxRight).BeginInit();
             panelRightWarrior.SuspendLayout();
             panelLeftWarrior.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxPlayer).BeginInit();
+            panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxBot).BeginInit();
             SuspendLayout();
             // 
             // labelLeftWarrior
@@ -350,6 +354,7 @@ namespace SwordAndSandals
             // 
             panelRightWarrior.BackColor = Color.Transparent;
             panelRightWarrior.Controls.Add(btnRightUse);
+            panelRightWarrior.Controls.Add(pictureBoxBot);
             panelRightWarrior.Controls.Add(WarriorboxRight);
             panelRightWarrior.Controls.Add(labelSpelRight);
             panelRightWarrior.Controls.Add(btnRightRest);
@@ -371,6 +376,7 @@ namespace SwordAndSandals
             // 
             panelLeftWarrior.BackColor = Color.Transparent;
             panelLeftWarrior.Controls.Add(btnLeftUse);
+            panelLeftWarrior.Controls.Add(pictureBoxPlayer);
             panelLeftWarrior.Controls.Add(WarriorboxLeft);
             panelLeftWarrior.Controls.Add(labelSpelLeft);
             panelLeftWarrior.Controls.Add(labelLeftWarrior);
@@ -388,35 +394,53 @@ namespace SwordAndSandals
             panelLeftWarrior.Size = new Size(362, 256);
             panelLeftWarrior.TabIndex = 23;
             // 
-            // pictureBox1
+            // pictureBoxPlayer
             // 
-            pictureBox1.Location = new Point(314, 17);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(100, 50);
-            pictureBox1.TabIndex = 24;
-            pictureBox1.TabStop = false;
+            pictureBoxPlayer.Location = new Point(3, 5);
+            pictureBoxPlayer.Name = "pictureBoxPlayer";
+            pictureBoxPlayer.Size = new Size(100, 89);
+            pictureBoxPlayer.TabIndex = 24;
+            pictureBoxPlayer.TabStop = false;
+            // 
+            // panel1
+            // 
+            panel1.BackgroundImage = Properties.Resources.backgroundFrame;
+            panel1.BackgroundImageLayout = ImageLayout.Stretch;
+            panel1.Controls.Add(richTextBox1);
+            panel1.Location = new Point(1100, 12);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(308, 186);
+            panel1.TabIndex = 26;
             // 
             // richTextBox1
             // 
-            richTextBox1.Font = new Font("Showcard Gothic", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            richTextBox1.Location = new Point(244, 73);
+            richTextBox1.BackColor = Color.FromArgb(137, 85, 31);
+            richTextBox1.BorderStyle = BorderStyle.None;
+            richTextBox1.Location = new Point(26, 24);
             richTextBox1.Name = "richTextBox1";
-            richTextBox1.Size = new Size(280, 96);
-            richTextBox1.TabIndex = 25;
-            richTextBox1.Text = "Bot zadal: 5 obrazen";
+            richTextBox1.Size = new Size(244, 132);
+            richTextBox1.TabIndex = 0;
+            richTextBox1.Text = "";
             // 
-            // Form1
+            // pictureBoxBot
+            // 
+            pictureBoxBot.Location = new Point(272, 5);
+            pictureBoxBot.Name = "pictureBoxBot";
+            pictureBoxBot.Size = new Size(100, 89);
+            pictureBoxBot.TabIndex = 24;
+            pictureBoxBot.TabStop = false;
+            // 
+            // Battle
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.battleBackground;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1420, 583);
-            Controls.Add(richTextBox1);
-            Controls.Add(pictureBox1);
+            Controls.Add(panel1);
             Controls.Add(panelLeftWarrior);
             Controls.Add(panelRightWarrior);
-            Name = "Form1";
+            Name = "Battle";
             Text = "SwordAndSandals";
             ((System.ComponentModel.ISupportInitialize)WarriorboxLeft).EndInit();
             ((System.ComponentModel.ISupportInitialize)WarriorboxRight).EndInit();
@@ -424,7 +448,9 @@ namespace SwordAndSandals
             panelRightWarrior.PerformLayout();
             panelLeftWarrior.ResumeLayout(false);
             panelLeftWarrior.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxPlayer).EndInit();
+            panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBoxBot).EndInit();
             ResumeLayout(false);
         }
 
@@ -458,8 +484,10 @@ namespace SwordAndSandals
         public Label labelHealthLeft;
         public DoubleBufferedPanel panelRightWarrior;
         public DoubleBufferedPanel panelLeftWarrior;
-        private PictureBox pictureBox1;
-        public RichTextBox richTextBox1;
+        private PictureBox pictureBoxPlayer;
+        private Panel panel1;
+        private RichTextBox richTextBox1;
+        private PictureBox pictureBoxBot;
     }
 
 }

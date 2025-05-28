@@ -32,17 +32,17 @@ namespace SwordAndSandals
 
         public Warrior Bot;
 
-        public StartGame StartGame;
-        public Shop ShopForm;
-        public Inventory InventoryForm;
-        public Battle BattleForm;
+        public StartGameForm StartGame;
+        public ShopForm ShopForm;
+        public InventoryForm InventoryForm;
+        public BattleForm BattleForm;
 
         public BattleController BattleController;
 
-        public FormController(Warrior player, Warrior bot, BattleController battleController, Battle battleForm)
+        public FormController(BattleController battleController, BattleForm battleForm)
         {
-            Player = player;
-            Bot = bot;
+            //Player = player;
+            //Bot = bot;
             BattleForm = battleForm;
             BattleController = battleController;
 
@@ -85,7 +85,7 @@ namespace SwordAndSandals
             BattleForm.labelSpelRight.Visible = false;
         }
 
-        public void InitializeHeroesAndArmours(StartGame startGame)
+        public void InitializeHeroesAndArmours(StartGameForm startGame)
         {
             string Name = StartGame.NameTextBox.Text;
             int Int = (int)StartGame.IntUpDown.Value;
@@ -100,7 +100,7 @@ namespace SwordAndSandals
 
             Player = new Warrior(Name, 0, ThorsAxe, null, null, null, null, null, null, null, null, CharacterEnum.Human, Strenght, Agility, Vitality, Int);
             Bot = new Warrior("John", 0, ArthursSword, null, null, null, null, null, null, null, null, CharacterEnum.Bot, 0, 0, 0, 0);
-            BattleController = new BattleController(Player, Bot);
+            //BattleController = new BattleController(Player, Bot);
         }
 
         private void HandlePlayerAttack()

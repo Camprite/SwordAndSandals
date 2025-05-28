@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SwordAndSandalsLogic.Exceptions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -43,6 +44,17 @@ namespace SwordAndSandalsLogic
 
         public Warrior()
         {
+        }
+
+        public Warrior(string name, int strenght, int agility, int inteligence, int vitality)
+        {
+            if (name == null || name == "" || name.Length>30) throw new WarriorBuilderException("Niepoprawna nazwa");
+            this.Name = name;
+            this.Strenght = strenght;
+            this.Agility = agility;
+            this.Int = inteligence;
+            this.Vitality = vitality;
+
         }
 
         public override int Damage()

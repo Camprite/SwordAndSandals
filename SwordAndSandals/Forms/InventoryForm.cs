@@ -10,21 +10,11 @@ using System.Windows.Forms;
 
 namespace SwordAndSandals
 {
-    public partial class Shop : Form
+    public partial class InventoryForm : Form
     {
-        public Shop()
+        public InventoryForm()
         {
             InitializeComponent();
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void currentMoney_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

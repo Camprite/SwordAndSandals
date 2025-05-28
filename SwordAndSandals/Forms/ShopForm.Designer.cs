@@ -1,6 +1,6 @@
 ﻿namespace SwordAndSandals
 {
-    partial class Shop
+    partial class ShopForm
     {
         /// <summary>
         /// Required designer variable.

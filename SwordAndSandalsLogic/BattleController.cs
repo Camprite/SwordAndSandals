@@ -11,7 +11,7 @@ namespace SwordAndSandalsLogic
     public class BattleController
     {
         
-        private Warrior Player;
+        public Warrior Player;
         private Warrior Bot;
         
         
@@ -19,10 +19,10 @@ namespace SwordAndSandalsLogic
         public const int AttackRange = 400;
         public bool isPlayerTurn { get;  set; } = true;
 
-        public BattleController(Warrior Player, Warrior Bot)
+        public BattleController(Warrior Player)
         {
             this.Player = Player;
-            this.Bot = Bot;
+            //this.Bot = Bot;
             this.isPlayerTurn = true;
 
         }

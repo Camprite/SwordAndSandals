@@ -5,10 +5,10 @@ using SwordAndSandalsLogic;
 namespace SwordAndSandals
 {
 
-    public partial class Battle : Form
+    public partial class BattleForm : Form
     {
         private FormController formController;
-        public Battle()
+        public BattleForm()
         {
             InitializeComponent();
             this.DoubleBuffered = true;

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SwordAndSandalsLogic;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,15 +11,11 @@ using System.Windows.Forms;
 
 namespace SwordAndSandals
 {
-    public partial class StartGame : Form
+    public partial class StartGameForm : Form
     {
-        public string PlayerName;
-        public int Int;
-        public int Strenght;
-        public int Agility;
-        public int Vitality;
+        public Warrior Player = null;
         private const int TotalPoints = 4;
-        public StartGame()
+        public StartGameForm()
         {
             InitializeComponent();
             StartGameButton.Click += StartGameButton_Click;
@@ -30,7 +27,7 @@ namespace SwordAndSandals
             AgilityUpDown.Maximum = TotalPoints;
             IntUpDown.Maximum = TotalPoints;
             VitalityUpDown.Maximum = TotalPoints;
-            
+
 
             UpdatePointsLeft(null, null);
             ResetStatsButton.Click += (s, e) =>
@@ -44,8 +41,8 @@ namespace SwordAndSandals
 
 
         private void UpdatePointsLeft(object sender, EventArgs e)
-        {   
-            
+        {
+
             int spent = (int)(StrenghtUpDown.Value + AgilityUpDown.Value + IntUpDown.Value + VitalityUpDown.Value);
 
             if (spent >= TotalPoints)
@@ -72,11 +69,18 @@ namespace SwordAndSandals
         private void StartGameButton_Click(object sender, EventArgs e)
         {
 
-            PlayerName = NameTextBox.Text;
-            Int = (int)IntUpDown.Value;
-            Strenght = (int)StrenghtUpDown.Value;
-            Agility = (int)AgilityUpDown.Value;
-            Vitality = (int)VitalityUpDown.Value;
+
+            try
+            {
+                Player = new Warrior(NameTextBox.Text, (int)StrenghtUpDown.Value, (int)AgilityUpDown.Value, (int)IntUpDown.Value, (int)VitalityUpDown.Value);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return;
+            }
+
 
             this.DialogResult = DialogResult.OK;
             this.Close();
@@ -84,6 +88,11 @@ namespace SwordAndSandals
         }
 
         private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void StartGameGB_Enter(object sender, EventArgs e)
         {
 
         }

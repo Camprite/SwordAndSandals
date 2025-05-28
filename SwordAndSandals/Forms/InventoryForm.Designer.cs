@@ -1,6 +1,6 @@
 ﻿namespace SwordAndSandals
 {
-    partial class Inventory
+    partial class InventoryForm
     {
         /// <summary>
         /// Required designer variable.

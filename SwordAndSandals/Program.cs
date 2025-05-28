@@ -1,4 +1,4 @@
-using static SwordAndSandals.StartGame;
+using static SwordAndSandals.StartGameForm;
 using SwordAndSandalsLogic;
 
 namespace SwordAndSandals
@@ -14,30 +14,39 @@ namespace SwordAndSandals
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            StartGame startGame = new StartGame();
-            if (startGame.ShowDialog() == DialogResult.OK)
-            {
-                Warrior Player = new Warrior();
-                Warrior Bot = new Warrior();
+            GameController game = new GameController();
 
-                Battle BattleForm = new Battle();
+            int exit = game.startGame();
 
-                BattleController battleController = new BattleController(Player, Bot);
-                FormController formController = new FormController(Player, Bot, battleController, BattleForm);
-
-                formController.StartGame = startGame;
-                formController.BattleForm = BattleForm;
-                formController.BattleController = battleController;
-
-                formController.InitializeHeroesAndArmours(startGame);
-
-                formController.BattleController = new BattleController(formController.Player, formController.Bot);
-
-                formController.InitilizeBattleFormControls();
+            if (exit == 0) {
+                 System.Environment.Exit(0);
+            }  
 
 
-                Application.Run(BattleForm);
-            }
+            //StartGame startGame = new StartGame();
+            //if (startGame.ShowDialog() == DialogResult.OK)
+            //{
+            //    //Warrior Player = new Warrior();
+            //    //Warrior Bot = new Warrior();
+
+            //    Battle BattleForm = new Battle();
+
+            //    BattleController battleController = new BattleController(startGame.player);
+            //    FormController formController = new FormController(battleController, BattleForm);
+
+            //    formController.StartGame = startGame;
+            //    formController.BattleForm = BattleForm;
+            //    formController.BattleController = battleController;
+
+            //    formController.InitializeHeroesAndArmours(startGame);
+
+            //    //formController.BattleController = new BattleController(formController.Player, formController.Bot);
+
+            //    formController.InitilizeBattleFormControls();
+
+
+                //Application.Run(game.startGame());
+            //}
         }
     }
 }
