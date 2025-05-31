@@ -10,6 +10,8 @@ namespace SwordAndSandalsLogic
     {
         public int Id { get; set; }
         public int XPos { get; set; }
+        public int Level { get; set; }
+        public int XP { get; set; }
         public bool ArenaSide { get; set; } //false = left, true = right
         public int MaxHealth { get; set; }
         public int ActualHealth {  get; set; }
@@ -19,6 +21,7 @@ namespace SwordAndSandalsLogic
         public int Strenght { get; set; }
         public int Agility { get; set; }
         public int Vitality { get; set; }
+        public int baseStatisticPoints { get; set; }
 
         public virtual int Damage()
         {
@@ -43,11 +46,37 @@ namespace SwordAndSandalsLogic
         public Entity()
         {
         }
+        public void addPoint(StatisticsEnum stat ){
+            if (this.getAvaiablePoints() > 0)
+            {
+                switch (stat)
+                {
+                    case StatisticsEnum.Strenght:
+                        this.Strenght++;
+                        break;
+                    case StatisticsEnum.Vitality:
+                        this.Vitality++;
+                        break;
+                    case StatisticsEnum.Agility:
+                        this.Agility++;
+                        break;
+                    case StatisticsEnum.Inteligence:
+                        this.Int++;
+                        break;
+                }
+            }
+        }
 
         public virtual void TakeDamage(int damage)
         {
             int realDamage = Math.Max(damage, 0);
             ActualHealth = Math.Max(ActualHealth - realDamage, 0);
+        }
+        public int getAvaiablePoints()
+        {
+            int sum = Int + Strenght + Agility + Vitality;
+
+            return baseStatisticPoints + Level - sum;
         }
 
         public bool IsDead => ActualHealth <= 0;

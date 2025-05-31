@@ -12,7 +12,7 @@ namespace SwordAndSandals
     public class GameController
     {
         //Entities
-        public Warrior Player {  get; set; } = new Warrior();
+        public Warrior Player { get; set; }
 
         //Used forms to show
         public StartGameForm startGameForm = new StartGameForm(); 
@@ -30,18 +30,37 @@ namespace SwordAndSandals
         {
             if(this.Player == null)
             {
-                Player = this.getPlayer();
-                menuForm.player = Player;
+                this.Player = this.getPlayer();
+                menuForm.player = this.Player;
+                menuForm.updateForm();
             }
 
             while (true)
             {
+                //menuForm.updateForm();
                 var menuOption = menuForm.ShowDialog();
-
+                
 
                 if (menuOption == DialogResult.Cancel) {
                     return 0;
                 }
+                if (menuOption == DialogResult.OK) {
+                    FormEnum nextForm = menuForm.nextForm;
+                    switch (nextForm) {
+                        case (FormEnum.Shop):
+                            shopForm.ShowDialog();
+                            break;
+                        case (FormEnum.Battle):
+                            battleForm.ShowDialog();
+                            break;
+                        case (FormEnum.Inventory):
+                            inventoryForm.ShowDialog();
+                            break;
+                    }
+                    
+                    
+                }
+
 
             }
 
@@ -54,8 +73,9 @@ namespace SwordAndSandals
             // Player created sucessfuly
             if (result == DialogResult.OK)
             {
-                return startGameForm.Player;
-            }else
+                return startGameForm.Player; 
+            }
+            else
             {
                 throw new GameException("Game cannot start without warrior");
             }

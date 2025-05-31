@@ -225,7 +225,7 @@
             panel1.Size = new Size(817, 425);
             panel1.TabIndex = 1;
             // 
-            // StartGame
+            // StartGameForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -233,7 +233,7 @@
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1420, 583);
             Controls.Add(panel1);
-            Name = "StartGame";
+            Name = "StartGameForm";
             Text = "StartGame";
             ((System.ComponentModel.ISupportInitialize)VitalityUpDown).EndInit();
             ((System.ComponentModel.ISupportInitialize)AgilityUpDown).EndInit();
