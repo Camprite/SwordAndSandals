@@ -11,18 +11,16 @@ namespace SwordAndSandalsLogic
     public class BattleController
     {
         
-        public Warrior Player;
-        private Warrior Bot;
-        
-        
+        public Warrior Player { get; set; }
+        public Warrior Bot { get; set; }
+
+
         public const int MoveStep = 10;
         public const int AttackRange = 400;
         public bool isPlayerTurn { get;  set; } = true;
 
-        public BattleController(Warrior Player)
+        public BattleController()
         {
-            this.Player = Player;
-            //this.Bot = Bot;
             this.isPlayerTurn = true;
 
         }
@@ -90,12 +88,6 @@ namespace SwordAndSandalsLogic
             isPlayerTurn = false;
             
         }
-
-        
-
-
-
-
 
     }
 }

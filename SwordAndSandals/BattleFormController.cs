@@ -13,8 +13,6 @@ namespace SwordAndSandals
     {
         private Timer animationTimer;
         private const int MoveStep = 20;
-        private const int AttackRange = 400;
-        private bool isPlayerTurn = true;
 
 
         public delegate void BattleAction();
@@ -23,36 +21,23 @@ namespace SwordAndSandals
         public BattleAction OnMoveForward;
         public BattleAction OnMoveBackward;
 
-        
-        //public string PlayerName;
-        //public int Int;
-        //public int Strenght;
-        //public int Agility;
-        //public int Vitality;
-
         public Warrior Bot;
-        public Warrior Player;
+        public Warrior Player { get; set; }
+        public BattleForm BattleForm { get;set; }
 
-        public StartGameForm StartGame;
-        public ShopForm ShopForm;
-        public InventoryForm InventoryForm;
-        public BattleForm BattleForm;
-
-        public BattleController BattleController;
+        public BattleController BattleController { get; set; }
         public GameController GameController;
 
         public BattleFormController(BattleForm battleForm)
         {
-            //Player = player;
-            //Bot = bot;
-            //BattleForm = battleForm;
-            //BattleController = battleController;
-
-            //InitilizeBattleFormControls();
+            
+            InitilizeBattleFormControls();
         }
+       
         public BattleFormController()
         {
-       
+            
+
         }
 
 
@@ -76,6 +61,9 @@ namespace SwordAndSandals
             BattleForm.btnLeftForward.Click += (s, e) => OnMoveForward?.Invoke();
             BattleForm.btnLeftBack.Click += (s, e) => OnMoveBackward?.Invoke();
 
+            //added
+            this.Bot = GenerateBot();
+
             BattleForm.labelRightWarrior.Text = Bot.Name;
             BattleForm.pbRightHP.Minimum = 0;
             BattleForm.pbRightHP.Maximum = Bot.MaxHealth;
@@ -92,23 +80,24 @@ namespace SwordAndSandals
             BattleForm.labelSpelRight.Visible = false;
         }
 
-        public void InitializeHeroesAndArmours(StartGameForm startGame)
-        {
-            string Name = StartGame.NameTextBox.Text;
-            int Int = (int)StartGame.IntUpDown.Value;
-            int Strenght = (int)StartGame.StrenghtUpDown.Value;
-            int Agility = (int)StartGame.AgilityUpDown.Value;
-            int Vitality = (int)StartGame.VitalityUpDown.Value;
-            Armour MosesBoots = new Armour(1, "Buty Mojżesza", "+5 do zwinnośći", ArmourEnum.Boots, 5, "", 500);
-            Armour HerculesBoots = new Armour(2, "Buty Herkulesa", "+10 do zwinnosci", ArmourEnum.Boots, 5, "", 1000);
+        //public void InitializeHeroesAndArmours()
+        //{
+        //    Player = GameController.getPlayer();
+        //    string Name = Player.Name;
+        //    int Int = (int)StartGame.IntUpDown.Value;
+        //    int Strenght = (int)StartGame.StrenghtUpDown.Value;
+        //    int Agility = (int)StartGame.AgilityUpDown.Value;
+        //    int Vitality = (int)StartGame.VitalityUpDown.Value;
+        //    Armour MosesBoots = new Armour(1, "Buty Mojżesza", "+5 do zwinnośći", ArmourEnum.Boots, 5, "", 500);
+        //    Armour HerculesBoots = new Armour(2, "Buty Herkulesa", "+10 do zwinnosci", ArmourEnum.Boots, 5, "", 1000);
 
-            Weapon ArthursSword = new Weapon(1, "Miecz króla artura", "+5 do ataku", WeaponEnum.Sword, 0, 0, 0, "", 500, 10);
-            Weapon ThorsAxe = new Weapon(2, "Topór Thora", "+10 do siły", WeaponEnum.Axe, 0, 0, 0, "", 1000, 15);
+        //    Weapon ArthursSword = new Weapon(1, "Miecz króla artura", "+5 do ataku", WeaponEnum.Sword, 0, 0, 0, "", 500, 10);
+        //    Weapon ThorsAxe = new Weapon(2, "Topór Thora", "+10 do siły", WeaponEnum.Axe, 0, 0, 0, "", 1000, 15);
 
-            Player = new Warrior(Name, 0, ThorsAxe, null, null, null, null, null, null, null, null, CharacterEnum.Human, Strenght, Agility, Vitality, Int);
-            Bot = new Warrior("John", 0, ArthursSword, null, null, null, null, null, null, null, null, CharacterEnum.Bot, 0, 0, 0, 0);
-            //BattleController = new BattleController(Player, Bot);
-        }
+        //    Player = new Warrior(Name, 0, ThorsAxe, null, null, null, null, null, null, null, null, CharacterEnum.Human, Strenght, Agility, Vitality, Int);
+        //    Bot = new Warrior("John", 0, ArthursSword, null, null, null, null, null, null, null, null, CharacterEnum.Bot, 0, 0, 0, 0);
+        //    //BattleController = new BattleController(Player, Bot);
+        //}
 
         private void HandlePlayerAttack()
         {
@@ -142,10 +131,9 @@ namespace SwordAndSandals
         private void HandleMoveForward()
         {
             animationTimer = new Timer();
-            animationTimer = new Timer();
             animationTimer.Interval = 15; // ~60 FPS
 
-            if (!isPlayerTurn) return;
+            if (!BattleController.isPlayerTurn) return;
 
             var currentLocation = BattleForm.panelLeftWarrior.Location;
             var destinationLocation = currentLocation.X + MoveStep;
@@ -295,6 +283,14 @@ namespace SwordAndSandals
                 BattleForm.pbRightMana.Maximum = warrior.MaxStamina;
                 BattleForm.pbRightMana.Value = Math.Min(warrior.ActualStamina, warrior.MaxStamina);
             }
+        }
+
+
+        public Warrior GenerateBot()
+        {
+            Weapon ArthursSword = new Weapon(1, "Miecz króla artura", "+5 do ataku", WeaponEnum.Sword, 0, 0, 0, "", 500, 10);
+            Bot = new Warrior("John", 0, ArthursSword, null, null, null, null, null, null, null, null, CharacterEnum.Bot, 0, 0, 0, 0);
+            return Bot;
         }
 
 

@@ -20,7 +20,7 @@ namespace SwordAndSandals
         public InventoryForm inventoryForm = new InventoryForm(); 
         public BattleForm battleForm = new BattleForm(); 
         public ShopForm shopForm = new ShopForm();
-        public BattleFormController formController = new BattleFormController();
+        public BattleFormController battleFormController = new BattleFormController();
 
         public BattleController BattleController;
 
@@ -33,11 +33,13 @@ namespace SwordAndSandals
             {
                 this.Player = this.getPlayer();
                 menuForm.player = this.Player;
-                formController.Player = this.Player;
-                formController.BattleForm = this.battleForm;
 
 
+                battleFormController.BattleForm = this.battleForm;
 
+                battleFormController.Player = this.Player;
+                
+                
                 menuForm.updateForm();
             }
 
@@ -61,7 +63,8 @@ namespace SwordAndSandals
 
                             // Reset punktow zycia gracza/odnowy zaklecia
                             
-                            battleForm.ShowDialog();
+                            battleFormController.InitilizeBattleFormControls();
+                            battleFormController.BattleForm.ShowDialog();
                             break;
                         case (FormEnum.Inventory):
                             inventoryForm.ShowDialog();
