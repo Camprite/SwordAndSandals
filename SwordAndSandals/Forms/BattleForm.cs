@@ -7,7 +7,7 @@ namespace SwordAndSandals
 
     public partial class BattleForm : Form
     {
-        private FormController formController;
+        private BattleFormController formController;
         public BattleForm()
         {
             InitializeComponent();

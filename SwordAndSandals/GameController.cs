@@ -19,8 +19,8 @@ namespace SwordAndSandals
         public Menu menuForm = new Menu(); 
         public InventoryForm inventoryForm = new InventoryForm(); 
         public BattleForm battleForm = new BattleForm(); 
-        public ShopForm shopForm = new ShopForm(); 
-
+        public ShopForm shopForm = new ShopForm();
+        public BattleFormController formController = new BattleFormController();
 
 
 
@@ -32,6 +32,11 @@ namespace SwordAndSandals
             {
                 this.Player = this.getPlayer();
                 menuForm.player = this.Player;
+                formController.Player = this.Player;
+                formController.BattleForm = this.battleForm;
+
+
+
                 menuForm.updateForm();
             }
 
@@ -51,6 +56,10 @@ namespace SwordAndSandals
                             shopForm.ShowDialog();
                             break;
                         case (FormEnum.Battle):
+                            // Wygenerowanie bota odpowiadającego graczowi
+
+                            // Reset punktow zycia gracza/odnowy zaklecia
+                            
                             battleForm.ShowDialog();
                             break;
                         case (FormEnum.Inventory):

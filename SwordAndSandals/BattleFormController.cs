@@ -9,7 +9,7 @@ using Timer = System.Windows.Forms.Timer;
 
 namespace SwordAndSandals
 {
-    class FormController
+   public class BattleFormController
     {
         private Timer animationTimer;
         private const int MoveStep = 20;
@@ -39,15 +39,20 @@ namespace SwordAndSandals
 
         public BattleController BattleController;
 
-        public FormController(BattleController battleController, BattleForm battleForm)
+        public BattleFormController(BattleForm battleForm)
         {
             //Player = player;
             //Bot = bot;
-            BattleForm = battleForm;
-            BattleController = battleController;
+            //BattleForm = battleForm;
+            //BattleController = battleController;
 
-            InitilizeBattleFormControls();
+            //InitilizeBattleFormControls();
         }
+        public BattleFormController()
+        {
+       
+        }
+
 
         public void InitilizeBattleFormControls()
         {
