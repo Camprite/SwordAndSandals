@@ -260,6 +260,6 @@
         public Label PointsLeftLabel;
         public Label label7;
         public Button ResetStatsButton;
-        private Panel panel1;
+        public Panel panel1;
     }
 }

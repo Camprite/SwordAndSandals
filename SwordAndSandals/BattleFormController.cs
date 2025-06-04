@@ -23,14 +23,15 @@ namespace SwordAndSandals
         public BattleAction OnMoveForward;
         public BattleAction OnMoveBackward;
 
-        public Warrior Player;
-        public string PlayerName;
-        public int Int;
-        public int Strenght;
-        public int Agility;
-        public int Vitality;
+        
+        //public string PlayerName;
+        //public int Int;
+        //public int Strenght;
+        //public int Agility;
+        //public int Vitality;
 
         public Warrior Bot;
+        public Warrior Player;
 
         public StartGameForm StartGame;
         public ShopForm ShopForm;
@@ -38,6 +39,7 @@ namespace SwordAndSandals
         public BattleForm BattleForm;
 
         public BattleController BattleController;
+        public GameController GameController;
 
         public BattleFormController(BattleForm battleForm)
         {
@@ -241,22 +243,30 @@ namespace SwordAndSandals
         }
 
 
+       
         public void ResetGame()
         {
-            BattleForm.panelLeftWarrior.Location = new Point(332, 277);
-            BattleForm.panelRightWarrior.Location = new Point(740, 277);
 
-            InitializeHeroesAndArmours(StartGame);
-            InitilizeBattleFormControls();
+            //BattleForm.panelLeftWarrior.Location = new Point(332, 277);
+            //BattleForm.panelRightWarrior.Location = new Point(740, 277);
 
-
-            UpdateHealthBar(Player);
-            UpdateManaBar(Player);
-            UpdateHealthBar(Bot);
-            UpdateManaBar(Bot);
+            //InitializeHeroesAndArmours(StartGame);
+            //InitilizeBattleFormControls();
 
 
-            BattleController.isPlayerTurn = true;
+            //UpdateHealthBar(Player);
+            //UpdateManaBar(Player);
+            //UpdateHealthBar(Bot);
+            //UpdateManaBar(Bot);
+
+
+            //BattleController.isPlayerTurn = true;
+
+            BattleForm.Close();
+            GameController.menuForm.ShowDialog();
+
+
+
         }
 
         private void UpdateHealthBar(Warrior warrior)

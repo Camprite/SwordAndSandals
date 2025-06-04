@@ -1,4 +1,6 @@
-﻿namespace SwordAndSandals
+﻿using System.Security.Cryptography.X509Certificates;
+
+namespace SwordAndSandals
 {
     partial class ShopForm
     {
@@ -196,17 +198,17 @@
 
         #endregion
 
-        private Label label1;
-        private Label label2;
-        private Label label3;
-        private Label currentMoney;
-        private Label label4;
-        private Button buyButton;
-        private ListBox CurrentCartListBox;
-        private Label label5;
-        private Label label6;
-        private ListBox listBox1;
-        private Button button1;
-        private Button button2;
+        public Label label1;
+        public Label label2;
+        public Label label3;
+        public Label currentMoney;
+        public Label label4;
+        public Button buyButton;
+        public ListBox CurrentCartListBox;
+        public Label label5;
+        public Label label6;
+        public ListBox listBox1;
+        public Button button1;
+        public Button button2;
     }
 }

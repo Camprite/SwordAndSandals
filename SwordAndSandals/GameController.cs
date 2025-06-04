@@ -22,6 +22,7 @@ namespace SwordAndSandals
         public ShopForm shopForm = new ShopForm();
         public BattleFormController formController = new BattleFormController();
 
+        public BattleController BattleController;
 
 
         public GameController() { }
