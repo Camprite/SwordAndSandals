@@ -9,7 +9,7 @@ using Timer = System.Windows.Forms.Timer;
 
 namespace SwordAndSandals
 {
-    class FormController
+    public class FormController
     {
         private Timer animationTimer;
         private const int MoveStep = 20;
@@ -23,12 +23,12 @@ namespace SwordAndSandals
         public BattleAction OnMoveForward;
         public BattleAction OnMoveBackward;
 
-        public Warrior Player;
-        public string PlayerName;
-        public int Int;
-        public int Strenght;
-        public int Agility;
-        public int Vitality;
+        
+        //public string PlayerName;
+        //public int Int;
+        //public int Strenght;
+        //public int Agility;
+        //public int Vitality;
 
         public Warrior Bot;
 
@@ -38,13 +38,19 @@ namespace SwordAndSandals
         public BattleForm BattleForm;
 
         public BattleController BattleController;
+        public GameController GameController;
 
-        public FormController(BattleController battleController, BattleForm battleForm)
+
+        public Warrior Player;
+
+        public FormController(BattleController battleController, BattleForm battleForm, Warrior Player)
         {
             //Player = player;
             //Bot = bot;
+            this.Player = Player;
             BattleForm = battleForm;
             BattleController = battleController;
+
 
             InitilizeBattleFormControls();
         }
@@ -236,22 +242,30 @@ namespace SwordAndSandals
         }
 
 
+       
         public void ResetGame()
         {
-            BattleForm.panelLeftWarrior.Location = new Point(332, 277);
-            BattleForm.panelRightWarrior.Location = new Point(740, 277);
 
-            InitializeHeroesAndArmours(StartGame);
-            InitilizeBattleFormControls();
+            //BattleForm.panelLeftWarrior.Location = new Point(332, 277);
+            //BattleForm.panelRightWarrior.Location = new Point(740, 277);
 
-
-            UpdateHealthBar(Player);
-            UpdateManaBar(Player);
-            UpdateHealthBar(Bot);
-            UpdateManaBar(Bot);
+            //InitializeHeroesAndArmours(StartGame);
+            //InitilizeBattleFormControls();
 
 
-            BattleController.isPlayerTurn = true;
+            //UpdateHealthBar(Player);
+            //UpdateManaBar(Player);
+            //UpdateHealthBar(Bot);
+            //UpdateManaBar(Bot);
+
+
+            //BattleController.isPlayerTurn = true;
+
+            BattleForm.Close();
+            GameController.menuForm.ShowDialog();
+
+
+
         }
 
         private void UpdateHealthBar(Warrior warrior)

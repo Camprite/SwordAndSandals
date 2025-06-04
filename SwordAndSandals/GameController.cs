@@ -19,9 +19,10 @@ namespace SwordAndSandals
         public Menu menuForm = new Menu(); 
         public InventoryForm inventoryForm = new InventoryForm(); 
         public BattleForm battleForm = new BattleForm(); 
-        public ShopForm shopForm = new ShopForm(); 
+        public ShopForm shopForm = new ShopForm();
 
-
+        public BattleController BattleController;
+        public FormController FormController;
 
 
         public GameController() { }
@@ -51,7 +52,10 @@ namespace SwordAndSandals
                             shopForm.ShowDialog();
                             break;
                         case (FormEnum.Battle):
-                            battleForm.ShowDialog();
+                            BattleController = new BattleController(this.Player);
+                            FormController = new FormController(this.BattleController, this.battleForm, BattleController.Player);
+                            FormController.BattleForm.ShowDialog();
+                            //battleForm.ShowDialog();
                             break;
                         case (FormEnum.Inventory):
                             inventoryForm.ShowDialog();
