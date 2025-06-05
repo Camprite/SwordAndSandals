@@ -13,24 +13,23 @@ namespace SwordAndSandals
     {
         private Timer animationTimer;
         private const int MoveStep = 20;
-
-
         public delegate void BattleAction();
         public BattleAction OnAttack;
         public BattleAction OnRest;
         public BattleAction OnMoveForward;
         public BattleAction OnMoveBackward;
 
-        public Warrior Bot;
+        public Warrior Bot {  get; set; }
         public Warrior Player { get; set; }
         public BattleForm BattleForm { get;set; }
 
-        public BattleController BattleController { get; set; }
+        public BattleController BattleController;
         public GameController GameController;
+
 
         public BattleFormController(BattleForm battleForm)
         {
-            
+            this.BattleForm = battleForm;
             InitilizeBattleFormControls();
         }
        

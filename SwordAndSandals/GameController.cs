@@ -22,7 +22,7 @@ namespace SwordAndSandals
         public ShopForm shopForm = new ShopForm();
         public BattleFormController battleFormController = new BattleFormController();
 
-        public BattleController BattleController;
+        public BattleController BattleController = new BattleController();
 
 
         public GameController() { }
@@ -34,12 +34,13 @@ namespace SwordAndSandals
                 this.Player = this.getPlayer();
                 menuForm.player = this.Player;
 
-
+                BattleController.Player = this.Player;
+                battleFormController.Player = BattleController.Player;
                 battleFormController.BattleForm = this.battleForm;
 
-                battleFormController.Player = this.Player;
-                
-                
+
+
+
                 menuForm.updateForm();
             }
 
@@ -62,7 +63,7 @@ namespace SwordAndSandals
                             // Wygenerowanie bota odpowiadającego graczowi
 
                             // Reset punktow zycia gracza/odnowy zaklecia
-                            
+                            battleFormController.BattleController = BattleController;
                             battleFormController.InitilizeBattleFormControls();
                             battleFormController.BattleForm.ShowDialog();
                             break;
