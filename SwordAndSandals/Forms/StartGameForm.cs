@@ -72,7 +72,7 @@ namespace SwordAndSandals
 
             try
             {
-                this.Player = new Warrior(NameTextBox.Text, (int)StrenghtUpDown.Value, (int)AgilityUpDown.Value, (int)IntUpDown.Value, (int)VitalityUpDown.Value);
+                this.Player = new Warrior(NameTextBox.Text, (int)StrenghtUpDown.Value, (int)AgilityUpDown.Value, (int)IntUpDown.Value, (int)VitalityUpDown.Value, CharacterEnum.Human);
                 this.Player.baseStatisticPoints = TotalPoints;
 
 

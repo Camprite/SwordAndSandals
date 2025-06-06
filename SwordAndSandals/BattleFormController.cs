@@ -18,13 +18,10 @@ namespace SwordAndSandals
         public BattleAction OnRest;
         public BattleAction OnMoveForward;
         public BattleAction OnMoveBackward;
-
-        public Warrior Bot {  get; set; }
-        public Warrior Player { get; set; }
         public BattleForm BattleForm { get;set; }
 
         public BattleController BattleController;
-        public GameController GameController;
+        public Menu menu;
 
 
         public BattleFormController(BattleForm battleForm)
@@ -42,13 +39,13 @@ namespace SwordAndSandals
 
         public void InitilizeBattleFormControls()
         {
-            BattleForm.labelLeftWarrior.Text = Player.Name;
+            BattleForm.labelLeftWarrior.Text = BattleController.Player.Name;
             BattleForm.pbLeftHP.Minimum = 0;
-            BattleForm.pbLeftHP.Maximum = Player.MaxHealth;
-            BattleForm.pbLeftHP.Value = Player.ActualHealth;
+            BattleForm.pbLeftHP.Maximum = BattleController.Player.MaxHealth;
+            BattleForm.pbLeftHP.Value = BattleController.Player.ActualHealth;
             BattleForm.pbLeftMana.Minimum = 0;
-            BattleForm.pbLeftMana.Maximum = Player.MaxStamina;
-            BattleForm.pbLeftMana.Value = Player.ActualStamina;
+            BattleForm.pbLeftMana.Maximum = BattleController.Player.MaxStamina;
+            BattleForm.pbLeftMana.Value = BattleController.Player.ActualStamina;
 
             OnAttack = HandlePlayerAttack;
             OnRest = HandlePlayerRest;
@@ -61,15 +58,15 @@ namespace SwordAndSandals
             BattleForm.btnLeftBack.Click += (s, e) => OnMoveBackward?.Invoke();
 
             //added
-            this.Bot = GenerateBot();
+            this.BattleController.Bot = GenerateBot();
 
-            BattleForm.labelRightWarrior.Text = Bot.Name;
+            BattleForm.labelRightWarrior.Text = BattleController.Bot.Name;
             BattleForm.pbRightHP.Minimum = 0;
-            BattleForm.pbRightHP.Maximum = Bot.MaxHealth;
-            BattleForm.pbRightHP.Value = Bot.ActualHealth;
+            BattleForm.pbRightHP.Maximum = BattleController.Bot.MaxHealth;
+            BattleForm.pbRightHP.Value = BattleController.Bot.ActualHealth;
             BattleForm.pbRightMana.Minimum = 0;
-            BattleForm.pbRightMana.Maximum = Bot.MaxStamina;
-            BattleForm.pbRightMana.Value = Bot.ActualStamina;
+            BattleForm.pbRightMana.Maximum = BattleController.Bot.MaxStamina;
+            BattleForm.pbRightMana.Value = BattleController.Bot.ActualStamina;
             BattleForm.btnRightAtack.Visible = false;
             BattleForm.btnRightRest.Visible = false;
             BattleForm.btnRightForward.Visible = false;
@@ -110,8 +107,8 @@ namespace SwordAndSandals
 
 
             int Damage = BattleController.PlayerAttack();
-            UpdateHealthBar(Bot);
-            UpdateManaBar(Player);
+            UpdateHealthBar(BattleController.Bot);
+            UpdateManaBar(BattleController.Player);
             BattleController.EndPlayerTurn();
             CheckFightStatus();
             Task.Delay(500).ContinueWith(_ => BattleForm.Invoke(() => BotTurn()));
@@ -121,8 +118,8 @@ namespace SwordAndSandals
         {
             if (!BattleController.isPlayerTurn) return;
 
-            BattleController.Rest(Player);
-            UpdateManaBar(Player);
+            BattleController.Rest(BattleController.Player);
+            UpdateManaBar(BattleController.Player);
             BattleController.EndPlayerTurn();
             Task.Delay(500).ContinueWith(_ => BattleForm.Invoke(() => BotTurn()));
         }
@@ -152,7 +149,7 @@ namespace SwordAndSandals
                 }
             };
             animationTimer.Start();
-            UpdateManaBar(Player);
+            UpdateManaBar(BattleController.Player);
             BattleController.EndPlayerTurn();
             Task.Delay(500).ContinueWith(_ => BattleForm.Invoke(() => BotTurn()));
         }
@@ -164,8 +161,8 @@ namespace SwordAndSandals
             var CurrentPosition = BattleForm.panelLeftWarrior.Location;
             if (CurrentPosition.X - MoveStep >= 0)
             {
-                BattleForm.panelLeftWarrior.Location = BattleController.MoveBackward(BattleForm.panelLeftWarrior.Location, Player);
-                UpdateManaBar(Player);
+                BattleForm.panelLeftWarrior.Location = BattleController.MoveBackward(BattleForm.panelLeftWarrior.Location, BattleController.Player);
+                UpdateManaBar(BattleController.Player);
             }
 
             BattleController.EndPlayerTurn();
@@ -194,9 +191,9 @@ namespace SwordAndSandals
 
         private void BotTurn()
         {
-            if (Bot.IsDead) return;
+            if (BattleController.Bot.IsDead) return;
 
-            if (Bot.ActualStamina >= 10)
+            if (BattleController.Bot.ActualStamina >= 10)
             {
 
 
@@ -204,25 +201,25 @@ namespace SwordAndSandals
                 {
 
                     int damage = BattleController.BotAttack();
-                    Player.TakeDamage(damage);
-                    MessageBox.Show($"Bot zadał {damage} obrażeń. Twoje zdrowie: {Player.ActualHealth}");
-                    UpdateManaBar(Bot);
-                    UpdateHealthBar(Player);
+                    BattleController.Player.TakeDamage(damage);
+                    MessageBox.Show($"Bot zadał {damage} obrażeń. Twoje zdrowie: {BattleController.Player.ActualHealth}");
+                    UpdateManaBar(BattleController.Bot);
+                    UpdateHealthBar(BattleController.Player);
                 }
                 else
                 {
                     if (BattleForm.panelRightWarrior.Location.X > BattleForm.panelLeftWarrior.Location.X)
-                        BattleForm.panelRightWarrior.Location = BattleController.MoveBackward(BattleForm.panelRightWarrior.Location, Bot);
+                        BattleForm.panelRightWarrior.Location = BattleController.MoveBackward(BattleForm.panelRightWarrior.Location, BattleController.Bot);
                     else
-                        BattleForm.panelRightWarrior.Location = BattleController.MoveForward(BattleForm.panelRightWarrior.Location, Bot);
+                        BattleForm.panelRightWarrior.Location = BattleController.MoveForward(BattleForm.panelRightWarrior.Location, BattleController.Bot);
 
-                    UpdateManaBar(Bot);
+                    UpdateManaBar(BattleController.Bot);
                 }
 
             }
             else
             {
-                BattleController.Rest(Bot);
+                BattleController.Rest(BattleController.Bot);
             }
 
             BattleController.isPlayerTurn = true;
@@ -234,23 +231,12 @@ namespace SwordAndSandals
         public void ResetGame()
         {
 
-            //BattleForm.panelLeftWarrior.Location = new Point(332, 277);
-            //BattleForm.panelRightWarrior.Location = new Point(740, 277);
-
-            //InitializeHeroesAndArmours(StartGame);
-            //InitilizeBattleFormControls();
-
-
-            //UpdateHealthBar(Player);
-            //UpdateManaBar(Player);
-            //UpdateHealthBar(Bot);
-            //UpdateManaBar(Bot);
-
-
-            //BattleController.isPlayerTurn = true;
-
-            BattleForm.Close();
-            GameController.menuForm.ShowDialog();
+            BattleController.Player.ActualHealth = 100;
+            BattleController.Player.ActualStamina= 100;
+            BattleController.isPlayerTurn = true;
+            this.BattleForm.Close();
+            menu.nextForm = FormEnum.None;
+            menu.ShowDialog();
 
 
 
@@ -288,8 +274,8 @@ namespace SwordAndSandals
         public Warrior GenerateBot()
         {
             Weapon ArthursSword = new Weapon(1, "Miecz króla artura", "+5 do ataku", WeaponEnum.Sword, 0, 0, 0, "", 500, 10);
-            Bot = new Warrior("John", 0, ArthursSword, null, null, null, null, null, null, null, null, CharacterEnum.Bot, 0, 0, 0, 0);
-            return Bot;
+            BattleController.Bot = new Warrior("John", 0, ArthursSword, null, null, null, null, null, null, null, null, CharacterEnum.Bot, 0, 0, 0, 0);
+            return BattleController.Bot;
         }
 
 

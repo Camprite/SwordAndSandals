@@ -35,9 +35,9 @@ namespace SwordAndSandals
                 menuForm.player = this.Player;
 
                 BattleController.Player = this.Player;
-                battleFormController.Player = BattleController.Player;
                 battleFormController.BattleForm = this.battleForm;
-
+                battleFormController.menu = this.menuForm;
+                
 
 
 

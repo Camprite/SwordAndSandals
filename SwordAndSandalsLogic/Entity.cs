@@ -17,7 +17,7 @@ namespace SwordAndSandalsLogic
         public int ActualHealth {  get; set; }
         public int MaxStamina { get; set; }
         public int ActualStamina { get; set; }
-        public int Int { get; set; }
+        public int Int{ get; set; }
         public int Strenght { get; set; }
         public int Agility { get; set; }
         public int Vitality { get; set; }
@@ -45,6 +45,8 @@ namespace SwordAndSandalsLogic
 
         public Entity()
         {
+            
+
         }
         public void addPoint(StatisticsEnum stat ){
             if (this.getAvaiablePoints() > 0)

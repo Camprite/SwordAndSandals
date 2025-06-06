@@ -46,7 +46,7 @@ namespace SwordAndSandalsLogic
         {
         }
 
-        public Warrior(string name, int strenght, int agility, int inteligence, int vitality)
+        public Warrior(string name, int strenght, int agility, int inteligence, int vitality, CharacterEnum character)
         {
             if (name == null || name == "" || name.Length>30) throw new WarriorBuilderException("Niepoprawna nazwa");
             this.Name = name;
@@ -54,6 +54,14 @@ namespace SwordAndSandalsLogic
             this.Agility = agility;
             this.Int = inteligence;
             this.Vitality = vitality;
+            MaxHealth = 100;
+            ActualHealth = 100;
+            MaxStamina = 100;
+            ActualStamina = 100;
+            Int +=  10 + inteligence;
+            Strenght += 10 + strenght;
+            Agility += 10 + agility;
+            Vitality += 10 + vitality;
 
         }
 
