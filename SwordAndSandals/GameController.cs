@@ -21,8 +21,10 @@ namespace SwordAndSandals
         public BattleForm battleForm = new BattleForm(); 
         public ShopForm shopForm = new ShopForm();
         public BattleFormController battleFormController = new BattleFormController();
+        public ShopFormController shopFormController = new ShopFormController();
 
         public BattleController BattleController = new BattleController();
+        
 
 
         public GameController() { }
@@ -37,10 +39,17 @@ namespace SwordAndSandals
                 BattleController.Player = this.Player;
                 battleFormController.BattleForm = this.battleForm;
                 battleFormController.menu = this.menuForm;
-                
+
+             
+                shopFormController.ShopForm = this.shopForm;
+                shopFormController.Player = this.Player;
+                shopFormController.menu = this.menuForm;
 
 
 
+
+
+                shopFormController.InitilizeShopFormControls();
                 menuForm.updateForm();
             }
 

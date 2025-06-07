@@ -96,7 +96,7 @@
             // ExitButton
             // 
             ExitButton.Font = new Font("Stencil", 18.25F);
-            ExitButton.Location = new Point(731, 641);
+            ExitButton.Location = new Point(726, 716);
             ExitButton.Name = "ExitButton";
             ExitButton.Size = new Size(189, 38);
             ExitButton.TabIndex = 6;
@@ -107,7 +107,7 @@
             // ShopButton
             // 
             ShopButton.Font = new Font("Stencil", 18.25F);
-            ShopButton.Location = new Point(731, 716);
+            ShopButton.Location = new Point(726, 641);
             ShopButton.Name = "ShopButton";
             ShopButton.Size = new Size(189, 38);
             ShopButton.TabIndex = 6;

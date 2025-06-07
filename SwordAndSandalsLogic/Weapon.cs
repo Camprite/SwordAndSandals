@@ -37,5 +37,10 @@ namespace SwordAndSandalsLogic
 
         }
         public Weapon() { }
+
+        public override string? ToString()
+        {
+            return $"{Name}:{Price}:{WeaponEnum}";
+        }
     }
 }

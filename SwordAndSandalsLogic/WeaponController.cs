@@ -13,6 +13,7 @@ namespace SwordAndSandalsLogic
             this.weapons = WeaponRepository.GetWeapons();
         }
 
+        
         public List<Weapon> GetWeapons()
         {
             return this.weapons;
