@@ -83,6 +83,26 @@ namespace SwordAndSandals.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Gemini_Defeat {
+            get {
+                object obj = ResourceManager.GetObject("Gemini_Defeat", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Gemini_Victory {
+            get {
+                object obj = ResourceManager.GetObject("Gemini_Victory", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap gladiatorwyciety {
             get {
                 object obj = ResourceManager.GetObject("gladiatorwyciety", resourceCulture);

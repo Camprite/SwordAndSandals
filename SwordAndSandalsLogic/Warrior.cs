@@ -12,6 +12,9 @@ namespace SwordAndSandalsLogic
         
         public String Name { get; set; }
         public int Money {  get; set; }
+        public List<Weapon> Weapons { get; set; }
+        public List<Weapon> Armours { get; set; }
+            
         public Weapon Weapon { get; set; }
         public Armour Helmet { get; set; }
         public Armour Chestplate { get; set; }
@@ -58,10 +61,11 @@ namespace SwordAndSandalsLogic
             ActualHealth = 100;
             MaxStamina = 100;
             ActualStamina = 100;
-            Int +=  10 + inteligence;
-            Strenght += 10 + strenght;
-            Agility += 10 + agility;
-            Vitality += 10 + vitality;
+            Money = 100;
+            Int = inteligence;
+            Strenght = strenght;
+            Agility = agility;
+            Vitality = vitality;
 
         }
 

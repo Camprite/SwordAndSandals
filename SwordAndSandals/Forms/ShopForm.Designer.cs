@@ -42,6 +42,8 @@ namespace SwordAndSandals
             listBox1 = new ListBox();
             button1 = new Button();
             button2 = new Button();
+            searchBySelect = new ComboBox();
+            SearchButton = new Button();
             SuspendLayout();
             // 
             // label1
@@ -171,13 +173,32 @@ namespace SwordAndSandals
             button2.Text = "Clear Cart";
             button2.UseVisualStyleBackColor = true;
             // 
-            // Shop
+            // searchBySelect
+            // 
+            searchBySelect.FormattingEnabled = true;
+            searchBySelect.Location = new Point(92, 159);
+            searchBySelect.Name = "searchBySelect";
+            searchBySelect.Size = new Size(121, 23);
+            searchBySelect.TabIndex = 12;
+            // 
+            // SearchButton
+            // 
+            SearchButton.Location = new Point(246, 158);
+            SearchButton.Name = "SearchButton";
+            SearchButton.Size = new Size(75, 23);
+            SearchButton.TabIndex = 13;
+            SearchButton.Text = "Search";
+            SearchButton.UseVisualStyleBackColor = true;
+            // 
+            // ShopForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.backgroundFrame;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(800, 690);
+            Controls.Add(SearchButton);
+            Controls.Add(searchBySelect);
             Controls.Add(button2);
             Controls.Add(button1);
             Controls.Add(listBox1);
@@ -190,8 +211,8 @@ namespace SwordAndSandals
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
-            Name = "Shop";
-            Text = "D";
+            Name = "ShopForm";
+            Text = "Shop";
             ResumeLayout(false);
             PerformLayout();
         }
@@ -210,5 +231,7 @@ namespace SwordAndSandals
         public ListBox listBox1;
         public Button button1;
         public Button button2;
+        public ComboBox searchBySelect;
+        public Button SearchButton;
     }
 }

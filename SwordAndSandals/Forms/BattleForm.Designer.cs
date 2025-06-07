@@ -58,18 +58,22 @@ namespace SwordAndSandals
             labelSpelRight = new Label();
             cmbboxRightSpell = new ComboBox();
             panelRightWarrior = new DoubleBufferedPanel();
+            VictoryPicture = new PictureBox();
+            pictureBoxBot = new PictureBox();
             panelLeftWarrior = new DoubleBufferedPanel();
             pictureBoxPlayer = new PictureBox();
             panel1 = new Panel();
-            richTextBox1 = new RichTextBox();
-            pictureBoxBot = new PictureBox();
+            ConsoleTextBox = new RichTextBox();
+            DefeatPicture = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)WarriorboxLeft).BeginInit();
             ((System.ComponentModel.ISupportInitialize)WarriorboxRight).BeginInit();
             panelRightWarrior.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)VictoryPicture).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxBot).BeginInit();
             panelLeftWarrior.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxPlayer).BeginInit();
             panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBoxBot).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)DefeatPicture).BeginInit();
             SuspendLayout();
             // 
             // labelLeftWarrior
@@ -372,6 +376,26 @@ namespace SwordAndSandals
             panelRightWarrior.Size = new Size(381, 256);
             panelRightWarrior.TabIndex = 22;
             // 
+            // VictoryPicture
+            // 
+            VictoryPicture.BackColor = Color.Transparent;
+            VictoryPicture.BackgroundImage = Properties.Resources.Gemini_Victory;
+            VictoryPicture.BackgroundImageLayout = ImageLayout.Stretch;
+            VictoryPicture.Location = new Point(287, 115);
+            VictoryPicture.Name = "VictoryPicture";
+            VictoryPicture.Size = new Size(789, 444);
+            VictoryPicture.TabIndex = 27;
+            VictoryPicture.TabStop = false;
+            VictoryPicture.Visible = false;
+            // 
+            // pictureBoxBot
+            // 
+            pictureBoxBot.Location = new Point(272, 5);
+            pictureBoxBot.Name = "pictureBoxBot";
+            pictureBoxBot.Size = new Size(100, 89);
+            pictureBoxBot.TabIndex = 24;
+            pictureBoxBot.TabStop = false;
+            // 
             // panelLeftWarrior
             // 
             panelLeftWarrior.BackColor = Color.Transparent;
@@ -406,51 +430,62 @@ namespace SwordAndSandals
             // 
             panel1.BackgroundImage = Properties.Resources.backgroundFrame;
             panel1.BackgroundImageLayout = ImageLayout.Stretch;
-            panel1.Controls.Add(richTextBox1);
+            panel1.Controls.Add(ConsoleTextBox);
             panel1.Location = new Point(1100, 12);
             panel1.Name = "panel1";
             panel1.Size = new Size(308, 186);
             panel1.TabIndex = 26;
             // 
-            // richTextBox1
+            // ConsoleTextBox
             // 
-            richTextBox1.BackColor = Color.FromArgb(137, 85, 31);
-            richTextBox1.BorderStyle = BorderStyle.None;
-            richTextBox1.Location = new Point(26, 24);
-            richTextBox1.Name = "richTextBox1";
-            richTextBox1.Size = new Size(244, 132);
-            richTextBox1.TabIndex = 0;
-            richTextBox1.Text = "";
+            ConsoleTextBox.BackColor = Color.FromArgb(137, 85, 31);
+            ConsoleTextBox.BorderStyle = BorderStyle.None;
+            ConsoleTextBox.Location = new Point(26, 24);
+            ConsoleTextBox.Name = "ConsoleTextBox";
+            ConsoleTextBox.Size = new Size(244, 132);
+            ConsoleTextBox.TabIndex = 0;
+            ConsoleTextBox.Text = "";
+            ConsoleTextBox.TextChanged += ConsoleTextBox_TextChanged;
             // 
-            // pictureBoxBot
+            // DefeatPicture
             // 
-            pictureBoxBot.Location = new Point(272, 5);
-            pictureBoxBot.Name = "pictureBoxBot";
-            pictureBoxBot.Size = new Size(100, 89);
-            pictureBoxBot.TabIndex = 24;
-            pictureBoxBot.TabStop = false;
+            DefeatPicture.BackColor = Color.Transparent;
+            DefeatPicture.BackgroundImage = Properties.Resources.Gemini_Defeat;
+            DefeatPicture.BackgroundImageLayout = ImageLayout.Stretch;
+            DefeatPicture.InitialImage = null;
+            DefeatPicture.Location = new Point(288, 115);
+            DefeatPicture.Name = "DefeatPicture";
+            DefeatPicture.Size = new Size(788, 444);
+            DefeatPicture.TabIndex = 28;
+            DefeatPicture.TabStop = false;
+            DefeatPicture.Visible = false;
+            DefeatPicture.Click += DefeatPicture_Click;
             // 
-            // Battle
+            // BattleForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.battleBackground;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1420, 583);
+            Controls.Add(VictoryPicture);
+            Controls.Add(DefeatPicture);
             Controls.Add(panel1);
             Controls.Add(panelLeftWarrior);
             Controls.Add(panelRightWarrior);
-            Name = "Battle";
+            Name = "BattleForm";
             Text = "SwordAndSandals";
             ((System.ComponentModel.ISupportInitialize)WarriorboxLeft).EndInit();
             ((System.ComponentModel.ISupportInitialize)WarriorboxRight).EndInit();
             panelRightWarrior.ResumeLayout(false);
             panelRightWarrior.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)VictoryPicture).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxBot).EndInit();
             panelLeftWarrior.ResumeLayout(false);
             panelLeftWarrior.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxPlayer).EndInit();
             panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBoxBot).EndInit();
+            ((System.ComponentModel.ISupportInitialize)DefeatPicture).EndInit();
             ResumeLayout(false);
         }
 
@@ -486,8 +521,10 @@ namespace SwordAndSandals
         public DoubleBufferedPanel panelLeftWarrior;
         private PictureBox pictureBoxPlayer;
         private Panel panel1;
-        private RichTextBox richTextBox1;
         private PictureBox pictureBoxBot;
+        public RichTextBox ConsoleTextBox;
+        public PictureBox VictoryPicture;
+        public PictureBox DefeatPicture;
     }
 
 }

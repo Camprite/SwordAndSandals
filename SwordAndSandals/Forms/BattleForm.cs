@@ -31,25 +31,14 @@ namespace SwordAndSandals
             }
         }
 
+        private void ConsoleTextBox_TextChanged(object sender, EventArgs e)
+        {
 
+        }
 
+        private void DefeatPicture_Click(object sender, EventArgs e)
+        {
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        }
     }
 }

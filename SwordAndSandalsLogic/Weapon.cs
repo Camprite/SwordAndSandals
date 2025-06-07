@@ -9,6 +9,7 @@ namespace SwordAndSandalsLogic
     public class Weapon
     {
         public int Id {  get; set; }
+        public int Lvl {  get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public WeaponEnum WeaponEnum { get; set; }
@@ -35,5 +36,6 @@ namespace SwordAndSandalsLogic
             Damage = damage;
 
         }
+        public Weapon() { }
     }
 }

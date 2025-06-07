@@ -25,7 +25,7 @@ namespace SwordAndSandalsLogic
 
         public virtual int Damage()
         {
-            return Strenght;
+            return Strenght+1;
         }
 
         public Entity(int id, int xPos, bool arenaSide, int maxhealth, int actualhealth, int maxstamina, int actualstamina, int @int, int strenght, int agility, int vitality)

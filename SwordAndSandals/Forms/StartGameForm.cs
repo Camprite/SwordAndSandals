@@ -32,10 +32,7 @@ namespace SwordAndSandals
             UpdatePointsLeft(null, null);
             ResetStatsButton.Click += (s, e) =>
             {
-                StrenghtUpDown.Value = 0;
-                AgilityUpDown.Value = 0;
-                IntUpDown.Value = 0;
-                VitalityUpDown.Value = 0;
+
             };
         }
 
@@ -97,6 +94,17 @@ namespace SwordAndSandals
         private void StartGameGB_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void testButton_Click(object sender, EventArgs e)
+        {
+            NameTextBox.Text = "Tester";
+            StrenghtUpDown.Value = 1;
+            AgilityUpDown.Value = 1;
+            IntUpDown.Value = 1;
+            VitalityUpDown.Value = 1;
+            this.UpdatePointsLeft(sender, e);
+            this.StartGameButton_Click(sender, e);
         }
     }
 }

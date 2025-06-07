@@ -101,13 +101,16 @@ namespace SwordAndSandals
 
             if (!BattleController.CanAttack(BattleForm.panelLeftWarrior.Location, BattleForm.panelRightWarrior.Location))
             {
-                MessageBox.Show("Jesteś za daleko, aby zaatakować!");
+                BattleForm.ConsoleTextBox.AppendText("[P] Jesteś za daleko, aby zaatakować! \n");
+                //MessageBox.Show("Jesteś za daleko, aby zaatakować!");
                 return;
             }
 
 
             int Damage = BattleController.PlayerAttack();
+
             UpdateHealthBar(BattleController.Bot);
+            BattleForm.ConsoleTextBox.AppendText($"[P] Zadałeś przeciwnikowi: {Damage} obrażeń \n");
             UpdateManaBar(BattleController.Player);
             BattleController.EndPlayerTurn();
             CheckFightStatus();
@@ -176,13 +179,17 @@ namespace SwordAndSandals
             int status = BattleController.CheckFightStatus();
             if (status == 1)
             {
-                MessageBox.Show("Wygrałeś!");
-                ResetGame();
+                //MessageBox.Show("Wygrałeś!");
+                this.BattleForm.VictoryPicture.Visible = true;
+                Task.Delay(2000).ContinueWith(_ => BattleForm.Invoke(() => ResetGame()));
+               
             }
             else if (status == -1)
             {
-                MessageBox.Show("Przegrałeś!");
-                ResetGame();
+                //MessageBox.Show("Przegrałeś!");
+                this.BattleForm.DefeatPicture.Visible = true;
+                Task.Delay(2000);
+                Task.Delay(2000).ContinueWith(_ => BattleForm.Invoke(() => ResetGame()));
             }
 
 
@@ -202,7 +209,8 @@ namespace SwordAndSandals
 
                     int damage = BattleController.BotAttack();
                     BattleController.Player.TakeDamage(damage);
-                    MessageBox.Show($"Bot zadał {damage} obrażeń. Twoje zdrowie: {BattleController.Player.ActualHealth}");
+                    BattleForm.ConsoleTextBox.AppendText($"[B]{BattleController.Bot.Name} zadał {damage} obrażeń. Twoje zdrowie: {BattleController.Player.ActualHealth} \n");
+                    //MessageBox.Show($"Bot zadał {damage} obrażeń. Twoje zdrowie: {BattleController.Player.ActualHealth}");
                     UpdateManaBar(BattleController.Bot);
                     UpdateHealthBar(BattleController.Player);
                 }
@@ -230,14 +238,18 @@ namespace SwordAndSandals
        
         public void ResetGame()
         {
-
+            
             BattleController.Player.ActualHealth = 100;
             BattleController.Player.ActualStamina= 100;
             BattleController.isPlayerTurn = true;
-            this.BattleForm.Close();
-            menu.nextForm = FormEnum.None;
-            menu.ShowDialog();
 
+
+            menu.nextForm = FormEnum.None;
+
+            //this.BattleForm.
+            this.BattleForm.Close();
+            
+           
 
 
         }

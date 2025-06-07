@@ -44,6 +44,7 @@
             label1 = new Label();
             NameTextBox = new TextBox();
             panel1 = new Panel();
+            testButton = new Button();
             ((System.ComponentModel.ISupportInitialize)VitalityUpDown).BeginInit();
             ((System.ComponentModel.ISupportInitialize)AgilityUpDown).BeginInit();
             ((System.ComponentModel.ISupportInitialize)StrenghtUpDown).BeginInit();
@@ -217,6 +218,7 @@
             panel1.Controls.Add(label5);
             panel1.Controls.Add(PointsLeftLabel);
             panel1.Controls.Add(label4);
+            panel1.Controls.Add(testButton);
             panel1.Controls.Add(ResetStatsButton);
             panel1.Controls.Add(label6);
             panel1.Controls.Add(label3);
@@ -224,6 +226,17 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(817, 425);
             panel1.TabIndex = 1;
+            // 
+            // testButton
+            // 
+            testButton.Font = new Font("Stencil", 12.25F);
+            testButton.Location = new Point(516, 338);
+            testButton.Name = "testButton";
+            testButton.Size = new Size(96, 26);
+            testButton.TabIndex = 2;
+            testButton.Text = "Test";
+            testButton.UseVisualStyleBackColor = true;
+            testButton.Click += testButton_Click;
             // 
             // StartGameForm
             // 
@@ -261,5 +274,6 @@
         public Label label7;
         public Button ResetStatsButton;
         public Panel panel1;
+        public Button testButton;
     }
 }
