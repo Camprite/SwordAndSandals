@@ -81,6 +81,8 @@ namespace SwordAndSandals
                             // Reset punktow zycia gracza/odnowy zaklecia
                             battleFormController.BattleController = new BattleController();
                             battleFormController.BattleController.Player = this.Player;
+                            battleFormController.BattleController.Bot = BattleController.Bot;
+
                             battleFormController.InitilizeBattleFormControls();
                             battleFormController.BattleForm.ShowDialog();
                             break;
