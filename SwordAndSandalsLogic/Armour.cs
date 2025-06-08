@@ -4,6 +4,7 @@ using System.Linq;
 using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace SwordAndSandalsLogic
 {
@@ -18,6 +19,8 @@ namespace SwordAndSandalsLogic
         public string Description { get; set; }
         public ArmourEnum ArmourType { get; set; }
         public int Defence { get; set; }
+      
+        public string DisplayText => $"{Name} LVL:{Level} ${Price} DEF:{Defence}";
         public string IconPath { get; set; }
         public int Price { get; set; }
 
@@ -40,6 +43,11 @@ namespace SwordAndSandalsLogic
             ArmourType = armourType;
             Defence = defence;
             this.Price = Price;
+        }
+
+        public override string? ToString()
+        {
+            return $"{Name}";
         }
     }
 }

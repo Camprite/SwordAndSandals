@@ -8,6 +8,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using Newtonsoft.Json;
 
 namespace SwordAndSandals
 {
@@ -69,11 +72,14 @@ namespace SwordAndSandals
 
             try
             {
-                this.Player = new Warrior(NameTextBox.Text, (int)StrenghtUpDown.Value, (int)AgilityUpDown.Value, (int)IntUpDown.Value, (int)VitalityUpDown.Value, CharacterEnum.Human);
-                this.Player.baseStatisticPoints = TotalPoints;
+                if (this.Player == null)
+                {
 
-                this.Player.Weapons.Add(WeaponRepository.GetWeapons()[0]);
+                    this.Player = new Warrior(NameTextBox.Text, (int)StrenghtUpDown.Value, (int)AgilityUpDown.Value, (int)IntUpDown.Value, (int)VitalityUpDown.Value, CharacterEnum.Human);
+                    this.Player.baseStatisticPoints = TotalPoints;
 
+                    this.Player.Weapons.Add(WeaponRepository.GetWeapons()[0]);
+                }
             }
             catch (Exception ex)
             {
@@ -106,6 +112,27 @@ namespace SwordAndSandals
             VitalityUpDown.Value = 1;
             this.UpdatePointsLeft(sender, e);
             this.StartGameButton_Click(sender, e);
+        }
+
+        private void openFromFileButton_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Title = "Wybierz plik JSON";
+            openFileDialog.Filter = "Pliki JSON (*.json)|*.json";
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string selectedFilePath = openFileDialog.FileName;
+              
+
+                string jsonFromFile = File.ReadAllText(selectedFilePath);
+                Warrior loadedWarrior = JsonConvert.DeserializeObject<Warrior>(jsonFromFile);
+
+        
+                this.Player = loadedWarrior;
+                this.UpdatePointsLeft(sender, e);
+                this.StartGameButton_Click(sender, e);
+ 
+            }
         }
     }
 }

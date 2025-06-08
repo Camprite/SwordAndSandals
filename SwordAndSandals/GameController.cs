@@ -76,7 +76,8 @@ namespace SwordAndSandals
                             // Wygenerowanie bota odpowiadającego graczowi
 
                             // Reset punktow zycia gracza/odnowy zaklecia
-                            battleFormController.BattleController = BattleController;
+                            battleFormController.BattleController = new BattleController();
+                            battleFormController.BattleController.Player = this.Player;
                             battleFormController.InitilizeBattleFormControls();
                             battleFormController.BattleForm.ShowDialog();
                             break;

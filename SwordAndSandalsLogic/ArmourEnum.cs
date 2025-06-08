@@ -11,10 +11,10 @@ namespace SwordAndSandalsLogic
         Helmet = 0,
         Chestplate = 1,
         Shield = 2,
-        Boots = 3, 
-        Shoulderguard = 4,
-        Gauntlests = 5,
-        Greaves = 6,
-        Shinguards = 7,
+        Boots = 3,
+        //    Shoulderguard = 4,
+        //    Gauntlests = 5,
+        //    Greaves = 6,
+        //    Shinguards = 7,
     }
 }

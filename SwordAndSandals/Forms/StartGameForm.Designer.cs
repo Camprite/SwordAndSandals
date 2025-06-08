@@ -45,6 +45,7 @@
             NameTextBox = new TextBox();
             panel1 = new Panel();
             testButton = new Button();
+            openFromFileButton = new Button();
             ((System.ComponentModel.ISupportInitialize)VitalityUpDown).BeginInit();
             ((System.ComponentModel.ISupportInitialize)AgilityUpDown).BeginInit();
             ((System.ComponentModel.ISupportInitialize)StrenghtUpDown).BeginInit();
@@ -206,6 +207,7 @@
             // 
             panel1.BackgroundImage = Properties.Resources.backgroundFrame;
             panel1.BackgroundImageLayout = ImageLayout.Stretch;
+            panel1.Controls.Add(openFromFileButton);
             panel1.Controls.Add(StartGameButton);
             panel1.Controls.Add(VitalityUpDown);
             panel1.Controls.Add(NameTextBox);
@@ -237,6 +239,17 @@
             testButton.Text = "Test";
             testButton.UseVisualStyleBackColor = true;
             testButton.Click += testButton_Click;
+            // 
+            // openFromFileButton
+            // 
+            openFromFileButton.Font = new Font("Stencil", 10.25F);
+            openFromFileButton.Location = new Point(316, 282);
+            openFromFileButton.Name = "openFromFileButton";
+            openFromFileButton.Size = new Size(162, 38);
+            openFromFileButton.TabIndex = 7;
+            openFromFileButton.Text = "Wczytaj z Pliku";
+            openFromFileButton.UseVisualStyleBackColor = true;
+            openFromFileButton.Click += openFromFileButton_Click;
             // 
             // StartGameForm
             // 
@@ -275,5 +288,6 @@
         public Button ResetStatsButton;
         public Panel panel1;
         public Button testButton;
+        public Button openFromFileButton;
     }
 }

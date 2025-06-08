@@ -55,6 +55,7 @@
             strIncrement = new Label();
             aglIncrement = new Label();
             LevelUp = new Button();
+            saveGameButton = new Button();
             ((System.ComponentModel.ISupportInitialize)WarriorboxRight).BeginInit();
             SuspendLayout();
             // 
@@ -73,7 +74,7 @@
             // BattleButton
             // 
             BattleButton.Font = new Font("Stencil", 18.25F);
-            BattleButton.Location = new Point(443, 641);
+            BattleButton.Location = new Point(378, 641);
             BattleButton.Name = "BattleButton";
             BattleButton.Size = new Size(189, 38);
             BattleButton.TabIndex = 6;
@@ -96,7 +97,7 @@
             // ExitButton
             // 
             ExitButton.Font = new Font("Stencil", 18.25F);
-            ExitButton.Location = new Point(726, 716);
+            ExitButton.Location = new Point(615, 716);
             ExitButton.Name = "ExitButton";
             ExitButton.Size = new Size(189, 38);
             ExitButton.TabIndex = 6;
@@ -107,7 +108,7 @@
             // ShopButton
             // 
             ShopButton.Font = new Font("Stencil", 18.25F);
-            ShopButton.Location = new Point(726, 641);
+            ShopButton.Location = new Point(615, 641);
             ShopButton.Name = "ShopButton";
             ShopButton.Size = new Size(189, 38);
             ShopButton.TabIndex = 6;
@@ -118,7 +119,7 @@
             // InventoryButton
             // 
             InventoryButton.Font = new Font("Stencil", 18.25F);
-            InventoryButton.Location = new Point(443, 716);
+            InventoryButton.Location = new Point(378, 716);
             InventoryButton.Name = "InventoryButton";
             InventoryButton.Size = new Size(189, 38);
             InventoryButton.TabIndex = 6;
@@ -370,13 +371,24 @@
             // LevelUp
             // 
             LevelUp.Font = new Font("Stencil", 18.25F);
-            LevelUp.Location = new Point(206, 631);
+            LevelUp.Location = new Point(846, 641);
             LevelUp.Name = "LevelUp";
             LevelUp.Size = new Size(189, 38);
             LevelUp.TabIndex = 6;
             LevelUp.Text = "LevelUp";
             LevelUp.UseVisualStyleBackColor = true;
             LevelUp.Click += StartGameButton_Click;
+            // 
+            // saveGameButton
+            // 
+            saveGameButton.Font = new Font("Stencil", 18.25F);
+            saveGameButton.Location = new Point(846, 716);
+            saveGameButton.Name = "saveGameButton";
+            saveGameButton.Size = new Size(189, 38);
+            saveGameButton.TabIndex = 6;
+            saveGameButton.Text = "Save";
+            saveGameButton.UseVisualStyleBackColor = true;
+            saveGameButton.Click += StartGameButton_Click;
             // 
             // Menu
             // 
@@ -407,6 +419,7 @@
             Controls.Add(label5);
             Controls.Add(playerName);
             Controls.Add(ShopButton);
+            Controls.Add(saveGameButton);
             Controls.Add(ExitButton);
             Controls.Add(InventoryButton);
             Controls.Add(LevelUp);
@@ -448,5 +461,6 @@
         public Label strIncrement;
         public Label aglIncrement;
         public Button LevelUp;
+        public Button saveGameButton;
     }
 }

@@ -39,6 +39,8 @@ namespace SwordAndSandals
 
         public void InitilizeBattleFormControls()
         {
+            BattleForm.VictoryPicture.Visible = false;
+            BattleForm.DefeatPicture.Visible = false;
             BattleForm.labelLeftWarrior.Text = BattleController.Player.Name;
             BattleForm.pbLeftHP.Minimum = 0;
             BattleForm.pbLeftHP.Maximum = BattleController.Player.MaxHealth;
@@ -188,7 +190,7 @@ namespace SwordAndSandals
             {
                 //MessageBox.Show("Przegrałeś!");
                 this.BattleForm.DefeatPicture.Visible = true;
-                Task.Delay(2000);
+             
                 Task.Delay(2000).ContinueWith(_ => BattleForm.Invoke(() => ResetGame()));
             }
 

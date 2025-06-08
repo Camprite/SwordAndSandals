@@ -1,4 +1,5 @@
-﻿using SwordAndSandalsLogic;
+﻿using Newtonsoft.Json;
+using SwordAndSandalsLogic;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -23,6 +24,14 @@ namespace SwordAndSandals
             {
                 this.DialogResult = DialogResult.Cancel;
                 this.Close();
+            };
+
+            saveGameButton.Click += (o, s) =>
+            {
+                string json = JsonConvert.SerializeObject(player, Formatting.Indented);
+                string path = $"warrior{player.GetHashCode()}.json";
+                File.WriteAllText(path, json);
+                MessageBox.Show($"Pomyślnie zapisano postać w pliku:{path}");
             };
             this.intIncrement.Click += (o, s) => { player.addPoint(StatisticsEnum.Inteligence); this.updateForm(); };
             this.witIncrement.Click += (o, s) => { player.addPoint(StatisticsEnum.Vitality); this.updateForm(); };
