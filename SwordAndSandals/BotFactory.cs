@@ -21,7 +21,7 @@ namespace SwordAndSandals
             int vitality = RandomizeStat(Player.Vitality);
 
             var weapon = GetRandomWeapon(Player.Level);
-            var bot = new Warrior(name, strength, agility, inteligence, vitality, CharacterEnum.Bot);
+            Warrior bot = new Warrior(name, strength, agility, inteligence, vitality, CharacterEnum.Bot);
             
             bot.Weapon = weapon;
 
@@ -30,7 +30,7 @@ namespace SwordAndSandals
         }
 
 
-        private static int RandomizeStat(int value, int deviation = 2)
+        private static int RandomizeStat(int value, int deviation = 1)
         {
             return Math.Max(1, value + random.Next(-deviation, deviation + 1));
         }

@@ -525,6 +525,7 @@ namespace SwordAndSandals
         public RichTextBox ConsoleTextBox;
         public PictureBox VictoryPicture;
         public PictureBox DefeatPicture;
+        public PictureBox BattleStatistics;
     }
 
 }

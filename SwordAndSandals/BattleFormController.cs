@@ -183,6 +183,7 @@ namespace SwordAndSandals
             {
                 //MessageBox.Show("Wygrałeś!");
                 this.BattleForm.VictoryPicture.Visible = true;
+                BattleController.Player.XP += 250;
                 Task.Delay(2000).ContinueWith(_ => BattleForm.Invoke(() => ResetGame()));
 
                
@@ -191,7 +192,7 @@ namespace SwordAndSandals
             {
                 //MessageBox.Show("Przegrałeś!");
                 this.BattleForm.DefeatPicture.Visible = true;
-             
+                BattleController.Player.XP += 100 ;
                 Task.Delay(2000).ContinueWith(_ => BattleForm.Invoke(() => ResetGame()));
             }
 

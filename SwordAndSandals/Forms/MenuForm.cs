@@ -42,10 +42,13 @@ namespace SwordAndSandals
             this.InventoryButton.Click += (o, s) => { this.returnNextForm(FormEnum.Inventory);  };
             this.BattleButton.Click += (o, s) => { this.returnNextForm(FormEnum.Battle);  };
 
+           
             this.LevelUp.Click += (o, s) => {
 
-                player.Level++;
-                updateForm();
+                if(player.CanLevelUp())
+                { 
+                player.LevelUp();
+                updateForm();}
             };
         }
 
