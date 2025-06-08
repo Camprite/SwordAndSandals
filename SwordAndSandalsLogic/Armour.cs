@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,6 +12,8 @@ namespace SwordAndSandalsLogic
         
 
         public int Id { get; set; }
+        public int Level { get; set; }
+
         public string Name { get; set; }
         public string Description { get; set; }
         public ArmourEnum ArmourType { get; set; }
@@ -26,6 +29,16 @@ namespace SwordAndSandalsLogic
             ArmourType = armourType;
             Defence = defence;
             this.IconPath = iconPath;
+            this.Price = Price;
+        }
+        public Armour(int id, int Level, string name, string description, ArmourEnum armourType, int defence, int Price)
+        {
+            Id = id;
+            this.Level = Level;
+            Name = name;
+            Description = description;
+            ArmourType = armourType;
+            Defence = defence;
             this.Price = Price;
         }
     }

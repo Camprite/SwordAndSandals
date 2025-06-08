@@ -72,6 +72,7 @@ namespace SwordAndSandals
                 this.Player = new Warrior(NameTextBox.Text, (int)StrenghtUpDown.Value, (int)AgilityUpDown.Value, (int)IntUpDown.Value, (int)VitalityUpDown.Value, CharacterEnum.Human);
                 this.Player.baseStatisticPoints = TotalPoints;
 
+                this.Player.Weapons.Add(WeaponRepository.GetWeapons()[0]);
 
             }
             catch (Exception ex)

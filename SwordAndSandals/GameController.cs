@@ -22,6 +22,7 @@ namespace SwordAndSandals
         public ShopForm shopForm = new ShopForm();
         public BattleFormController battleFormController = new BattleFormController();
         public ShopFormController shopFormController = new ShopFormController();
+        public InventoryFormController inventoryFormController = new InventoryFormController();
 
         public BattleController BattleController = new BattleController();
         
@@ -40,22 +41,25 @@ namespace SwordAndSandals
                 battleFormController.BattleForm = this.battleForm;
                 battleFormController.menu = this.menuForm;
 
+
              
                 shopFormController.ShopForm = this.shopForm;
                 shopFormController.Player = this.Player;
                 shopFormController.menu = this.menuForm;
 
-
+                inventoryFormController.inventoryForm = this.inventoryForm;
+                inventoryFormController.Player = this.Player;
 
 
 
                 shopFormController.InitilizeShopFormControls();
+                //inventoryFormController.InitilizeInventoryFormControls();
                 menuForm.updateForm();
             }
 
             while (true)
             {
-                //menuForm.updateForm();
+                menuForm.updateForm();
                 var menuOption = menuForm.ShowDialog();
                 
 
@@ -77,7 +81,9 @@ namespace SwordAndSandals
                             battleFormController.BattleForm.ShowDialog();
                             break;
                         case (FormEnum.Inventory):
+                            inventoryFormController.InitilizeInventoryFormControls();
                             inventoryForm.ShowDialog();
+                            menuForm.updateForm();
                             break;
                     }
                     

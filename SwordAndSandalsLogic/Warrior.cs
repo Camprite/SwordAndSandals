@@ -12,9 +12,9 @@ namespace SwordAndSandalsLogic
         
         public String Name { get; set; }
         public int Money {  get; set; }
-        public List<Weapon> Weapons { get; set; }
-        public List<Weapon> Armours { get; set; }
-            
+        public List<Weapon> Weapons { get; set; } = new List<Weapon>();
+        public List<Armour> Armours { get; set; } = new List<Armour>();
+
         public Weapon Weapon { get; set; }
         public Armour Helmet { get; set; }
         public Armour Chestplate { get; set; }
@@ -44,6 +44,7 @@ namespace SwordAndSandalsLogic
             Shinguards = shinguards;
             Character = character;
         }
+        
 
         public Warrior()
         {

@@ -15,7 +15,7 @@ namespace SwordAndSandalsLogic
             var weapons = new List<Weapon>();
 
             // Level 1-5 Weapons
-            weapons.Add(new Weapon() { Id = 1, Lvl = 1, Name = "Cracked Dagger", Price = 8, Damage = 4, WeaponEnum = WeaponEnum.Daggers });
+            weapons.Add(new Weapon() { Id = 1, Lvl = 0, Name = "Cracked Dagger", Price = 8, Damage = 4, WeaponEnum = WeaponEnum.Daggers });
             weapons.Add(new Weapon() { Id = 2, Lvl = 1, Name = "Rough Cudgel", Price = 10, Damage = 6, WeaponEnum = WeaponEnum.Mele });
             weapons.Add(new Weapon() { Id = 3, Lvl = 2, Name = "Rusty Shortsword", Price = 20, Damage = 9, WeaponEnum = WeaponEnum.Sword });
             weapons.Add(new Weapon() { Id = 4, Lvl = 2, Name = "Chipped Hand Axe", Price = 22, Damage = 10, WeaponEnum = WeaponEnum.Axe });

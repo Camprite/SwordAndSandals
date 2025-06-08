@@ -32,14 +32,9 @@ namespace SwordAndSandals
         {
             label1 = new Label();
             label2 = new Label();
-            label3 = new Label();
             currentMoney = new Label();
-            cartValue = new Label();
             buyButton = new Button();
-            label5 = new Label();
             label6 = new Label();
-            button1 = new Button();
-            button2 = new Button();
             comboBoxWeapon = new ComboBox();
             SearchButtonWeapon = new Button();
             label7 = new Label();
@@ -49,11 +44,12 @@ namespace SwordAndSandals
             comboBoxSpell = new ComboBox();
             SearchButtonArmour = new Button();
             SearchButtonSpell = new Button();
-            SearchResultList = new RichTextBox();
-            CurrentCartList = new RichTextBox();
             exitButton = new Button();
             comboBoxWeaponEnum = new ComboBox();
-            SearchResultListBox = new ListBox();
+            WeaponSearchResultListBox = new ListBox();
+            comboBoxArmourTypeEnum = new ComboBox();
+            ArmourSearchResultListBox = new ListBox();
+            SpellSearchResultListBox = new ListBox();
             SuspendLayout();
             // 
             // label1
@@ -79,17 +75,6 @@ namespace SwordAndSandals
             label2.TabIndex = 1;
             label2.Text = "Money:";
             // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.BackColor = Color.Transparent;
-            label3.Font = new Font("Stencil", 16.25F);
-            label3.Location = new Point(473, 69);
-            label3.Name = "label3";
-            label3.Size = new Size(74, 26);
-            label3.TabIndex = 2;
-            label3.Text = "Cart:";
-            // 
             // currentMoney
             // 
             currentMoney.AutoSize = true;
@@ -102,17 +87,6 @@ namespace SwordAndSandals
             currentMoney.Text = "100";
             currentMoney.Click += currentMoney_Click;
             // 
-            // cartValue
-            // 
-            cartValue.AutoSize = true;
-            cartValue.BackColor = Color.Transparent;
-            cartValue.Font = new Font("Stencil", 16.25F);
-            cartValue.Location = new Point(553, 69);
-            cartValue.Name = "cartValue";
-            cartValue.Size = new Size(38, 26);
-            cartValue.TabIndex = 4;
-            cartValue.Text = "50";
-            // 
             // buyButton
             // 
             buyButton.Font = new Font("Stencil", 16.25F);
@@ -123,47 +97,16 @@ namespace SwordAndSandals
             buyButton.Text = "Buy";
             buyButton.UseVisualStyleBackColor = true;
             // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.BackColor = Color.Transparent;
-            label5.Font = new Font("Stencil", 16.25F);
-            label5.Location = new Point(92, 451);
-            label5.Name = "label5";
-            label5.Size = new Size(74, 26);
-            label5.TabIndex = 7;
-            label5.Text = "Cart:";
-            // 
             // label6
             // 
             label6.AutoSize = true;
             label6.BackColor = Color.Transparent;
             label6.Font = new Font("Stencil", 16.25F);
-            label6.Location = new Point(321, 101);
+            label6.Location = new Point(472, 101);
             label6.Name = "label6";
             label6.Size = new Size(96, 26);
             label6.TabIndex = 8;
             label6.Text = "Search";
-            // 
-            // button1
-            // 
-            button1.Font = new Font("Stencil", 16.25F);
-            button1.Location = new Point(485, 398);
-            button1.Name = "button1";
-            button1.Size = new Size(172, 41);
-            button1.TabIndex = 10;
-            button1.Text = "Add to cart";
-            button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            button2.Font = new Font("Stencil", 16.25F);
-            button2.Location = new Point(445, 484);
-            button2.Name = "button2";
-            button2.Size = new Size(123, 64);
-            button2.TabIndex = 11;
-            button2.Text = "Clear Cart";
-            button2.UseVisualStyleBackColor = true;
             // 
             // comboBoxWeapon
             // 
@@ -199,7 +142,7 @@ namespace SwordAndSandals
             label8.AutoSize = true;
             label8.BackColor = Color.Transparent;
             label8.Font = new Font("Stencil", 16.25F);
-            label8.Location = new Point(92, 225);
+            label8.Location = new Point(92, 306);
             label8.Name = "label8";
             label8.Size = new Size(102, 26);
             label8.TabIndex = 15;
@@ -210,7 +153,7 @@ namespace SwordAndSandals
             label9.AutoSize = true;
             label9.BackColor = Color.Transparent;
             label9.Font = new Font("Stencil", 16.25F);
-            label9.Location = new Point(92, 311);
+            label9.Location = new Point(92, 444);
             label9.Name = "label9";
             label9.Size = new Size(75, 26);
             label9.TabIndex = 16;
@@ -219,7 +162,7 @@ namespace SwordAndSandals
             // comboBoxArmour
             // 
             comboBoxArmour.FormattingEnabled = true;
-            comboBoxArmour.Location = new Point(92, 270);
+            comboBoxArmour.Location = new Point(92, 351);
             comboBoxArmour.Name = "comboBoxArmour";
             comboBoxArmour.Size = new Size(121, 23);
             comboBoxArmour.TabIndex = 17;
@@ -227,7 +170,7 @@ namespace SwordAndSandals
             // comboBoxSpell
             // 
             comboBoxSpell.FormattingEnabled = true;
-            comboBoxSpell.Location = new Point(92, 369);
+            comboBoxSpell.Location = new Point(92, 502);
             comboBoxSpell.Name = "comboBoxSpell";
             comboBoxSpell.Size = new Size(121, 23);
             comboBoxSpell.TabIndex = 18;
@@ -235,7 +178,7 @@ namespace SwordAndSandals
             // SearchButtonArmour
             // 
             SearchButtonArmour.Font = new Font("Stencil", 10F);
-            SearchButtonArmour.Location = new Point(240, 270);
+            SearchButtonArmour.Location = new Point(240, 351);
             SearchButtonArmour.Name = "SearchButtonArmour";
             SearchButtonArmour.Size = new Size(80, 23);
             SearchButtonArmour.TabIndex = 19;
@@ -245,30 +188,12 @@ namespace SwordAndSandals
             // SearchButtonSpell
             // 
             SearchButtonSpell.Font = new Font("Stencil", 10F);
-            SearchButtonSpell.Location = new Point(240, 369);
+            SearchButtonSpell.Location = new Point(240, 502);
             SearchButtonSpell.Name = "SearchButtonSpell";
             SearchButtonSpell.Size = new Size(80, 23);
             SearchButtonSpell.TabIndex = 20;
             SearchButtonSpell.Text = "Search";
             SearchButtonSpell.UseVisualStyleBackColor = true;
-            // 
-            // SearchResultList
-            // 
-            SearchResultList.BackColor = Color.FromArgb(152, 103, 58);
-            SearchResultList.Location = new Point(609, 74);
-            SearchResultList.Name = "SearchResultList";
-            SearchResultList.Size = new Size(260, 291);
-            SearchResultList.TabIndex = 21;
-            SearchResultList.Text = "";
-            // 
-            // CurrentCartList
-            // 
-            CurrentCartList.BackColor = Color.FromArgb(152, 103, 58);
-            CurrentCartList.Location = new Point(85, 484);
-            CurrentCartList.Name = "CurrentCartList";
-            CurrentCartList.Size = new Size(332, 111);
-            CurrentCartList.TabIndex = 22;
-            CurrentCartList.Text = "";
             // 
             // exitButton
             // 
@@ -289,13 +214,42 @@ namespace SwordAndSandals
             comboBoxWeaponEnum.TabIndex = 12;
             comboBoxWeaponEnum.Visible = false;
             // 
-            // SearchResultListBox
+            // WeaponSearchResultListBox
             // 
-            SearchResultListBox.FormattingEnabled = true;
-            SearchResultListBox.Location = new Point(445, 117);
-            SearchResultListBox.Name = "SearchResultListBox";
-            SearchResultListBox.Size = new Size(158, 244);
-            SearchResultListBox.TabIndex = 23;
+            WeaponSearchResultListBox.BackColor = Color.FromArgb(152, 103, 58);
+            WeaponSearchResultListBox.FormattingEnabled = true;
+            WeaponSearchResultListBox.Location = new Point(337, 130);
+            WeaponSearchResultListBox.Name = "WeaponSearchResultListBox";
+            WeaponSearchResultListBox.Size = new Size(369, 394);
+            WeaponSearchResultListBox.TabIndex = 23;
+            // 
+            // comboBoxArmourTypeEnum
+            // 
+            comboBoxArmourTypeEnum.FormattingEnabled = true;
+            comboBoxArmourTypeEnum.Location = new Point(92, 393);
+            comboBoxArmourTypeEnum.Name = "comboBoxArmourTypeEnum";
+            comboBoxArmourTypeEnum.Size = new Size(121, 23);
+            comboBoxArmourTypeEnum.TabIndex = 17;
+            // 
+            // ArmourSearchResultListBox
+            // 
+            ArmourSearchResultListBox.BackColor = Color.FromArgb(152, 103, 58);
+            ArmourSearchResultListBox.FormattingEnabled = true;
+            ArmourSearchResultListBox.Location = new Point(337, 131);
+            ArmourSearchResultListBox.Name = "ArmourSearchResultListBox";
+            ArmourSearchResultListBox.Size = new Size(369, 394);
+            ArmourSearchResultListBox.TabIndex = 23;
+            ArmourSearchResultListBox.Visible = false;
+            // 
+            // SpellSearchResultListBox
+            // 
+            SpellSearchResultListBox.BackColor = Color.FromArgb(152, 103, 58);
+            SpellSearchResultListBox.FormattingEnabled = true;
+            SpellSearchResultListBox.Location = new Point(337, 130);
+            SpellSearchResultListBox.Name = "SpellSearchResultListBox";
+            SpellSearchResultListBox.Size = new Size(369, 394);
+            SpellSearchResultListBox.TabIndex = 23;
+            SpellSearchResultListBox.Visible = false;
             // 
             // ShopForm
             // 
@@ -304,12 +258,13 @@ namespace SwordAndSandals
             BackgroundImage = Properties.Resources.backgroundFrame;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(800, 690);
-            Controls.Add(SearchResultListBox);
-            Controls.Add(CurrentCartList);
-            Controls.Add(SearchResultList);
+            Controls.Add(SpellSearchResultListBox);
+            Controls.Add(ArmourSearchResultListBox);
+            Controls.Add(WeaponSearchResultListBox);
             Controls.Add(SearchButtonSpell);
             Controls.Add(SearchButtonArmour);
             Controls.Add(comboBoxSpell);
+            Controls.Add(comboBoxArmourTypeEnum);
             Controls.Add(comboBoxArmour);
             Controls.Add(label9);
             Controls.Add(label8);
@@ -317,15 +272,10 @@ namespace SwordAndSandals
             Controls.Add(SearchButtonWeapon);
             Controls.Add(comboBoxWeaponEnum);
             Controls.Add(comboBoxWeapon);
-            Controls.Add(button2);
-            Controls.Add(button1);
             Controls.Add(label6);
-            Controls.Add(label5);
             Controls.Add(exitButton);
             Controls.Add(buyButton);
-            Controls.Add(cartValue);
             Controls.Add(currentMoney);
-            Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
             Name = "ShopForm";
@@ -338,15 +288,10 @@ namespace SwordAndSandals
 
         public Label label1;
         public Label label2;
-        public Label label3;
         public Label currentMoney;
-        public Label cartValue;
         public Button buyButton;
         public ListBox CurrentCartListBox;
-        public Label label5;
         public Label label6;
-        public Button button1;
-        public Button button2;
         public ComboBox comboBoxWeapon;
         public Button SearchButton;
         public Label label7;
@@ -359,10 +304,11 @@ namespace SwordAndSandals
         public Button SearchButtonWeapon;
         public Button SearchButtonSpell;
         public Button SearchButtonArmour;
-        private RichTextBox CurrentCartList;
         public Button exitButton;
         public ComboBox comboBoxWeaponEnum;
-        public RichTextBox SearchResultList;
-        public ListBox SearchResultListBox;
+        public ListBox WeaponSearchResultListBox;
+        public ComboBox comboBoxArmourTypeEnum;
+        public ListBox ArmourSearchResultListBox;
+        public ListBox SpellSearchResultListBox;
     }
 }
