@@ -38,6 +38,8 @@ namespace SwordAndSandals
                 menuForm.player = this.Player;
 
                 BattleController.Player = this.Player;
+
+
                 battleFormController.BattleForm = this.battleForm;
                 battleFormController.menu = this.menuForm;
 
@@ -74,6 +76,7 @@ namespace SwordAndSandals
                             break;
                         case (FormEnum.Battle):
                             // Wygenerowanie bota odpowiadającego graczowi
+                            BattleController.Bot = BotFactory.GenerateBot(BattleController.Player);
 
                             // Reset punktow zycia gracza/odnowy zaklecia
                             battleFormController.BattleController = BattleController;
