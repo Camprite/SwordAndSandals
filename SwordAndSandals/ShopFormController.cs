@@ -1,4 +1,6 @@
 ﻿using SwordAndSandalsLogic;
+using SwordAndSandalsLogic.Controller;
+using SwordAndSandalsLogic.Enums;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -29,6 +31,7 @@ namespace SwordAndSandals
 
         public WeaponController WeaponController = new WeaponController();
         public ArmourController ArmourController= new ArmourController();
+        public SpellController SpellController= new SpellController();
 
         public ShopFormController()
         {
@@ -47,6 +50,10 @@ namespace SwordAndSandals
             
             ShopForm.ArmourSearchResultListBox.DisplayMember = "DisplayText";
             ShopForm.ArmourSearchResultListBox.ValueMember = "Id";
+            
+            
+            ShopForm.SpellSearchResultListBox.DisplayMember = "DisplayText";
+            ShopForm.SpellSearchResultListBox.ValueMember = "Id";
 
 
 
@@ -67,7 +74,7 @@ namespace SwordAndSandals
                     Value = (int)w           // wartość wewnętrzna
                 })
                 .ToList();
-
+            
             var weaponSearchTypes = Enum.GetValues(typeof(WeaponSearchEnum))
               .Cast<WeaponSearchEnum>()
               .Select(w => new
@@ -87,6 +94,24 @@ namespace SwordAndSandals
                   Value = (int)w           // wartość wewnętrzna
               })
               .ToList();
+            var spellSearchTypes = Enum.GetValues(typeof(SpellSearchEnum))
+              .Cast<SpellSearchEnum>()
+              .Select(w => new
+              {
+                  Display = w.GetType().GetField(w.ToString()).GetCustomAttribute<DescriptionAttribute>()?.Description ?? w.ToString(),
+                  Name = w.ToString(),     // co będzie widoczne
+                  Value = (int)w           // wartość wewnętrzna
+              })
+              .ToList();
+
+            var spellTypes = Enum.GetValues(typeof(SpellEnum))
+                .Cast<SpellEnum>()
+                .Select(w => new
+                {
+                    Name = w.ToString(),     // co będzie widoczne
+                    Value = (int)w           // wartość wewnętrzna
+                })
+                .ToList();
 
             // Armour types enum combo box
             ShopForm.comboBoxArmourTypeEnum.DataSource = armourTypes;
@@ -98,6 +123,11 @@ namespace SwordAndSandals
             ShopForm.comboBoxWeaponEnum.DataSource = weaponItems;
             ShopForm.comboBoxWeaponEnum.DisplayMember = "Name";  
             ShopForm.comboBoxWeaponEnum.ValueMember = "Value";
+            
+            // Spells types enum combo box
+            ShopForm.comboBoxSpellTypeEnum.DataSource = spellTypes;
+            ShopForm.comboBoxSpellTypeEnum.DisplayMember = "Name";  
+            ShopForm.comboBoxSpellTypeEnum.ValueMember = "Value";
 
             // Weapon search options combo box
             ShopForm.comboBoxWeapon.DataSource = weaponSearchTypes;
@@ -109,6 +139,11 @@ namespace SwordAndSandals
             ShopForm.comboBoxArmour.DisplayMember = "Display";
             ShopForm.comboBoxArmour.ValueMember = "Value";
 
+            // Spell search options combo box
+            ShopForm.comboBoxSpell.DataSource = spellSearchTypes;
+            ShopForm.comboBoxSpell.DisplayMember = "Display";
+            ShopForm.comboBoxSpell.ValueMember = "Value";
+
 
             // Set combo box not empty
             ShopForm.comboBoxWeapon.SelectedIndex = 0;
@@ -117,13 +152,18 @@ namespace SwordAndSandals
             ShopForm.comboBoxArmour.SelectedIndex = 0;
             ShopForm.comboBoxArmourTypeEnum.SelectedIndex = 0;
 
+            ShopForm.comboBoxSpell.SelectedIndex = 0;
+            ShopForm.comboBoxSpellTypeEnum.SelectedIndex = 0;
+
 
             // Set callback for weapon
             ShopForm.SearchButtonWeapon.Click += (o, s) => { onWeaponSelect(o, s); };
 
             //Set callback for armour
             ShopForm.SearchButtonArmour.Click += (o, s) => { onArmourSelect(o, s); };
-           
+
+            //Set callback for spell
+            ShopForm.SearchButtonSpell.Click += (o, s) => { onSpellSelect(o, s); };
 
             ShopForm.comboBoxWeapon.SelectedIndexChanged += (o, s) => {
                 var weaponSelectType = (WeaponSearchEnum) ShopForm.comboBoxWeapon.SelectedValue;
@@ -134,7 +174,18 @@ namespace SwordAndSandals
                 {
                     ShopForm.comboBoxWeaponEnum.Visible = false;
                 }
-            
+            };
+
+            ShopForm.comboBoxSpell.SelectedIndexChanged += (o, s) => {
+                var spellSelectType = (SpellSearchEnum) ShopForm.comboBoxSpell.SelectedValue;
+                if (spellSelectType == SpellSearchEnum.ByType || spellSelectType == SpellSearchEnum.AvaiableAndByType){
+                    ShopForm.comboBoxSpellTypeEnum.Visible = true;
+                }
+                else
+                {
+                    ShopForm.comboBoxSpellTypeEnum.Visible = false;
+                }
+
             };
 
             ShopForm.buyButton.Click += (o,s) => onBuyClick(o,s);
@@ -240,6 +291,60 @@ namespace SwordAndSandals
             }
             ShopForm.ArmourSearchResultListBox.DataSource = result;
         }
+        public void onSpellSelect(object sender, EventArgs e)
+        {
+            var spellSelectType = (SpellSearchEnum)ShopForm.comboBoxSpell.SelectedValue;
+            SpellEnum spellEnum= (SpellEnum)ShopForm.comboBoxSpellTypeEnum.SelectedValue;
+
+            ShopForm.WeaponSearchResultListBox.Visible = false;
+            ShopForm.ArmourSearchResultListBox.Visible = false;
+            ShopForm.SpellSearchResultListBox.Visible = true;
+            ShopForm.SpellSearchResultListBox.DataSource = null;
+            var result = new List<Spell>();
+            ShopForm.SpellSearchResultListBox.DisplayMember = "DisplayText";
+            ShopForm.SpellSearchResultListBox.ValueMember = "Id";
+            switch (spellSelectType)
+            {
+                case SpellSearchEnum.All:
+                    {
+                        result = SpellController.GetSpells();
+                        break;
+                    }
+                
+                case SpellSearchEnum.AvaiableByPrice:
+                    {
+                        result = SpellController.GetByPrice(Player);
+                        break;
+                    }
+                
+                case SpellSearchEnum.ByType:
+                    {
+                        result = SpellController.GetByType(spellEnum);
+                        break;
+                    }
+                
+                case SpellSearchEnum.AvaiableByLevel:
+                    {
+                        result = SpellController.GetByLevel(Player);
+                        break;
+                    }
+                
+                case SpellSearchEnum.AvaiableAndByType:
+                    {
+                        result = SpellController.GetByLevelAndType(Player, spellEnum);
+                        break;
+                    }
+                
+                case SpellSearchEnum.AvaiableByPriceAndLevel:
+                    {
+                        result = SpellController.GetByPriceAndLevel(Player);
+                        break;
+                    }
+                
+
+            }
+            ShopForm.SpellSearchResultListBox.DataSource = result;
+        }
 
 
         public void onBuyClick(object sender, EventArgs e)
@@ -289,7 +394,22 @@ namespace SwordAndSandals
             }
             else if (ShopForm.SpellSearchResultListBox.Visible)
             {
-
+                int itemId = (int)ShopForm.SpellSearchResultListBox.SelectedValue;
+                var spell = SpellController.GetSpellById(itemId);
+                if (spell.Price > Player.Money)
+                {
+                    MessageBox.Show("Not enought money");
+                }
+                else if (spell.Level > Player.Level)
+                {
+                    MessageBox.Show("Not enought level");
+                }
+                else
+                {
+                    Player.Money -= spell.Price;
+                    Player.Spells.Add(spell);
+                    MessageBox.Show($"Congratulations you just buyed:{spell.ToString()} ");
+                }
             }
 
             ShopForm.currentMoney.Text = Player.Money.ToString();

@@ -50,6 +50,7 @@ namespace SwordAndSandals
             comboBoxArmourTypeEnum = new ComboBox();
             ArmourSearchResultListBox = new ListBox();
             SpellSearchResultListBox = new ListBox();
+            comboBoxSpellTypeEnum = new ComboBox();
             SuspendLayout();
             // 
             // label1
@@ -251,6 +252,15 @@ namespace SwordAndSandals
             SpellSearchResultListBox.TabIndex = 23;
             SpellSearchResultListBox.Visible = false;
             // 
+            // comboBoxSpellTypeEnum
+            // 
+            comboBoxSpellTypeEnum.FormattingEnabled = true;
+            comboBoxSpellTypeEnum.Location = new Point(92, 543);
+            comboBoxSpellTypeEnum.Name = "comboBoxSpellTypeEnum";
+            comboBoxSpellTypeEnum.Size = new Size(121, 23);
+            comboBoxSpellTypeEnum.TabIndex = 24;
+            comboBoxSpellTypeEnum.Visible = false;
+            // 
             // ShopForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -258,6 +268,7 @@ namespace SwordAndSandals
             BackgroundImage = Properties.Resources.backgroundFrame;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(800, 690);
+            Controls.Add(comboBoxSpellTypeEnum);
             Controls.Add(SpellSearchResultListBox);
             Controls.Add(ArmourSearchResultListBox);
             Controls.Add(WeaponSearchResultListBox);
@@ -310,5 +321,6 @@ namespace SwordAndSandals
         public ComboBox comboBoxArmourTypeEnum;
         public ListBox ArmourSearchResultListBox;
         public ListBox SpellSearchResultListBox;
+        public ComboBox comboBoxSpellTypeEnum;
     }
 }

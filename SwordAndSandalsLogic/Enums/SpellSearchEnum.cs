@@ -12,23 +12,22 @@ namespace SwordAndSandalsLogic.Enums
         [Description("All")]
         All = 0,
 
+        [Description("By Type")]
+        ByType = 1,
+
         [Description("Avaiable by level")]
-        AvaiableByLevel = 1,
+        AvaiableByLevel = 2,
 
         [Description("Avaiable by price")]
-        AvaiableByPrice = 2,
+        AvaiableByPrice = 3,
 
         [Description("Avaiable by price and level")]
-        AvaiableByPriceAndLevel = 3,
+        AvaiableByPriceAndLevel = 4,
 
-        [Description("Avaiable Offensive")]
-        AvaiableOffensive = 4,
+        [Description("Avaiable by type")]
+        AvaiableAndByType = 5,
 
-        [Description("Avaiable Defensive")]
-        AvaiableDefensive = 5,
 
-        [Description("Avaiable Healing")]
-        AvaiableHealing = 6,
 
     }
 }
