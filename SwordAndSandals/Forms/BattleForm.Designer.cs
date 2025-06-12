@@ -58,22 +58,27 @@ namespace SwordAndSandals
             labelSpelRight = new Label();
             cmbboxRightSpell = new ComboBox();
             panelRightWarrior = new DoubleBufferedPanel();
-            VictoryPicture = new PictureBox();
             pictureBoxBot = new PictureBox();
+            VictoryPicture = new PictureBox();
             panelLeftWarrior = new DoubleBufferedPanel();
             pictureBoxPlayer = new PictureBox();
             panel1 = new Panel();
             ConsoleTextBox = new RichTextBox();
             DefeatPicture = new PictureBox();
+            BattleStatsPicture = new PictureBox();
+            BattleStatsPanel = new Panel();
+            BattleStatsLabel = new Label();
             ((System.ComponentModel.ISupportInitialize)WarriorboxLeft).BeginInit();
             ((System.ComponentModel.ISupportInitialize)WarriorboxRight).BeginInit();
             panelRightWarrior.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)VictoryPicture).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBoxBot).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)VictoryPicture).BeginInit();
             panelLeftWarrior.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxPlayer).BeginInit();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DefeatPicture).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)BattleStatsPicture).BeginInit();
+            BattleStatsPanel.SuspendLayout();
             SuspendLayout();
             // 
             // labelLeftWarrior
@@ -376,6 +381,14 @@ namespace SwordAndSandals
             panelRightWarrior.Size = new Size(381, 256);
             panelRightWarrior.TabIndex = 22;
             // 
+            // pictureBoxBot
+            // 
+            pictureBoxBot.Location = new Point(272, 5);
+            pictureBoxBot.Name = "pictureBoxBot";
+            pictureBoxBot.Size = new Size(100, 89);
+            pictureBoxBot.TabIndex = 24;
+            pictureBoxBot.TabStop = false;
+            // 
             // VictoryPicture
             // 
             VictoryPicture.BackColor = Color.Transparent;
@@ -387,14 +400,6 @@ namespace SwordAndSandals
             VictoryPicture.TabIndex = 27;
             VictoryPicture.TabStop = false;
             VictoryPicture.Visible = false;
-            // 
-            // pictureBoxBot
-            // 
-            pictureBoxBot.Location = new Point(272, 5);
-            pictureBoxBot.Name = "pictureBoxBot";
-            pictureBoxBot.Size = new Size(100, 89);
-            pictureBoxBot.TabIndex = 24;
-            pictureBoxBot.TabStop = false;
             // 
             // panelLeftWarrior
             // 
@@ -461,6 +466,37 @@ namespace SwordAndSandals
             DefeatPicture.Visible = false;
             DefeatPicture.Click += DefeatPicture_Click;
             // 
+            // BattleStatsPicture
+            // 
+            BattleStatsPicture.BackColor = Color.Transparent;
+            BattleStatsPicture.BackgroundImage = Properties.Resources.BattleStatistic;
+            BattleStatsPicture.BackgroundImageLayout = ImageLayout.Stretch;
+            BattleStatsPicture.Location = new Point(275, 115);
+            BattleStatsPicture.Name = "BattleStatsPicture";
+            BattleStatsPicture.Size = new Size(789, 444);
+            BattleStatsPicture.TabIndex = 29;
+            BattleStatsPicture.TabStop = false;
+            BattleStatsPicture.Visible = false;
+            // 
+            // BattleStatsPanel
+            // 
+            BattleStatsPanel.BackColor = Color.NavajoWhite;
+            BattleStatsPanel.BackgroundImageLayout = ImageLayout.None;
+            BattleStatsPanel.Controls.Add(BattleStatsLabel);
+            BattleStatsPanel.Location = new Point(555, 271);
+            BattleStatsPanel.Name = "BattleStatsPanel";
+            BattleStatsPanel.Size = new Size(200, 100);
+            BattleStatsPanel.TabIndex = 30;
+            // 
+            // BattleStatsLabel
+            // 
+            BattleStatsLabel.AutoSize = true;
+            BattleStatsLabel.Location = new Point(29, 22);
+            BattleStatsLabel.Name = "BattleStatsLabel";
+            BattleStatsLabel.Size = new Size(38, 15);
+            BattleStatsLabel.TabIndex = 0;
+            BattleStatsLabel.Text = "label1";
+            // 
             // BattleForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -468,6 +504,8 @@ namespace SwordAndSandals
             BackgroundImage = Properties.Resources.battleBackground;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1420, 583);
+            Controls.Add(BattleStatsPanel);
+            Controls.Add(BattleStatsPicture);
             Controls.Add(VictoryPicture);
             Controls.Add(DefeatPicture);
             Controls.Add(panel1);
@@ -479,13 +517,16 @@ namespace SwordAndSandals
             ((System.ComponentModel.ISupportInitialize)WarriorboxRight).EndInit();
             panelRightWarrior.ResumeLayout(false);
             panelRightWarrior.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)VictoryPicture).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBoxBot).EndInit();
+            ((System.ComponentModel.ISupportInitialize)VictoryPicture).EndInit();
             panelLeftWarrior.ResumeLayout(false);
             panelLeftWarrior.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxPlayer).EndInit();
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)DefeatPicture).EndInit();
+            ((System.ComponentModel.ISupportInitialize)BattleStatsPicture).EndInit();
+            BattleStatsPanel.ResumeLayout(false);
+            BattleStatsPanel.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -525,7 +566,9 @@ namespace SwordAndSandals
         public RichTextBox ConsoleTextBox;
         public PictureBox VictoryPicture;
         public PictureBox DefeatPicture;
-        public PictureBox BattleStatistics;
+        public PictureBox BattleStatsPicture;
+        public Panel BattleStatsPanel;
+        public Label BattleStatsLabel;
     }
 
 }

@@ -8,7 +8,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SwordAndSandals
+namespace SwordAndSandals.FormControllers
 {
 
     public enum CartType
@@ -25,15 +25,15 @@ namespace SwordAndSandals
         public Menu menu;
         public Warrior Player { get; set; }
         public int CartValue = 0;
-        public List<IWarriorItem> ItemsInCart {  get; set; }
+        public List<IWarriorItem> ItemsInCart { get; set; }
 
         public WeaponController WeaponController = new WeaponController();
-        public ArmourController ArmourController= new ArmourController();
+        public ArmourController ArmourController = new ArmourController();
 
         public ShopFormController()
         {
         }
-    
+
 
         public void InitilizeShopFormControls()
         {
@@ -43,8 +43,8 @@ namespace SwordAndSandals
 
             //Define which property 'll be show in listBox
             ShopForm.WeaponSearchResultListBox.DisplayMember = "DisplayText";
-            ShopForm.WeaponSearchResultListBox.ValueMember = "Id"; 
-            
+            ShopForm.WeaponSearchResultListBox.ValueMember = "Id";
+
             ShopForm.ArmourSearchResultListBox.DisplayMember = "DisplayText";
             ShopForm.ArmourSearchResultListBox.ValueMember = "Id";
 
@@ -90,18 +90,18 @@ namespace SwordAndSandals
 
             // Armour types enum combo box
             ShopForm.comboBoxArmourTypeEnum.DataSource = armourTypes;
-            ShopForm.comboBoxArmourTypeEnum.DisplayMember = "Name";  
+            ShopForm.comboBoxArmourTypeEnum.DisplayMember = "Name";
             ShopForm.comboBoxArmourTypeEnum.ValueMember = "Value";
 
 
             // Weapon types enum combo box
             ShopForm.comboBoxWeaponEnum.DataSource = weaponItems;
-            ShopForm.comboBoxWeaponEnum.DisplayMember = "Name";  
+            ShopForm.comboBoxWeaponEnum.DisplayMember = "Name";
             ShopForm.comboBoxWeaponEnum.ValueMember = "Value";
 
             // Weapon search options combo box
             ShopForm.comboBoxWeapon.DataSource = weaponSearchTypes;
-            ShopForm.comboBoxWeapon.DisplayMember = "Display";  
+            ShopForm.comboBoxWeapon.DisplayMember = "Display";
             ShopForm.comboBoxWeapon.ValueMember = "Value";
 
             // Armour search options combo box
@@ -123,29 +123,32 @@ namespace SwordAndSandals
 
             //Set callback for armour
             ShopForm.SearchButtonArmour.Click += (o, s) => { onArmourSelect(o, s); };
-           
 
-            ShopForm.comboBoxWeapon.SelectedIndexChanged += (o, s) => {
-                var weaponSelectType = (WeaponSearchEnum) ShopForm.comboBoxWeapon.SelectedValue;
-                if (weaponSelectType == WeaponSearchEnum.WeaponsByType){
+
+            ShopForm.comboBoxWeapon.SelectedIndexChanged += (o, s) =>
+            {
+                var weaponSelectType = (WeaponSearchEnum)ShopForm.comboBoxWeapon.SelectedValue;
+                if (weaponSelectType == WeaponSearchEnum.WeaponsByType)
+                {
                     ShopForm.comboBoxWeaponEnum.Visible = true;
                 }
                 else
                 {
                     ShopForm.comboBoxWeaponEnum.Visible = false;
                 }
-            
+
             };
 
-            ShopForm.buyButton.Click += (o,s) => onBuyClick(o,s);
+            ShopForm.buyButton.Click += (o, s) => onBuyClick(o, s);
 
-            ShopForm.exitButton.Click += (o, s) => {
-                this.menu.nextForm = FormEnum.None;
-                this.ShopForm.Close();
+            ShopForm.exitButton.Click += (o, s) =>
+            {
+                menu.nextForm = FormEnum.None;
+                ShopForm.Close();
             };
         }
 
-       
+
 
         public void onWeaponSelect(object o, EventArgs s)
         {
@@ -213,27 +216,27 @@ namespace SwordAndSandals
                     }
                 case ArmourSearchEnum.AvaiableByLevel:
                     {
-                        result = ArmourController.getByLvl(armourEnum,Player);
+                        result = ArmourController.getByLvl(armourEnum, Player);
                         break;
                     }
                 case ArmourSearchEnum.AvaiableByPrice:
                     {
-                        result = ArmourController.getByPrice(armourEnum,Player);
+                        result = ArmourController.getByPrice(armourEnum, Player);
                         break;
                     }
                 case ArmourSearchEnum.AvaiableByPriceAndLevel:
                     {
-                        result = ArmourController.getByPriceAndLvl(armourEnum,Player);
+                        result = ArmourController.getByPriceAndLvl(armourEnum, Player);
                         break;
                     }
                 case ArmourSearchEnum.NotAvaiable:
                     {
-                        result = ArmourController.getByNotAvaiable(armourEnum,Player);
+                        result = ArmourController.getByNotAvaiable(armourEnum, Player);
                         break;
                     }
                 case ArmourSearchEnum.ByDefence:
                     {
-                        result = ArmourController.getByDefence(armourEnum,Player);
+                        result = ArmourController.getByDefence(armourEnum, Player);
                         break;
                     }
 
@@ -244,7 +247,7 @@ namespace SwordAndSandals
 
         public void onBuyClick(object sender, EventArgs e)
         {
-            
+
             if (ShopForm.WeaponSearchResultListBox.Visible)
             {
                 int itemId = (int)ShopForm.WeaponSearchResultListBox.SelectedValue;
@@ -299,5 +302,5 @@ namespace SwordAndSandals
 
     }
 
-   
+
 }
