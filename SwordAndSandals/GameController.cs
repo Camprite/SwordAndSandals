@@ -1,4 +1,5 @@
 ﻿using SwordAndSandals.Exceptions;
+using SwordAndSandals.FormControllers;
 using SwordAndSandalsLogic;
 using System;
 using System.Collections.Generic;
@@ -78,10 +79,11 @@ namespace SwordAndSandals
                             // Wygenerowanie bota odpowiadającego graczowi
                             BattleController.Bot = BotFactory.GenerateBot(BattleController.Player);
 
-                            // Reset punktow zycia gracza/odnowy zaklecia
+                            // Reset punktow zycia gsracza/odnowy zaklecia
                             battleFormController.BattleController = new BattleController();
-                            battleFormController.BattleController.Player = this.Player;
                             battleFormController.BattleController.Bot = BattleController.Bot;
+
+                            battleFormController.BattleController.Player = this.Player;
 
                             battleFormController.InitilizeBattleFormControls();
                             battleFormController.BattleForm.ShowDialog();

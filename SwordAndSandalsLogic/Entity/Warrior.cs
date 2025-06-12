@@ -27,6 +27,8 @@ namespace SwordAndSandalsLogic
         public Armour Shinguards { get; set; }
         public CharacterEnum Character { get; set; }
 
+        public int XPThreshold => 100 * Level;
+
         public Warrior(string name, int money, Weapon weapon, Armour helmet, Armour chestplate,
             Armour shield, Armour boots, Armour shoulderguard, Armour gauntlests,
             Armour greaves, Armour shinguards, CharacterEnum character, int strenght, int agility,int Int, int vitality) 
@@ -68,6 +70,7 @@ namespace SwordAndSandalsLogic
             Strenght = strenght;
             Agility = agility;
             Vitality = vitality;
+            Character = character;
 
         }
 
@@ -81,6 +84,27 @@ namespace SwordAndSandalsLogic
         public override void TakeDamage(int damage)
         {
             base.TakeDamage(damage);
+        }
+
+
+
+        public bool CanLevelUp()
+        {
+            return XP >= XPThreshold;
+        }
+
+        public void LevelUp()
+        {
+            if (!CanLevelUp()) return;
+
+            XP -= XPThreshold;
+
+            Level++;
+            Strenght += 2;
+            Agility += 2;
+            Int += 2;
+            Vitality += 2;
+
         }
 
     }

@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 using Timer = System.Windows.Forms.Timer;
 
 
-namespace SwordAndSandals
+namespace SwordAndSandals.FormControllers
 {
-   public class BattleFormController
+    public class BattleFormController
     {
         private Timer animationTimer;
         private const int MoveStep = 20;
@@ -18,21 +18,22 @@ namespace SwordAndSandals
         public BattleAction OnRest;
         public BattleAction OnMoveForward;
         public BattleAction OnMoveBackward;
-        public BattleForm BattleForm { get;set; }
+        public BattleForm BattleForm { get; set; }
 
         public BattleController BattleController;
         public Menu menu;
 
+        public int TotalDamage = 0;
 
         public BattleFormController(BattleForm battleForm)
         {
-            this.BattleForm = battleForm;
+            BattleForm = battleForm;
             InitilizeBattleFormControls();
         }
-       
+
         public BattleFormController()
         {
-            
+
 
         }
 
@@ -41,6 +42,11 @@ namespace SwordAndSandals
         {
             BattleForm.VictoryPicture.Visible = false;
             BattleForm.DefeatPicture.Visible = false;
+
+            BattleForm.BattleStatsPicture.Visible = false;
+            BattleForm.BattleStatsLabel.Visible = false;
+            BattleForm.BattleStatsPanel.Visible = false;
+
             BattleForm.labelLeftWarrior.Text = BattleController.Player.Name;
             BattleForm.pbLeftHP.Minimum = 0;
             BattleForm.pbLeftHP.Maximum = BattleController.Player.MaxHealth;
@@ -77,7 +83,7 @@ namespace SwordAndSandals
             BattleForm.labelSpelRight.Visible = false;
         }
 
-       
+
         private void HandlePlayerAttack()
         {
             if (!BattleController.isPlayerTurn) return;
@@ -91,16 +97,17 @@ namespace SwordAndSandals
             if (!BattleController.CanAttack(BattleForm.panelLeftWarrior.Location, BattleForm.panelRightWarrior.Location))
             {
                 BattleForm.ConsoleTextBox.AppendText("[P] Jesteś za daleko, aby zaatakować! \n");
-                //MessageBox.Show("Jesteś za daleko, aby zaatakować!");
+                
                 return;
             }
 
-            
+
 
             int Damage = BattleController.PlayerAttack();
 
             UpdateHealthBar(BattleController.Bot);
             BattleForm.ConsoleTextBox.AppendText($"[P] Zadałeś przeciwnikowi: {Damage} obrażeń \n");
+            TotalDamage = TotalDamage + Damage;
             UpdateManaBar(BattleController.Player);
             BattleController.EndPlayerTurn();
             CheckFightStatus();
@@ -176,25 +183,62 @@ namespace SwordAndSandals
 
 
 
-        public void CheckFightStatus()
+        public async void CheckFightStatus()
         {
             int status = BattleController.CheckFightStatus();
             if (status == 1)
             {
-                //MessageBox.Show("Wygrałeś!");
-                this.BattleForm.VictoryPicture.Visible = true;
-                Task.Delay(2000).ContinueWith(_ => BattleForm.Invoke(() => ResetGame()));
 
-               
+                BattleForm.VictoryPicture.Visible = true;
+
+                var result = new BattleResult(xp: 250, money: 300, totalDamage: TotalDamage);
+                
+                await Task.Delay(1000);
+                
+                BattleForm.VictoryPicture.Visible = false;
+                ShowStats(result);
+                BattleController.Player.XP += result.EarnedXP;
+                BattleController.Player.Money += result.EarnedMoney;
+                await Task.Delay(2000);
+                ResetGame();
+                //Task.Delay(2000).ContinueWith(_ => BattleForm.Invoke(() => ResetGame()));
+
+
             }
             else if (status == -1)
             {
-                //MessageBox.Show("Przegrałeś!");
-                this.BattleForm.DefeatPicture.Visible = true;
-             
-                Task.Delay(2000).ContinueWith(_ => BattleForm.Invoke(() => ResetGame()));
+
+                BattleForm.DefeatPicture.Visible = true;
+
+                var result = new BattleResult(xp: 100, money: 150, totalDamage: TotalDamage);
+
+                await Task.Delay(1000);
+
+                BattleForm.DefeatPicture.Visible = false;
+                ShowStats(result);
+                BattleController.Player.XP += result.EarnedXP;
+                BattleController.Player.Money += result.EarnedMoney;
+                await Task.Delay(2000);
+                ResetGame();
+                //Task.Delay(2000).ContinueWith(_ => BattleForm.Invoke(() => ResetGame()));
             }
 
+
+        }
+
+
+        private void ShowStats(BattleResult result)
+        {
+            BattleForm.BattleStatsPicture.BringToFront();
+            BattleForm.BattleStatsPicture.Visible = true;
+            BattleForm.BattleStatsPanel.BringToFront();
+            BattleForm.BattleStatsPanel.Visible = true;
+            BattleForm.BattleStatsLabel.BringToFront();
+            BattleForm.BattleStatsLabel.Visible = true;
+            BattleForm.BattleStatsLabel.Text =
+                $"Zdobyte XP : {result.EarnedXP}\n" +
+                $"Zdobyte złoto: {result.EarnedMoney}\n" +
+                $"Zadane obrażenia: {result.TotalDamage}";
 
         }
 
@@ -238,21 +282,21 @@ namespace SwordAndSandals
         }
 
 
-       
+
         public void ResetGame()
         {
-            
+
             BattleController.Player.ActualHealth = 100;
-            BattleController.Player.ActualStamina= 100;
+            BattleController.Player.ActualStamina = 100;
             BattleController.isPlayerTurn = true;
 
 
             menu.nextForm = FormEnum.None;
 
             //this.BattleForm.
-            this.BattleForm.Close();
-            
-           
+            BattleForm.Close();
+
+
 
 
         }
