@@ -14,6 +14,7 @@ namespace SwordAndSandalsLogic
         public int Money {  get; set; }
         public List<Weapon> Weapons { get; set; } = new List<Weapon>();
         public List<Armour> Armours { get; set; } = new List<Armour>();
+        public List<Spell> Spells { get; set; } = new List<Spell>();
 
         public Weapon Weapon { get; set; }
         public Armour Helmet { get; set; }
