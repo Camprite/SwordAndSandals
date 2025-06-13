@@ -43,6 +43,22 @@ namespace SwordAndSandalsLogic
                 }
             return null;
         }
+        public Armour getBaseChestplate()
+        {
+            return (Armour)this.chestplates.First(e => e.Id == 0);
+        }
+        public Armour getBaseShield()
+        {
+            return (Armour)this.shields.First(e => e.Id == 3);
+        }
+        public Armour getBaseBoots()
+        {
+            return (Armour)this.boots.First(e => e.Id == 4);
+        }
+        public Armour getBaseHelmet()
+        {
+            return (Armour)this.helmets.First(e => e.Id == 1);
+        }
 
         public List<Armour> getAll(ArmourEnum armourEnum)
         {

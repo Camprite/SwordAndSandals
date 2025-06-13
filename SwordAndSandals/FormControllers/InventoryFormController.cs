@@ -27,10 +27,29 @@ namespace SwordAndSandals.FormControllers
             {
                 inventoryForm.Close();
             };
-
+            // Set player items to comboboxes
             inventoryForm.comboBoxWeapon.DataSource = Player.Weapons;
+            inventoryForm.comboBoxChestplate.DataSource = Player.getArmourByType(ArmourEnum.Chestplate);
+            inventoryForm.comboBoxHelmet.DataSource = Player.getArmourByType(ArmourEnum.Helmet);
+            inventoryForm.comboBoxSandals.DataSource = Player.getArmourByType(ArmourEnum.Boots);
+            inventoryForm.comboBoxShield.DataSource = Player.getArmourByType(ArmourEnum.Shield);
+           
+            // Set view properties
             inventoryForm.comboBoxWeapon.DisplayMember = "InventoryText";
             inventoryForm.comboBoxWeapon.ValueMember = "Id";
+            
+            inventoryForm.comboBoxChestplate.DisplayMember = "InventoryText";
+            inventoryForm.comboBoxChestplate.ValueMember = "Id";
+            
+            inventoryForm.comboBoxHelmet.DisplayMember = "InventoryText";
+            inventoryForm.comboBoxHelmet.ValueMember = "Id";
+            
+            inventoryForm.comboBoxSandals.DisplayMember = "InventoryText";
+            inventoryForm.comboBoxSandals.ValueMember = "Id";
+            
+            inventoryForm.comboBoxShield.DisplayMember = "InventoryText";
+            inventoryForm.comboBoxShield.ValueMember = "Id";
+
 
             inventoryForm.saveEquipment.Click += (s, e) => saveEquipment(s, e);
 
@@ -47,7 +66,20 @@ namespace SwordAndSandals.FormControllers
 
         private void saveEquipment(object s, EventArgs e)
         {
-            MessageBox.Show(Player.Weapons.ToString());
+            var selectedWeapon = Player.Weapons.First(e => e.Id == (int) inventoryForm.comboBoxWeapon.SelectedValue);
+            var selectedHelmet = Player.Armours.First(e => e.Id == (int) inventoryForm.comboBoxHelmet.SelectedValue);
+            var selectedChestplate = Player.Armours.First(e => e.Id == (int) inventoryForm.comboBoxChestplate.SelectedValue);
+            var selectedShield = Player.Armours.First(e => e.Id == (int) inventoryForm.comboBoxShield.SelectedValue);
+            var selectedBoots = Player.Armours.First(e => e.Id == (int)inventoryForm.comboBoxSandals.SelectedValue);
+            
+            Player.Weapon = selectedWeapon;
+            Player.Helmet = selectedHelmet;
+            Player.Chestplate = selectedChestplate;
+            Player.Shield = selectedShield; 
+            Player.Boots = selectedBoots;
+
+            MessageBox.Show("Saved");
+            //MessageBox.Show(Player.Weapons.ToString());
         }
     }
 }

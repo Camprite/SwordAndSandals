@@ -26,5 +26,10 @@ namespace SwordAndSandals
         {
 
         }
+
+        private void ShopForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

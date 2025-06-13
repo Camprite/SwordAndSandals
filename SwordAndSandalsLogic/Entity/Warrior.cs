@@ -53,6 +53,11 @@ namespace SwordAndSandalsLogic
         {
         }
 
+        public List<Armour> getArmourByType(ArmourEnum armourEnum)
+        {
+            return Armours.Where(e => e.ArmourType == armourEnum).ToList();
+        }
+
         public Warrior(string name, int strenght, int agility, int inteligence, int vitality, CharacterEnum character)
         {
             if (name == null || name == "" || name.Length>30) throw new WarriorBuilderException("Niepoprawna nazwa");
@@ -100,10 +105,10 @@ namespace SwordAndSandalsLogic
             XP -= XPThreshold;
 
             Level++;
-            Strenght += 2;
-            Agility += 2;
-            Int += 2;
-            Vitality += 2;
+            //Strenght += 2;
+            //Agility += 2;
+            //Int += 2;
+            //Vitality += 2;
 
         }
 

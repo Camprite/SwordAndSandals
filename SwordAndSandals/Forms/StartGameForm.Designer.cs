@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StartGameForm));
             VitalityUpDown = new NumericUpDown();
             AgilityUpDown = new NumericUpDown();
             StrenghtUpDown = new NumericUpDown();
@@ -44,8 +45,8 @@
             label1 = new Label();
             NameTextBox = new TextBox();
             panel1 = new Panel();
-            testButton = new Button();
             openFromFileButton = new Button();
+            testButton = new Button();
             ((System.ComponentModel.ISupportInitialize)VitalityUpDown).BeginInit();
             ((System.ComponentModel.ISupportInitialize)AgilityUpDown).BeginInit();
             ((System.ComponentModel.ISupportInitialize)StrenghtUpDown).BeginInit();
@@ -229,17 +230,6 @@
             panel1.Size = new Size(817, 425);
             panel1.TabIndex = 1;
             // 
-            // testButton
-            // 
-            testButton.Font = new Font("Stencil", 12.25F);
-            testButton.Location = new Point(516, 338);
-            testButton.Name = "testButton";
-            testButton.Size = new Size(96, 26);
-            testButton.TabIndex = 2;
-            testButton.Text = "Test";
-            testButton.UseVisualStyleBackColor = true;
-            testButton.Click += testButton_Click;
-            // 
             // openFromFileButton
             // 
             openFromFileButton.Font = new Font("Stencil", 10.25F);
@@ -251,6 +241,17 @@
             openFromFileButton.UseVisualStyleBackColor = true;
             openFromFileButton.Click += openFromFileButton_Click;
             // 
+            // testButton
+            // 
+            testButton.Font = new Font("Stencil", 12.25F);
+            testButton.Location = new Point(516, 338);
+            testButton.Name = "testButton";
+            testButton.Size = new Size(96, 26);
+            testButton.TabIndex = 2;
+            testButton.Text = "Test";
+            testButton.UseVisualStyleBackColor = true;
+            testButton.Click += testButton_Click;
+            // 
             // StartGameForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -259,6 +260,8 @@
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1420, 583);
             Controls.Add(panel1);
+            ForeColor = SystemColors.ControlText;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "StartGameForm";
             Text = "StartGame";
             ((System.ComponentModel.ISupportInitialize)VitalityUpDown).EndInit();

@@ -30,6 +30,7 @@ namespace SwordAndSandals
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ShopForm));
             label1 = new Label();
             label2 = new Label();
             currentMoney = new Label();
@@ -289,8 +290,10 @@ namespace SwordAndSandals
             Controls.Add(currentMoney);
             Controls.Add(label2);
             Controls.Add(label1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "ShopForm";
             Text = "Shop";
+            Load += ShopForm_Load;
             ResumeLayout(false);
             PerformLayout();
         }

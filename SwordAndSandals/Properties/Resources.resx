@@ -121,8 +121,14 @@
   <data name="InventoryBackground" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\InventoryBackground.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="gladiatorwycietylewy" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\gladiatorwycietylewy1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BattleStatistic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BattleStatistic.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="MenuBackground1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\MenuBackground.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -133,9 +139,6 @@
   <data name="Gemini_Defeat" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Gemini_Defeat.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="MenuBackground" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\MenuBackground.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="battleBackground" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>assets\background\battleBackground.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -145,7 +148,10 @@
   <data name="gladiatorwyciety" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\gladiatorwyciety.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="BattleStatistic" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\BattleStatistic.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="MenuBackground" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MenuBackground.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SwordAndSandalsIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SwordAndSandalsIcon1.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

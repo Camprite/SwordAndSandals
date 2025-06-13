@@ -65,7 +65,7 @@ namespace SwordAndSandalsLogic
         public static List<Armour> GetChestplates()
         {
             var chestplates = new List<Armour>();
-            chestplates.Add(new Armour(1, 0, "Ragged Tunic", "A simple, worn tunic.", ArmourEnum.Chestplate, 1, 10));
+            chestplates.Add(new Armour(0, 0, "Ragged Tunic", "A simple, worn tunic.", ArmourEnum.Chestplate, 1, 10));
             chestplates.Add(new Armour(5, 2, "Padded Vest", "Provides light protection.", ArmourEnum.Chestplate, 2, 25));
             chestplates.Add(new Armour(9, 3, "Hardened Leather Chestplate", "Good protection for its weight.", ArmourEnum.Chestplate, 3, 40));
             chestplates.Add(new Armour(13, 4, "Chainmail Hauberk", "Links of steel provide defense.", ArmourEnum.Chestplate, 5, 60));

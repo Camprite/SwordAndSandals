@@ -31,6 +31,7 @@ namespace SwordAndSandals
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BattleForm));
             labelLeftWarrior = new Label();
             labelRightWarrior = new Label();
             WarriorboxLeft = new PictureBox();
@@ -511,6 +512,7 @@ namespace SwordAndSandals
             Controls.Add(panel1);
             Controls.Add(panelLeftWarrior);
             Controls.Add(panelRightWarrior);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "BattleForm";
             Text = "SwordAndSandals";
             ((System.ComponentModel.ISupportInitialize)WarriorboxLeft).EndInit();

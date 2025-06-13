@@ -12,6 +12,7 @@ namespace SwordAndSandals
         public BattleForm()
         {
             InitializeComponent();
+            
             this.DoubleBuffered = true;
             this.SetStyle(ControlStyles.AllPaintingInWmPaint |
                           ControlStyles.UserPaint |

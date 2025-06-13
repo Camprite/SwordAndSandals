@@ -367,9 +367,15 @@ namespace SwordAndSandals.FormControllers
                 }
                 else
                 {
-                    Player.Money -= weapon.Price;
-                    Player.Weapons.Add(weapon);
-                    MessageBox.Show($"Congratulations you just buyed:{weapon.ToString()} ");
+                    if (Player.Weapons.Contains(weapon)) {
+                        MessageBox.Show("You already have this item");
+                    } else
+                    {
+                        Player.Money -= weapon.Price;
+                        Player.Weapons.Add(weapon);
+                        MessageBox.Show($"Congratulations you just buyed:{weapon.ToString()} ");
+                    }
+
                 }
 
                 //MessageBox.Show(ShopForm.WeaponSearchResultListBox.SelectedValue.ToString());
@@ -389,9 +395,16 @@ namespace SwordAndSandals.FormControllers
                 }
                 else
                 {
-                    Player.Money -= armour.Price;
-                    Player.Armours.Add(armour);
-                    MessageBox.Show($"Congratulations you just buyed:{armour.ToString()} ");
+                    if (Player.Armours.Contains(armour))
+                    {
+                        MessageBox.Show("You already have this item");
+                    }
+                    else
+                    {
+                        Player.Money -= armour.Price;
+                        Player.Armours.Add(armour);
+                        MessageBox.Show($"Congratulations you just buyed:{armour.ToString()} ");
+                    }
                 }
 
             }
@@ -409,9 +422,17 @@ namespace SwordAndSandals.FormControllers
                 }
                 else
                 {
-                    Player.Money -= spell.Price;
-                    Player.Spells.Add(spell);
-                    MessageBox.Show($"Congratulations you just buyed:{spell.ToString()} ");
+                    if (Player.Spells.Contains(spell))
+                    {
+                        MessageBox.Show("You already have this item");
+                    }
+                    else
+                    {
+                        Player.Money -= spell.Price;
+                        Player.Spells.Add(spell);
+                        MessageBox.Show($"Congratulations you just buyed:{spell.ToString()} ");
+                    }
+                    
                 }
             }
 

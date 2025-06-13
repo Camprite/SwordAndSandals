@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InventoryForm));
             saveEquipment = new Button();
             exitButton = new Button();
             pictureBox1 = new PictureBox();
@@ -194,6 +195,7 @@
             Controls.Add(pictureBox1);
             Controls.Add(exitButton);
             Controls.Add(saveEquipment);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "InventoryForm";
             Text = "Inventory";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();

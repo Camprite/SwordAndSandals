@@ -16,6 +16,8 @@ namespace SwordAndSandals
 {
     public partial class StartGameForm : Form
     {
+        public WeaponController WeaponController = new WeaponController();
+        public ArmourController ArmourController = new ArmourController();
         public Warrior Player = null;
         private const int TotalPoints = 4;
         public StartGameForm()
@@ -78,7 +80,18 @@ namespace SwordAndSandals
                     this.Player = new Warrior(NameTextBox.Text, (int)StrenghtUpDown.Value, (int)AgilityUpDown.Value, (int)IntUpDown.Value, (int)VitalityUpDown.Value, CharacterEnum.Human);
                     this.Player.baseStatisticPoints = TotalPoints;
 
-                    this.Player.Weapons.Add(WeaponRepository.GetWeapons()[0]);
+                    if(this.Player.Weapons.Count == 0)
+                    {
+                        this.Player.Weapons.Add(WeaponController.getBaseWeapon());
+                    }
+                    if (this.Player.Armours.Count == 0) {
+                         ArmourController.getBaseChestplate();
+                        this.Player.Armours.Add(ArmourController.getBaseBoots());
+                        this.Player.Armours.Add(ArmourController.getBaseHelmet());
+                        this.Player.Armours.Add(ArmourController.getBaseChestplate());
+                        this.Player.Armours.Add(ArmourController.getBaseShield());
+                    }
+
                 }
             }
             catch (Exception ex)

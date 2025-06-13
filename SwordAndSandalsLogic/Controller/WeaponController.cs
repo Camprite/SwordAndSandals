@@ -17,6 +17,10 @@ namespace SwordAndSandalsLogic
         {
             return this.weapons.FirstOrDefault(w => w.Id == id);
         }
+        public Weapon getBaseWeapon()
+        {
+            return (Weapon)this.weapons.First(e => e.Id == 1);
+        }
         public List<Weapon> GetWeapons()
         {
             return this.weapons;
