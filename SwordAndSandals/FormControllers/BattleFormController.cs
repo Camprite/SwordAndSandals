@@ -23,7 +23,7 @@ namespace SwordAndSandals.FormControllers
         public BattleController BattleController;
         public Menu menu;
 
-        public int TotalDamage = 0;
+        
 
         public BattleFormController(BattleForm battleForm)
         {
@@ -107,7 +107,7 @@ namespace SwordAndSandals.FormControllers
 
             UpdateHealthBar(BattleController.Bot);
             BattleForm.ConsoleTextBox.AppendText($"[P] Zadałeś przeciwnikowi: {Damage} obrażeń \n");
-            TotalDamage = TotalDamage + Damage;
+            
             UpdateManaBar(BattleController.Player);
             BattleController.EndPlayerTurn();
             CheckFightStatus();
@@ -191,7 +191,7 @@ namespace SwordAndSandals.FormControllers
 
                 BattleForm.VictoryPicture.Visible = true;
 
-                var result = new BattleResult(xp: 250, money: 300, totalDamage: TotalDamage);
+                var result = new BattleResult(xp: 250, money: 300, totalDamage: BattleController.TotalDamage);
                 
                 await Task.Delay(1000);
                 
@@ -210,7 +210,7 @@ namespace SwordAndSandals.FormControllers
 
                 BattleForm.DefeatPicture.Visible = true;
 
-                var result = new BattleResult(xp: 100, money: 150, totalDamage: TotalDamage);
+                var result = new BattleResult(xp: 100, money: 150, totalDamage: BattleController.TotalDamage);
 
                 await Task.Delay(1000);
 
@@ -255,7 +255,6 @@ namespace SwordAndSandals.FormControllers
                 {
 
                     int damage = BattleController.BotAttack();
-                    BattleController.Player.TakeDamage(damage);
                     BattleForm.ConsoleTextBox.AppendText($"[B]{BattleController.Bot.Name} zadał {damage} obrażeń. Twoje zdrowie: {BattleController.Player.ActualHealth} \n");
                     //MessageBox.Show($"Bot zadał {damage} obrażeń. Twoje zdrowie: {BattleController.Player.ActualHealth}");
                     UpdateManaBar(BattleController.Bot);

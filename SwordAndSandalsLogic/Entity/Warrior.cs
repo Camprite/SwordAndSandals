@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -27,26 +28,11 @@ namespace SwordAndSandalsLogic
         public Armour Shinguards { get; set; }
         public CharacterEnum Character { get; set; }
 
-        public int XPThreshold => 100 * Level;
+        public int XPThreshold => 100 * (Level + 1);
 
-        public Warrior(string name, int money, Weapon weapon, Armour helmet, Armour chestplate,
-            Armour shield, Armour boots, Armour shoulderguard, Armour gauntlests,
-            Armour greaves, Armour shinguards, CharacterEnum character, int strenght, int agility,int Int, int vitality) 
-            : base(1, 0, false, 100, 100, 50, 50, strenght, agility, Int, vitality)
-        {
-            Name = name;
-            Money = money;
-            Weapon = weapon;
-            Helmet = helmet;
-            Chestplate = chestplate;
-            Shield = shield;
-            Boots = boots;
-            Shoulderguard = shoulderguard;
-            Gauntlests = gauntlests;
-            Greaves = greaves;
-            Shinguards = shinguards;
-            Character = character;
-        }
+        public int WinsCounter { get; set; } = 0;
+
+       
         
 
         public Warrior()
@@ -71,11 +57,15 @@ namespace SwordAndSandalsLogic
             MaxStamina = 100;
             ActualStamina = 100;
             Money = 100;
+            /*
             Int = inteligence;
             Strenght = strenght;
             Agility = agility;
             Vitality = vitality;
+            */
             Character = character;
+            Level = 0;
+            XP = 0;
 
         }
 
@@ -100,15 +90,14 @@ namespace SwordAndSandalsLogic
 
         public void LevelUp()
         {
-            if (!CanLevelUp()) return;
+            
 
-            XP -= XPThreshold;
+            while (XP >= XPThreshold)
+            {
+                XP -= XPThreshold;
+                Level++;
+            }
 
-            Level++;
-            //Strenght += 2;
-            //Agility += 2;
-            //Int += 2;
-            //Vitality += 2;
 
         }
 

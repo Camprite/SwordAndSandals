@@ -16,6 +16,7 @@ namespace SwordAndSandals
     {
         public Warrior player = null;
         public FormEnum nextForm = FormEnum.None;
+
         public Menu()
         {
             InitializeComponent();
@@ -46,7 +47,7 @@ namespace SwordAndSandals
             this.LevelUp.Click += (o, s) => {
 
                 if(player.CanLevelUp())
-                { 
+                {
                 player.LevelUp();
                 updateForm();}
             };

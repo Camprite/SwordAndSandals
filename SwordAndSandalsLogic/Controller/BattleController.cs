@@ -19,6 +19,8 @@ namespace SwordAndSandalsLogic
         public const int AttackRange = 400;
         public bool isPlayerTurn { get;  set; } = true;
 
+        public int TotalDamage = 0;
+
         public BattleController()
         {
             this.isPlayerTurn = true;
@@ -35,6 +37,7 @@ namespace SwordAndSandalsLogic
             if(Player.IsDead || Player.ActualStamina < 10) return 0;
 
             int damage = Player.Damage();
+            TotalDamage += damage;
             Bot.TakeDamage(damage);
             Player.ActualStamina -= 10;
             return damage;
@@ -72,6 +75,7 @@ namespace SwordAndSandalsLogic
             }
             else if (Bot.IsDead)
             {
+                Player.WinsCounter++;
                 return 1;
             }
             return 0;
@@ -80,7 +84,9 @@ namespace SwordAndSandalsLogic
 
         public int Rest(Warrior warrior)
         {
-            return warrior.ActualStamina += 30;
+            warrior.ActualStamina = Math.Min(warrior.ActualStamina + 30, warrior.MaxStamina);
+
+            return warrior.ActualStamina;
         }
 
         public void EndPlayerTurn()
