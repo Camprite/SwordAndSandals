@@ -284,14 +284,14 @@ namespace SwordAndSandals.FormControllers
         public void ResetGame()
         {
 
-            BattleController.Player.ActualHealth = 100;
-            BattleController.Player.ActualStamina = 100;
+            BattleController.Player.ActualHealth = BattleController.Player.MaxHealth;
+            BattleController.Player.ActualStamina = BattleController.Player.MaxStamina;
             BattleController.isPlayerTurn = true;
             BattleForm.ConsoleTextBox.Clear();
-
+            BattleForm.panelLeftWarrior.Location = new Point(332, 277);
+            BattleForm.panelRightWarrior.Location = new Point(740, 277);
             menu.nextForm = FormEnum.None;
-
-            //this.BattleForm.
+            
             BattleForm.Close();
 
 
