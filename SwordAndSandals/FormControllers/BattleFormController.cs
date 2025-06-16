@@ -256,7 +256,6 @@ namespace SwordAndSandals.FormControllers
 
                     int damage = BattleController.BotAttack();
                     BattleForm.ConsoleTextBox.AppendText($"[B]{BattleController.Bot.Name} zadał {damage} obrażeń. Twoje zdrowie: {BattleController.Player.ActualHealth} \n");
-                    //MessageBox.Show($"Bot zadał {damage} obrażeń. Twoje zdrowie: {BattleController.Player.ActualHealth}");
                     UpdateManaBar(BattleController.Bot);
                     UpdateHealthBar(BattleController.Player);
                 }
@@ -288,7 +287,7 @@ namespace SwordAndSandals.FormControllers
             BattleController.Player.ActualHealth = 100;
             BattleController.Player.ActualStamina = 100;
             BattleController.isPlayerTurn = true;
-
+            BattleForm.ConsoleTextBox.Clear();
 
             menu.nextForm = FormEnum.None;
 
