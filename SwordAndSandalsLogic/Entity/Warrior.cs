@@ -77,11 +77,11 @@ namespace SwordAndSandalsLogic
                 return;
             }
 
-            int defence = TotalArmourDefence();
-            int reducedDamage = Math.Max(damage - defence, 1);
+            //int defence = TotalArmourDefence();
+            //int reducedDamage = Math.Max(damage - defence, 1);
             
 
-            base.TakeDamage(reducedDamage);
+            base.TakeDamage(damage);
         }
 
         private bool TryDodge()

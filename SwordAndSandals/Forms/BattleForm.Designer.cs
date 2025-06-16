@@ -63,12 +63,11 @@ namespace SwordAndSandals
             VictoryPicture = new PictureBox();
             panelLeftWarrior = new DoubleBufferedPanel();
             pictureBoxPlayer = new PictureBox();
+            BattleStatsLabel = new Label();
             panel1 = new Panel();
             ConsoleTextBox = new RichTextBox();
             DefeatPicture = new PictureBox();
-            BattleStatsPicture = new PictureBox();
             BattleStatsPanel = new Panel();
-            BattleStatsLabel = new Label();
             ((System.ComponentModel.ISupportInitialize)WarriorboxLeft).BeginInit();
             ((System.ComponentModel.ISupportInitialize)WarriorboxRight).BeginInit();
             panelRightWarrior.SuspendLayout();
@@ -78,8 +77,6 @@ namespace SwordAndSandals
             ((System.ComponentModel.ISupportInitialize)pictureBoxPlayer).BeginInit();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DefeatPicture).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)BattleStatsPicture).BeginInit();
-            BattleStatsPanel.SuspendLayout();
             SuspendLayout();
             // 
             // labelLeftWarrior
@@ -432,14 +429,29 @@ namespace SwordAndSandals
             pictureBoxPlayer.TabIndex = 24;
             pictureBoxPlayer.TabStop = false;
             // 
+            // BattleStatsLabel
+            // 
+            BattleStatsLabel.AutoSize = true;
+            BattleStatsLabel.BackColor = Color.FromArgb(224, 187, 142);
+            BattleStatsLabel.BorderStyle = BorderStyle.FixedSingle;
+            BattleStatsLabel.CausesValidation = false;
+            BattleStatsLabel.Font = new Font("Stencil", 16.25F);
+            BattleStatsLabel.Location = new Point(1126, 337);
+            BattleStatsLabel.Name = "BattleStatsLabel";
+            BattleStatsLabel.Size = new Size(93, 28);
+            BattleStatsLabel.TabIndex = 100;
+            BattleStatsLabel.Text = "label1";
+            BattleStatsLabel.TextAlign = ContentAlignment.TopCenter;
+            BattleStatsLabel.UseMnemonic = false;
+            // 
             // panel1
             // 
             panel1.BackgroundImage = Properties.Resources.backgroundFrame;
             panel1.BackgroundImageLayout = ImageLayout.Stretch;
             panel1.Controls.Add(ConsoleTextBox);
-            panel1.Location = new Point(1100, 12);
+            panel1.Location = new Point(1012, 12);
             panel1.Name = "panel1";
-            panel1.Size = new Size(308, 186);
+            panel1.Size = new Size(396, 186);
             panel1.TabIndex = 26;
             // 
             // ConsoleTextBox
@@ -448,7 +460,7 @@ namespace SwordAndSandals
             ConsoleTextBox.BorderStyle = BorderStyle.None;
             ConsoleTextBox.Location = new Point(26, 24);
             ConsoleTextBox.Name = "ConsoleTextBox";
-            ConsoleTextBox.Size = new Size(244, 132);
+            ConsoleTextBox.Size = new Size(328, 132);
             ConsoleTextBox.TabIndex = 0;
             ConsoleTextBox.Text = "";
             ConsoleTextBox.TextChanged += ConsoleTextBox_TextChanged;
@@ -467,36 +479,15 @@ namespace SwordAndSandals
             DefeatPicture.Visible = false;
             DefeatPicture.Click += DefeatPicture_Click;
             // 
-            // BattleStatsPicture
-            // 
-            BattleStatsPicture.BackColor = Color.Transparent;
-            BattleStatsPicture.BackgroundImage = Properties.Resources.BattleStatistic;
-            BattleStatsPicture.BackgroundImageLayout = ImageLayout.Stretch;
-            BattleStatsPicture.Location = new Point(288, 115);
-            BattleStatsPicture.Name = "BattleStatsPicture";
-            BattleStatsPicture.Size = new Size(788, 444);
-            BattleStatsPicture.TabIndex = 29;
-            BattleStatsPicture.TabStop = false;
-            BattleStatsPicture.Visible = false;
-            // 
             // BattleStatsPanel
             // 
-            BattleStatsPanel.BackColor = Color.NavajoWhite;
+            BattleStatsPanel.BackColor = Color.Transparent;
             BattleStatsPanel.BackgroundImageLayout = ImageLayout.None;
-            BattleStatsPanel.Controls.Add(BattleStatsLabel);
-            BattleStatsPanel.Location = new Point(555, 271);
+            BattleStatsPanel.Location = new Point(12, 310);
             BattleStatsPanel.Name = "BattleStatsPanel";
             BattleStatsPanel.Size = new Size(200, 100);
             BattleStatsPanel.TabIndex = 30;
-            // 
-            // BattleStatsLabel
-            // 
-            BattleStatsLabel.AutoSize = true;
-            BattleStatsLabel.Location = new Point(29, 22);
-            BattleStatsLabel.Name = "BattleStatsLabel";
-            BattleStatsLabel.Size = new Size(38, 15);
-            BattleStatsLabel.TabIndex = 0;
-            BattleStatsLabel.Text = "label1";
+            BattleStatsPanel.Visible = false;
             // 
             // BattleForm
             // 
@@ -505,8 +496,8 @@ namespace SwordAndSandals
             BackgroundImage = Properties.Resources.battleBackground;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1420, 583);
+            Controls.Add(BattleStatsLabel);
             Controls.Add(BattleStatsPanel);
-            Controls.Add(BattleStatsPicture);
             Controls.Add(VictoryPicture);
             Controls.Add(DefeatPicture);
             Controls.Add(panel1);
@@ -526,10 +517,8 @@ namespace SwordAndSandals
             ((System.ComponentModel.ISupportInitialize)pictureBoxPlayer).EndInit();
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)DefeatPicture).EndInit();
-            ((System.ComponentModel.ISupportInitialize)BattleStatsPicture).EndInit();
-            BattleStatsPanel.ResumeLayout(false);
-            BattleStatsPanel.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -568,9 +557,8 @@ namespace SwordAndSandals
         public RichTextBox ConsoleTextBox;
         public PictureBox VictoryPicture;
         public PictureBox DefeatPicture;
-        public PictureBox BattleStatsPicture;
-        public Panel BattleStatsPanel;
         public Label BattleStatsLabel;
+        public Panel BattleStatsPanel;
     }
 
 }

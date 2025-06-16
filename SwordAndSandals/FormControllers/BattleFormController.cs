@@ -43,7 +43,7 @@ namespace SwordAndSandals.FormControllers
             BattleForm.VictoryPicture.Visible = false;
             BattleForm.DefeatPicture.Visible = false;
 
-            BattleForm.BattleStatsPicture.Visible = false;
+            //BattleForm.BattleStatsPicture.Visible = false;
             BattleForm.BattleStatsLabel.Visible = false;
             BattleForm.BattleStatsPanel.Visible = false;
 
@@ -103,10 +103,15 @@ namespace SwordAndSandals.FormControllers
 
 
 
+            //int Damage = BattleController.PlayerAttack();
             int Damage = BattleController.PlayerAttack();
 
+         
+
             UpdateHealthBar(BattleController.Bot);
-            BattleForm.ConsoleTextBox.AppendText($"[P] Zadałeś przeciwnikowi: {Damage} obrażeń \n");
+            BattleForm.ConsoleTextBox.AppendText($"[P] Zadałeś przeciwnikowi: [{BattleController.Player.Damage()}] {Damage} obrażeń  Pozostało mu: {BattleController.Bot.ActualHealth}  \n");
+            //BattleForm.ConsoleTextBox.AppendText($"[P] Def: {BattleController.getDefence(BattleController.Player)}  \n");
+            //BattleForm.ConsoleTextBox.AppendText($"[P] TestDamage with defemce {testDamage} \n");
             
             UpdateManaBar(BattleController.Player);
             BattleController.EndPlayerTurn();
@@ -195,12 +200,13 @@ namespace SwordAndSandals.FormControllers
                 
                 await Task.Delay(1000);
                 
-                BattleForm.VictoryPicture.Visible = false;
+              
                 ShowStats(result);
                 BattleController.Player.XP += result.EarnedXP;
                 BattleController.Player.Money += result.EarnedMoney;
                 await Task.Delay(2000);
                 ResetGame();
+                BattleForm.VictoryPicture.Visible = false;
                 //Task.Delay(2000).ContinueWith(_ => BattleForm.Invoke(() => ResetGame()));
 
 
@@ -214,12 +220,14 @@ namespace SwordAndSandals.FormControllers
 
                 await Task.Delay(1000);
 
-                BattleForm.DefeatPicture.Visible = false;
+                
                 ShowStats(result);
                 BattleController.Player.XP += result.EarnedXP;
                 BattleController.Player.Money += result.EarnedMoney;
                 await Task.Delay(2000);
+                BattleForm.DefeatPicture.Visible = false;
                 ResetGame();
+
                 //Task.Delay(2000).ContinueWith(_ => BattleForm.Invoke(() => ResetGame()));
             }
 
@@ -229,10 +237,10 @@ namespace SwordAndSandals.FormControllers
 
         private void ShowStats(BattleResult result)
         {
-            BattleForm.BattleStatsPicture.BringToFront();
-            BattleForm.BattleStatsPicture.Visible = true;
-            BattleForm.BattleStatsPanel.BringToFront();
-            BattleForm.BattleStatsPanel.Visible = true;
+            //BattleForm.BattleStatsPicture.BringToFront();
+            //BattleForm.BattleStatsPicture.Visible = true;
+            //BattleForm.BattleStatsPanel.BringToFront();
+            //BattleForm.BattleStatsPanel.Visible = true;
             BattleForm.BattleStatsLabel.BringToFront();
             BattleForm.BattleStatsLabel.Visible = true;
             BattleForm.BattleStatsLabel.Text =
@@ -255,7 +263,8 @@ namespace SwordAndSandals.FormControllers
                 {
 
                     int damage = BattleController.BotAttack();
-                    BattleForm.ConsoleTextBox.AppendText($"[B]{BattleController.Bot.Name} zadał {damage} obrażeń. Twoje zdrowie: {BattleController.Player.ActualHealth} \n");
+                    BattleForm.ConsoleTextBox.AppendText($"[B]{BattleController.Bot.Name} zadał [{BattleController.Bot.Damage()}] {damage} obrażeń. Twoje zdrowie: {BattleController.Player.ActualHealth} \n");
+                    //BattleForm.ConsoleTextBox.AppendText($"Podstawowe {BattleController.Bot.Damage()}");
                     UpdateManaBar(BattleController.Bot);
                     UpdateHealthBar(BattleController.Player);
                 }

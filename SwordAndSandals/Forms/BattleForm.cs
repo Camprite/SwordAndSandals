@@ -12,7 +12,7 @@ namespace SwordAndSandals
         public BattleForm()
         {
             InitializeComponent();
-            
+
             this.DoubleBuffered = true;
             this.SetStyle(ControlStyles.AllPaintingInWmPaint |
                           ControlStyles.UserPaint |
@@ -39,6 +39,11 @@ namespace SwordAndSandals
         }
 
         private void DefeatPicture_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BattleStatsLabel_Click(object sender, EventArgs e)
         {
 
         }

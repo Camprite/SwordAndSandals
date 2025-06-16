@@ -10,14 +10,14 @@ namespace SwordAndSandalsLogic
 {
     public class BattleController
     {
-        
+
         public Warrior Player { get; set; }
         public Warrior Bot { get; set; }
 
 
         public const int MoveStep = 10;
         public const int AttackRange = 400;
-        public bool isPlayerTurn { get;  set; } = true;
+        public bool isPlayerTurn { get; set; } = true;
 
         public int TotalDamage = 0;
 
@@ -34,9 +34,13 @@ namespace SwordAndSandalsLogic
 
         public int PlayerAttack()
         {
-            if(Player.IsDead || Player.ActualStamina < 10) return 0;
+            if (Player.IsDead || Player.ActualStamina < 10) return 0;
 
-            int damage = Player.Damage();
+            //int botDefence = getDefence(Bot);
+            //int playerDamage = Player.Damage();
+            //int realDamage = playerDamage * (botDefence/10);
+
+            int damage = getRealDamage(true);
             TotalDamage += damage;
             Bot.TakeDamage(damage);
             Player.ActualStamina -= 10;
@@ -47,11 +51,32 @@ namespace SwordAndSandalsLogic
         {
             if (Bot.IsDead || Bot.ActualStamina < 10) return 0;
 
-            int damage = Bot.Damage();
+            int damage = getRealDamage(false);
             Player.TakeDamage(damage);
             Bot.ActualStamina -= 10;
 
             return damage;
+        }
+        public int getRealDamage(bool IsPlayerTurn)
+        {
+            int Defence;
+            int Damage;
+
+            if (IsPlayerTurn)
+            {
+                Defence = getDefence(Bot);
+                Damage = Player.Damage();
+            }
+            else
+            {
+                Defence = getDefence(Player); //4
+                Damage = Bot.Damage(); //4
+            }
+
+            int realDamage = Damage - Defence/2;
+            if(realDamage <= 1) return 1;
+
+            return realDamage;
         }
 
         public Point MoveForward(Point CurrentPosition, Warrior warrior)
@@ -92,10 +117,25 @@ namespace SwordAndSandalsLogic
         public void EndPlayerTurn()
         {
             isPlayerTurn = false;
-            
+
+        }
+        public int getDefence(Warrior entity)
+        {
+            int defenceFactor = 1;
+            if (entity.Shield != null) { defenceFactor += entity.Shield.Defence; };
+            if (entity.Helmet != null) { defenceFactor += entity.Helmet.Defence; };
+            if (entity.Chestplate != null) { defenceFactor += entity.Chestplate.Defence; };
+            if (entity.Boots != null) { defenceFactor += entity.Boots.Defence; };
+
+          
+            if(defenceFactor < 1)
+            {
+                return 1;
+            }
+            return defenceFactor;
         }
 
-        
+
 
     }
 }
