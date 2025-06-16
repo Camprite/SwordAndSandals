@@ -18,6 +18,7 @@ namespace SwordAndSandalsLogic
         public int Speed { get; set; } 
         public int Heal { get; set; }
         public string DisplayText => $"{Name} LVL:{Level} ${Price} Type:{Type} Mana:{Mana}";
+        public string BattleText => $"{Name} [{Damage}]";
         public int Price { get; set; }
         public Spell() { }
 

@@ -1,9 +1,11 @@
 ﻿using SwordAndSandalsLogic;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms.Automation;
 using Timer = System.Windows.Forms.Timer;
 
 
@@ -16,6 +18,7 @@ namespace SwordAndSandals.FormControllers
         public delegate void BattleAction();
         public BattleAction OnAttack;
         public BattleAction OnRest;
+        public BattleAction OnSpell;
         public BattleAction OnMoveForward;
         public BattleAction OnMoveBackward;
         public BattleForm BattleForm { get; set; }
@@ -23,6 +26,7 @@ namespace SwordAndSandals.FormControllers
         public BattleController BattleController;
         public Menu menu;
 
+        public List<Spell> spellsUsed = new List<Spell>();
         
 
         public BattleFormController(BattleForm battleForm)
@@ -40,6 +44,7 @@ namespace SwordAndSandals.FormControllers
 
         public void InitilizeBattleFormControls()
         {
+            this.spellsUsed.Clear();
             BattleForm.VictoryPicture.Visible = false;
             BattleForm.DefeatPicture.Visible = false;
 
@@ -54,13 +59,22 @@ namespace SwordAndSandals.FormControllers
             BattleForm.pbLeftMana.Minimum = 0;
             BattleForm.pbLeftMana.Maximum = BattleController.Player.MaxStamina;
             BattleForm.pbLeftMana.Value = BattleController.Player.ActualStamina;
+            
+            // Avaiable player spells
+            BattleForm.cmbboxLeftSpell.DataSource = BattleController.Player.Spells;
+            BattleForm.cmbboxLeftSpell.DisplayMember = "BattleText";
+            BattleForm.cmbboxLeftSpell.ValueMember  = "Id";
+
+
 
             OnAttack = HandlePlayerAttack;
+            OnSpell = HandlePlayerSpellAttack;
             OnRest = HandlePlayerRest;
             OnMoveForward = HandleMoveForward;
             OnMoveBackward = HandleMoveBackward;
 
             BattleForm.btnLeftAtack.Click += (s, e) => OnAttack?.Invoke();
+            BattleForm.btnLeftUse.Click += (s, e) => OnSpell?.Invoke();
             BattleForm.btnLeftRest.Click += (s, e) => OnRest?.Invoke();
             BattleForm.btnLeftForward.Click += (s, e) => OnMoveForward?.Invoke();
             BattleForm.btnLeftBack.Click += (s, e) => OnMoveBackward?.Invoke();
@@ -184,6 +198,49 @@ namespace SwordAndSandals.FormControllers
 
             BattleController.EndPlayerTurn();
             Task.Delay(500).ContinueWith(_ => BattleForm.Invoke(() => BotTurn()));
+        }
+        private void HandlePlayerSpellAttack()
+        {
+
+            Spell selectedSpell = BattleForm.cmbboxLeftSpell.SelectedItem as Spell;
+            //MessageBox.Show($"test {selectedSpell.Name}");
+            if (isSpellUsedBefore(selectedSpell))
+            {
+                MessageBox.Show($"You used this spell before");
+            }
+            else
+            {
+                if (!BattleController.isPlayerTurn) return;
+
+                if (BattleController.Player.ActualStamina < selectedSpell.Mana)
+                {
+                    BattleForm.ConsoleTextBox.AppendText($"[P] Nie masz wystarczająco many by użyć zaklęcia \n");
+                    HandlePlayerRest();
+                    BattleController.EndPlayerTurn();
+                }
+                int Damage = selectedSpell.Damage;
+                BattleController.PlayerMagicAttack(Damage);
+                spellsUsed.Add(selectedSpell);
+                UpdateHealthBar(BattleController.Bot);
+                BattleForm.ConsoleTextBox.AppendText($"[P] Zadałeś przeciwnikowi: {Damage} obrażeń magicznych Pozostało mu: {BattleController.Bot.ActualHealth}  \n");
+                UpdateManaBar(BattleController.Player);
+                BattleController.EndPlayerTurn();
+                CheckFightStatus();
+                Task.Delay(500).ContinueWith(_ => BattleForm.Invoke(() => BotTurn()));
+
+
+
+
+
+            }
+     
+
+
+            
+        }
+        private bool isSpellUsedBefore(Spell speel)
+        {
+            return spellsUsed.Any(s => s.Id == speel.Id);
         }
 
 
