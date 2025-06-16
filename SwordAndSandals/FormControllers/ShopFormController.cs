@@ -35,9 +35,57 @@ namespace SwordAndSandals.FormControllers
 
         public ShopFormController()
         {
+
+          
         }
 
+        public void InitializeDelegates()
+        {
+            ShopForm.buyButton.Click += (o, s) => onBuyClick(o, s);
 
+            ShopForm.exitButton.Click += (o, s) =>
+            {
+                menu.nextForm = FormEnum.None;
+                ShopForm.Close();
+            };
+            // Set callback for weapon
+            ShopForm.SearchButtonWeapon.Click -= null;
+            ShopForm.SearchButtonWeapon.Click += (o, s) => { onWeaponSelect(o, s); };
+
+            //Set callback for armour
+            ShopForm.SearchButtonArmour.Click += (o, s) => { onArmourSelect(o, s); };
+            ShopForm.SearchButtonArmour.Click += (o, s) => { onArmourSelect(o, s); };
+
+            //Set callback for spell
+            ShopForm.SearchButtonSpell.Click += (o, s) => { onSpellSelect(o, s); };
+            ShopForm.SearchButtonSpell.Click += (o, s) => { onSpellSelect(o, s); };
+
+            ShopForm.comboBoxWeapon.SelectedIndexChanged += (o, s) =>
+            {
+                var weaponSelectType = (WeaponSearchEnum)ShopForm.comboBoxWeapon.SelectedValue;
+                if (weaponSelectType == WeaponSearchEnum.WeaponsByType)
+                {
+                    ShopForm.comboBoxWeaponEnum.Visible = true;
+                }
+                else
+                {
+                    ShopForm.comboBoxWeaponEnum.Visible = false;
+                }
+            };
+
+            ShopForm.comboBoxSpell.SelectedIndexChanged += (o, s) => {
+                var spellSelectType = (SpellSearchEnum)ShopForm.comboBoxSpell.SelectedValue;
+                if (spellSelectType == SpellSearchEnum.ByType || spellSelectType == SpellSearchEnum.AvaiableAndByType)
+                {
+                    ShopForm.comboBoxSpellTypeEnum.Visible = true;
+                }
+                else
+                {
+                    ShopForm.comboBoxSpellTypeEnum.Visible = false;
+                }
+
+            };
+        }
         public void InitilizeShopFormControls()
         {
             ShopForm.currentMoney.Text = Player.Money.ToString();
@@ -156,47 +204,8 @@ namespace SwordAndSandals.FormControllers
             ShopForm.comboBoxSpellTypeEnum.SelectedIndex = 0;
 
 
-            // Set callback for weapon
-            ShopForm.SearchButtonWeapon.Click += (o, s) => { onWeaponSelect(o, s); };
+          
 
-            //Set callback for armour
-            ShopForm.SearchButtonArmour.Click += (o, s) => { onArmourSelect(o, s); };
-
-            //Set callback for spell
-            ShopForm.SearchButtonSpell.Click += (o, s) => { onSpellSelect(o, s); };
-
-            ShopForm.comboBoxWeapon.SelectedIndexChanged += (o, s) =>
-            {
-                var weaponSelectType = (WeaponSearchEnum)ShopForm.comboBoxWeapon.SelectedValue;
-                if (weaponSelectType == WeaponSearchEnum.WeaponsByType)
-                {
-                    ShopForm.comboBoxWeaponEnum.Visible = true;
-                }
-                else
-                {
-                    ShopForm.comboBoxWeaponEnum.Visible = false;
-                }
-            };
-
-            ShopForm.comboBoxSpell.SelectedIndexChanged += (o, s) => {
-                var spellSelectType = (SpellSearchEnum) ShopForm.comboBoxSpell.SelectedValue;
-                if (spellSelectType == SpellSearchEnum.ByType || spellSelectType == SpellSearchEnum.AvaiableAndByType){
-                    ShopForm.comboBoxSpellTypeEnum.Visible = true;
-                }
-                else
-                {
-                    ShopForm.comboBoxSpellTypeEnum.Visible = false;
-                }
-
-            };
-
-            ShopForm.buyButton.Click += (o, s) => onBuyClick(o, s);
-
-            ShopForm.exitButton.Click += (o, s) =>
-            {
-                menu.nextForm = FormEnum.None;
-                ShopForm.Close();
-            };
         }
 
 
@@ -367,7 +376,7 @@ namespace SwordAndSandals.FormControllers
                 }
                 else
                 {
-                    if (Player.Weapons.Contains(weapon)) {
+                    if (Player.Weapons.Any(w => w.Id == weapon.Id)) {
                         MessageBox.Show("You already have this item");
                     } else
                     {
@@ -393,18 +402,20 @@ namespace SwordAndSandals.FormControllers
                 {
                     MessageBox.Show("Not enought level");
                 }
+               else
+                {
+
+                
+                if (Player.Armours.Any(a => a.Id ==  armour.Id))
+                {
+                    MessageBox.Show("You already have this item");
+                }
                 else
                 {
-                    if (Player.Armours.Contains(armour))
-                    {
-                        MessageBox.Show("You already have this item");
-                    }
-                    else
-                    {
-                        Player.Money -= armour.Price;
-                        Player.Armours.Add(armour);
-                        MessageBox.Show($"Congratulations you just buyed:{armour.ToString()} ");
-                    }
+                    Player.Money -= armour.Price;
+                    Player.Armours.Add(armour);
+                    MessageBox.Show($"Congratulations you just buyed:{armour.ToString()} ");
+                }
                 }
 
             }
@@ -422,7 +433,7 @@ namespace SwordAndSandals.FormControllers
                 }
                 else
                 {
-                    if (Player.Spells.Contains(spell))
+                    if (Player.Spells.Any(s => s.Id == spell.Id))
                     {
                         MessageBox.Show("You already have this item");
                     }

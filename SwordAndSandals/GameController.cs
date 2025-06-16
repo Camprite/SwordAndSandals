@@ -56,8 +56,10 @@ namespace SwordAndSandals
 
 
 
+                shopFormController.InitializeDelegates();
                 shopFormController.InitilizeShopFormControls();
-                //inventoryFormController.InitilizeInventoryFormControls();
+                inventoryFormController.InitializeDelegates();
+                inventoryFormController.InitilizeInventoryFormControls();
                 menuForm.updateForm();
             }
 
@@ -80,6 +82,7 @@ namespace SwordAndSandals
                     switch (nextForm) {
                         case (FormEnum.Shop):
                             shopForm.ShowDialog();
+                            //shopFormController.InitilizeShopFormControls();
                             break;
                         case (FormEnum.Battle):
                             // Wygenerowanie bota odpowiadającego graczowi
@@ -96,8 +99,10 @@ namespace SwordAndSandals
                             break;
                         case (FormEnum.Inventory):
                             inventoryFormController.InitilizeInventoryFormControls();
-                            inventoryForm.ShowDialog();
-                            menuForm.updateForm();
+                            inventoryFormController.inventoryForm.ShowDialog();
+                            
+
+                            //menuForm.updateForm();
                             break;
                     }
                     
