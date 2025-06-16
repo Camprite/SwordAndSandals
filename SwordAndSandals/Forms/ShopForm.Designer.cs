@@ -104,7 +104,7 @@ namespace SwordAndSandals
             label6.AutoSize = true;
             label6.BackColor = Color.Transparent;
             label6.Font = new Font("Stencil", 16.25F);
-            label6.Location = new Point(472, 101);
+            label6.Location = new Point(515, 101);
             label6.Name = "label6";
             label6.Size = new Size(96, 26);
             label6.TabIndex = 8;
@@ -113,9 +113,9 @@ namespace SwordAndSandals
             // comboBoxWeapon
             // 
             comboBoxWeapon.FormattingEnabled = true;
-            comboBoxWeapon.Location = new Point(92, 159);
+            comboBoxWeapon.Location = new Point(41, 159);
             comboBoxWeapon.Name = "comboBoxWeapon";
-            comboBoxWeapon.Size = new Size(121, 23);
+            comboBoxWeapon.Size = new Size(193, 23);
             comboBoxWeapon.TabIndex = 12;
             // 
             // SearchButtonWeapon
@@ -164,17 +164,17 @@ namespace SwordAndSandals
             // comboBoxArmour
             // 
             comboBoxArmour.FormattingEnabled = true;
-            comboBoxArmour.Location = new Point(92, 351);
+            comboBoxArmour.Location = new Point(41, 351);
             comboBoxArmour.Name = "comboBoxArmour";
-            comboBoxArmour.Size = new Size(121, 23);
+            comboBoxArmour.Size = new Size(193, 23);
             comboBoxArmour.TabIndex = 17;
             // 
             // comboBoxSpell
             // 
             comboBoxSpell.FormattingEnabled = true;
-            comboBoxSpell.Location = new Point(92, 502);
+            comboBoxSpell.Location = new Point(41, 502);
             comboBoxSpell.Name = "comboBoxSpell";
-            comboBoxSpell.Size = new Size(121, 23);
+            comboBoxSpell.Size = new Size(193, 23);
             comboBoxSpell.TabIndex = 18;
             // 
             // SearchButtonArmour
@@ -210,9 +210,9 @@ namespace SwordAndSandals
             // comboBoxWeaponEnum
             // 
             comboBoxWeaponEnum.FormattingEnabled = true;
-            comboBoxWeaponEnum.Location = new Point(92, 188);
+            comboBoxWeaponEnum.Location = new Point(41, 188);
             comboBoxWeaponEnum.Name = "comboBoxWeaponEnum";
-            comboBoxWeaponEnum.Size = new Size(121, 23);
+            comboBoxWeaponEnum.Size = new Size(193, 23);
             comboBoxWeaponEnum.TabIndex = 12;
             comboBoxWeaponEnum.Visible = false;
             // 
@@ -228,9 +228,9 @@ namespace SwordAndSandals
             // comboBoxArmourTypeEnum
             // 
             comboBoxArmourTypeEnum.FormattingEnabled = true;
-            comboBoxArmourTypeEnum.Location = new Point(92, 393);
+            comboBoxArmourTypeEnum.Location = new Point(41, 393);
             comboBoxArmourTypeEnum.Name = "comboBoxArmourTypeEnum";
-            comboBoxArmourTypeEnum.Size = new Size(121, 23);
+            comboBoxArmourTypeEnum.Size = new Size(193, 23);
             comboBoxArmourTypeEnum.TabIndex = 17;
             // 
             // ArmourSearchResultListBox
@@ -249,16 +249,16 @@ namespace SwordAndSandals
             SpellSearchResultListBox.FormattingEnabled = true;
             SpellSearchResultListBox.Location = new Point(337, 130);
             SpellSearchResultListBox.Name = "SpellSearchResultListBox";
-            SpellSearchResultListBox.Size = new Size(369, 394);
+            SpellSearchResultListBox.Size = new Size(468, 394);
             SpellSearchResultListBox.TabIndex = 23;
             SpellSearchResultListBox.Visible = false;
             // 
             // comboBoxSpellTypeEnum
             // 
             comboBoxSpellTypeEnum.FormattingEnabled = true;
-            comboBoxSpellTypeEnum.Location = new Point(92, 543);
+            comboBoxSpellTypeEnum.Location = new Point(41, 543);
             comboBoxSpellTypeEnum.Name = "comboBoxSpellTypeEnum";
-            comboBoxSpellTypeEnum.Size = new Size(121, 23);
+            comboBoxSpellTypeEnum.Size = new Size(193, 23);
             comboBoxSpellTypeEnum.TabIndex = 24;
             comboBoxSpellTypeEnum.Visible = false;
             // 
@@ -268,7 +268,7 @@ namespace SwordAndSandals
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.backgroundFrame;
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(800, 690);
+            ClientSize = new Size(899, 690);
             Controls.Add(comboBoxSpellTypeEnum);
             Controls.Add(SpellSearchResultListBox);
             Controls.Add(ArmourSearchResultListBox);

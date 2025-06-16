@@ -48,9 +48,9 @@ namespace SwordAndSandals
 
                 battleFormController.BattleForm = this.battleForm;
                 battleFormController.menu = this.menuForm;
+                battleFormController.InitilizeDelegates();
 
 
-             
                 shopFormController.ShopForm = this.shopForm;
                 shopFormController.Player = this.Player;
                 shopFormController.menu = this.menuForm;
@@ -60,6 +60,7 @@ namespace SwordAndSandals
 
 
 
+                
                 shopFormController.InitializeDelegates();
                 shopFormController.InitilizeShopFormControls();
                 inventoryFormController.InitializeDelegates();
@@ -97,6 +98,11 @@ namespace SwordAndSandals
                             battleFormController.BattleController.Bot = BattleController.Bot;
 
                             battleFormController.BattleController.Player = this.Player;
+                            if(battleFormController.BattleForm == null)
+                            {
+                                battleFormController.BattleForm = battleForm;
+                            }
+                           
                             
                             battleFormController.InitilizeBattleFormControls();
                             battleFormController.BattleForm.ShowDialog();

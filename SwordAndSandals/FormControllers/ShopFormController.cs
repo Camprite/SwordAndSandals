@@ -257,6 +257,8 @@ namespace SwordAndSandals.FormControllers
 
             }
             ShopForm.WeaponSearchResultListBox.DataSource = result;
+            ShopForm.WeaponSearchResultListBox.DisplayMember = "DisplayText";
+            ShopForm.WeaponSearchResultListBox.ValueMember = "Id";
 
 
 

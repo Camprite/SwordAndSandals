@@ -18,8 +18,8 @@ namespace SwordAndSandalsLogic
         public int Rotate {  get; set; } = 0;
         public string Path { get; set; }
         public int Price {  get; set; }
-        public string DisplayText => $"{Name}:{Price}:{WeaponEnum}";
-        public string InventoryText => $"{Damage}DMG-:{Name}";
+        public string DisplayText => $"{Name}\t [LVL]:{Lvl}\t [$]:{Price}\t [DMG]:{Damage} ";
+        public string InventoryText => $"{Name} [DMG]:{Damage}";
         public int Damage {  get; set; }
 
         public Weapon(int id, string name, string description, WeaponEnum weaponEnum, int xPadding, 

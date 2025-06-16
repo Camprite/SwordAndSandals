@@ -72,6 +72,7 @@ namespace SwordAndSandalsLogic
         public override void TakeDamage(int damage)
         {
             if(TryDodge())
+            //if(true)
             {
                 Console.WriteLine($"{Name} unika ataku!");
                 return;

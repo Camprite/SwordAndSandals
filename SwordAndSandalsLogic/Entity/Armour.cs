@@ -19,8 +19,8 @@ namespace SwordAndSandalsLogic
         public string Description { get; set; }
         public ArmourEnum ArmourType { get; set; }
         public int Defence { get; set; }
-        public string InventoryText => $"{Name} -=- {Defence}";
-        public string DisplayText => $"{Name} LVL:{Level} ${Price} DEF:{Defence}";
+        public string InventoryText => $"{Name}\t [DEF]:{Defence}";
+        public string DisplayText => $"{Name}\t [LVL]{Level}\t [$]{Price}\t [DEF]:{Defence}";
         public string IconPath { get; set; }
         public int Price { get; set; }
         public Armour()

@@ -20,6 +20,8 @@ namespace SwordAndSandalsLogic
         public bool isPlayerTurn { get; set; } = true;
 
         public int TotalDamage = 0;
+        public int AdditionalDefence = 0;
+
 
         public BattleController()
         {
@@ -30,6 +32,27 @@ namespace SwordAndSandalsLogic
         public bool CanAttack(Point PlayerPos, Point BotPos)
         {
             return Math.Abs(PlayerPos.X - BotPos.X) <= AttackRange;
+        }
+        public void heal(bool IsPlayerTurn, int heal)
+        {
+            Warrior Entity = Bot;
+
+            if (isPlayerTurn)
+            {
+                Entity = Player;
+
+            }
+            if (Entity.ActualHealth + heal > Entity.MaxHealth)
+            {
+                Entity.ActualHealth = Entity.MaxHealth;
+            }
+            else
+            {
+                Entity.ActualHealth += heal;
+            }
+
+
+
         }
 
         public int PlayerAttack()
@@ -46,7 +69,12 @@ namespace SwordAndSandalsLogic
             Player.ActualStamina -= 10;
             return damage;
         }
-         public int PlayerMagicAttack(int damage)
+        public void addPlayerDefence(int defence)
+        {
+            this.AdditionalDefence += defence;
+
+        }
+        public int PlayerMagicAttack(int damage)
         {
             if (Player.IsDead || Player.ActualStamina < 10) return 0;
 
@@ -61,7 +89,12 @@ namespace SwordAndSandalsLogic
             if (Bot.IsDead || Bot.ActualStamina < 10) return 0;
 
             int damage = getRealDamage(false);
+            if (this.AdditionalDefence > 0)
+            {
+                damage = getDamagedamageAfterAdditionalDefence(damage);
+            }
             Player.TakeDamage(damage);
+
             Bot.ActualStamina -= 10;
 
             return damage;
@@ -86,6 +119,11 @@ namespace SwordAndSandalsLogic
             if(realDamage <= 1) return 1;
 
             return realDamage;
+        } 
+        public int getDamagedamageAfterAdditionalDefence(int Damage)
+        {
+       
+            return Damage - this.AdditionalDefence/4;
         }
 
         public Point MoveForward(Point CurrentPosition, Warrior warrior)

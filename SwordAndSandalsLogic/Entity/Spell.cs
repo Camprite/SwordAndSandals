@@ -15,14 +15,14 @@ namespace SwordAndSandalsLogic
         public SpellEnum Type { get; set; }
         public int Mana {  get; set; }
         public int Damage { get; set; }
-        public int Speed { get; set; } 
+        public int Defence { get; set; } 
         public int Heal { get; set; }
-        public string DisplayText => $"{Name} LVL:{Level} ${Price} Type:{Type} Mana:{Mana}";
-        public string BattleText => $"{Name} [{Damage}]";
+        public string DisplayText => $"{Name}\t [LVL]:{Level}\t [$]{Price}\t [M]:{Mana}\t {this.shopText()}";
+        public string BattleText => $"{comboBoxText()}";
         public int Price { get; set; }
         public Spell() { }
 
-        public Spell(int id, string name, string description, SpellEnum type, int mana, int damage, int speed, int heal, int price)
+        public Spell(int id, string name, string description, SpellEnum type, int mana, int damage, int defence, int heal, int price)
         {
             Id = id;
             Name = name;
@@ -30,12 +30,12 @@ namespace SwordAndSandalsLogic
             Type = type;
             Mana = mana;
             Damage = damage;
-            Speed = speed;
+            Defence = defence;
             Heal = heal;
             Price = price;
         }
 
-        public Spell(int id, string name, string description, SpellEnum type, int mana, int damage, int speed, int heal, int price, int level)
+        public Spell(int id, string name, string description, SpellEnum type, int mana, int damage, int defence, int heal, int price, int level)
         {
             Id = id;
             Name = name;
@@ -43,12 +43,39 @@ namespace SwordAndSandalsLogic
             Type = type;
             Mana = mana;
             Damage = damage;
-            Speed = speed;
+            Defence = defence;
             Heal = heal;
             Price = price;
             Level = level;
         }
+        public string comboBoxText()
+        {
+            switch (this.Type)
+            {
+                case SpellEnum.Defensive:
+                    return $"[D]{Name}\t [M]{Mana}\t [DEF] {Defence}";
+                case SpellEnum.Offensive:
+                    return $"[O]{Name}\t [M]{Mana}\t [DMG] {Damage}";
+                case SpellEnum.Healing:
+                    return $"[H]{Name}\t [M]{Mana}\t [HP] {Heal}";
+            }
 
+            return $"Error with id {Id}";
+        }
+        public string shopText()
+        {
+            switch (this.Type)
+            {
+                case SpellEnum.Defensive:
+                    return $"[DEF] {Defence}";
+                case SpellEnum.Offensive:
+                    return $"[DMG] {Damage}";
+                case SpellEnum.Healing:
+                    return $"[HP] {Heal}";
+            }
+
+            return $"Error with id {Id}";
+        }
         public override string? ToString()
         {
             return $"{Name} = {Type} = {Price}";

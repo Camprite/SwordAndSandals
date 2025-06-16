@@ -28,6 +28,8 @@ namespace SwordAndSandals.FormControllers
 
         public List<Spell> spellsUsed = new List<Spell>();
         
+        public int spellAdditionalDefence = 0;
+
 
         public BattleFormController(BattleForm battleForm)
         {
@@ -39,6 +41,14 @@ namespace SwordAndSandals.FormControllers
         {
 
 
+        }
+        public void InitilizeDelegates()
+        {
+            BattleForm.btnLeftAtack.Click += (s, e) => OnAttack?.Invoke();
+            BattleForm.btnLeftUse.Click += (s, e) => OnSpell?.Invoke();
+            BattleForm.btnLeftRest.Click += (s, e) => OnRest?.Invoke();
+            BattleForm.btnLeftForward.Click += (s, e) => OnMoveForward?.Invoke();
+            BattleForm.btnLeftBack.Click += (s, e) => OnMoveBackward?.Invoke();
         }
 
 
@@ -61,6 +71,7 @@ namespace SwordAndSandals.FormControllers
             BattleForm.pbLeftMana.Value = BattleController.Player.ActualStamina;
             
             // Avaiable player spells
+            BattleForm.cmbboxLeftSpell.DataSource = null;
             BattleForm.cmbboxLeftSpell.DataSource = BattleController.Player.Spells;
             BattleForm.cmbboxLeftSpell.DisplayMember = "BattleText";
             BattleForm.cmbboxLeftSpell.ValueMember  = "Id";
@@ -73,11 +84,9 @@ namespace SwordAndSandals.FormControllers
             OnMoveForward = HandleMoveForward;
             OnMoveBackward = HandleMoveBackward;
 
-            BattleForm.btnLeftAtack.Click += (s, e) => OnAttack?.Invoke();
-            BattleForm.btnLeftUse.Click += (s, e) => OnSpell?.Invoke();
-            BattleForm.btnLeftRest.Click += (s, e) => OnRest?.Invoke();
-            BattleForm.btnLeftForward.Click += (s, e) => OnMoveForward?.Invoke();
-            BattleForm.btnLeftBack.Click += (s, e) => OnMoveBackward?.Invoke();
+           
+
+           
 
             //added
 
@@ -111,7 +120,8 @@ namespace SwordAndSandals.FormControllers
             if (!BattleController.CanAttack(BattleForm.panelLeftWarrior.Location, BattleForm.panelRightWarrior.Location))
             {
                 BattleForm.ConsoleTextBox.AppendText("[P] Jesteś za daleko, aby zaatakować! \n");
-                
+                BattleForm.ConsoleTextBox.ScrollToCaret();
+
                 return;
             }
 
@@ -124,9 +134,8 @@ namespace SwordAndSandals.FormControllers
 
             UpdateHealthBar(BattleController.Bot);
             BattleForm.ConsoleTextBox.AppendText($"[P] Zadałeś przeciwnikowi: [{BattleController.Player.Damage()}] {Damage} obrażeń  Pozostało mu: {BattleController.Bot.ActualHealth}  \n");
-            //BattleForm.ConsoleTextBox.AppendText($"[P] Def: {BattleController.getDefence(BattleController.Player)}  \n");
-            //BattleForm.ConsoleTextBox.AppendText($"[P] TestDamage with defemce {testDamage} \n");
-            
+            BattleForm.ConsoleTextBox.ScrollToCaret();
+
             UpdateManaBar(BattleController.Player);
             BattleController.EndPlayerTurn();
             CheckFightStatus();
@@ -201,8 +210,18 @@ namespace SwordAndSandals.FormControllers
         }
         private void HandlePlayerSpellAttack()
         {
-
-            Spell selectedSpell = BattleForm.cmbboxLeftSpell.SelectedItem as Spell;
+            Spell selectedSpell = null;
+            try{
+                selectedSpell = BattleForm.cmbboxLeftSpell.SelectedItem as Spell; 
+            }catch
+            {
+                 
+            }
+            if (selectedSpell == null) {
+                BattleForm.ConsoleTextBox.AppendText($"[P] Nie wybrałeś zaklęcia \n");
+                BattleForm.ConsoleTextBox.ScrollToCaret();
+                return;
+            }
             //MessageBox.Show($"test {selectedSpell.Name}");
             if (isSpellUsedBefore(selectedSpell))
             {
@@ -215,28 +234,49 @@ namespace SwordAndSandals.FormControllers
                 if (BattleController.Player.ActualStamina < selectedSpell.Mana)
                 {
                     BattleForm.ConsoleTextBox.AppendText($"[P] Nie masz wystarczająco many by użyć zaklęcia \n");
+                    BattleForm.ConsoleTextBox.ScrollToCaret();
+
                     HandlePlayerRest();
                     BattleController.EndPlayerTurn();
+                    return;
                 }
-                int Damage = selectedSpell.Damage;
-                BattleController.PlayerMagicAttack(Damage);
+
+                switch (selectedSpell.Type) {
+                    case SpellEnum.Offensive:
+                        int Damage = selectedSpell.Damage;
+                        BattleController.PlayerMagicAttack(Damage);
+                        BattleForm.ConsoleTextBox.AppendText($"[P] Zadałeś przeciwnikowi: {Damage} obrażeń magicznych Pozostało mu: {BattleController.Bot.ActualHealth}  \n");
+                        BattleForm.ConsoleTextBox.ScrollToCaret();
+                        break;
+                    case SpellEnum.Defensive:
+                        int addditionalDefence = selectedSpell.Defence;
+                        BattleController.addPlayerDefence(addditionalDefence);
+                        BattleForm.ConsoleTextBox.AppendText($"[P] Użyłeś zaklęcia obronnego, + {addditionalDefence} obrony  \n");
+                        BattleForm.ConsoleTextBox.ScrollToCaret();
+
+                        //MessageBox.Show($"Additional def:{BattleController.AdditionalDefence}");
+                        
+                        break;
+                    case SpellEnum.Healing:
+                        int addditionalHealth = selectedSpell.Heal;
+                        BattleController.heal(true,addditionalHealth);
+                        BattleForm.ConsoleTextBox.AppendText($"[P] Użyłeś zaklęcia leczącego, + {addditionalHealth} zdrowia  \n");
+                        BattleForm.ConsoleTextBox.ScrollToCaret();
+                        break;
+                        }
+
+              
                 spellsUsed.Add(selectedSpell);
                 UpdateHealthBar(BattleController.Bot);
-                BattleForm.ConsoleTextBox.AppendText($"[P] Zadałeś przeciwnikowi: {Damage} obrażeń magicznych Pozostało mu: {BattleController.Bot.ActualHealth}  \n");
+              
                 UpdateManaBar(BattleController.Player);
                 BattleController.EndPlayerTurn();
                 CheckFightStatus();
                 Task.Delay(500).ContinueWith(_ => BattleForm.Invoke(() => BotTurn()));
-
-
-
-
+                //spellsUsed = null;
 
             }
      
-
-
-            
         }
         private bool isSpellUsedBefore(Spell speel)
         {
@@ -284,6 +324,7 @@ namespace SwordAndSandals.FormControllers
                 await Task.Delay(2000);
                 BattleForm.DefeatPicture.Visible = false;
                 ResetGame();
+                
 
                 //Task.Delay(2000).ContinueWith(_ => BattleForm.Invoke(() => ResetGame()));
             }
@@ -302,8 +343,8 @@ namespace SwordAndSandals.FormControllers
             BattleForm.BattleStatsLabel.Visible = true;
             BattleForm.BattleStatsLabel.Text =
                 $"Zdobyte XP : {result.EarnedXP}\n" +
-                $"Zdobyte złoto: {result.EarnedMoney}\n" +
-                $"Zadane obrażenia: {result.TotalDamage}";
+                $"Zdobyte zloto: {result.EarnedMoney}\n" +
+                $"Zadane obrazenia: {result.TotalDamage}";
 
         }
 
@@ -349,7 +390,7 @@ namespace SwordAndSandals.FormControllers
 
         public void ResetGame()
         {
-
+            
             BattleController.Player.ActualHealth = BattleController.Player.MaxHealth;
             BattleController.Player.ActualStamina = BattleController.Player.MaxStamina;
             BattleController.isPlayerTurn = true;

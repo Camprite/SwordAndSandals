@@ -273,10 +273,10 @@ namespace SwordAndSandals
             // btnLeftUse
             // 
             btnLeftUse.BackColor = SystemColors.ActiveBorder;
-            btnLeftUse.Location = new Point(139, 202);
+            btnLeftUse.Location = new Point(141, 202);
             btnLeftUse.Margin = new Padding(2);
             btnLeftUse.Name = "btnLeftUse";
-            btnLeftUse.Size = new Size(78, 20);
+            btnLeftUse.Size = new Size(76, 20);
             btnLeftUse.TabIndex = 21;
             btnLeftUse.Text = "Użyj";
             btnLeftUse.UseVisualStyleBackColor = false;
@@ -285,7 +285,7 @@ namespace SwordAndSandals
             // 
             labelSpelLeft.AutoSize = true;
             labelSpelLeft.BackColor = SystemColors.ActiveBorder;
-            labelSpelLeft.Location = new Point(5, 194);
+            labelSpelLeft.Location = new Point(3, 202);
             labelSpelLeft.Margin = new Padding(2, 0, 2, 0);
             labelSpelLeft.Name = "labelSpelLeft";
             labelSpelLeft.Size = new Size(50, 15);
@@ -296,11 +296,11 @@ namespace SwordAndSandals
             // 
             cmbboxLeftSpell.BackColor = SystemColors.ActiveBorder;
             cmbboxLeftSpell.FormattingEnabled = true;
-            cmbboxLeftSpell.Location = new Point(5, 203);
+            cmbboxLeftSpell.Location = new Point(3, 226);
             cmbboxLeftSpell.Margin = new Padding(2);
             cmbboxLeftSpell.Name = "cmbboxLeftSpell";
-            cmbboxLeftSpell.Size = new Size(129, 23);
-            cmbboxLeftSpell.TabIndex = 19;
+            cmbboxLeftSpell.Size = new Size(211, 23);
+            cmbboxLeftSpell.TabIndex = 30;
             // 
             // labelManaLeft
             // 
@@ -392,7 +392,7 @@ namespace SwordAndSandals
             VictoryPicture.BackColor = Color.Transparent;
             VictoryPicture.BackgroundImage = Properties.Resources.Gemini_Victory;
             VictoryPicture.BackgroundImageLayout = ImageLayout.Stretch;
-            VictoryPicture.Location = new Point(288, 115);
+            VictoryPicture.Location = new Point(236, 110);
             VictoryPicture.Name = "VictoryPicture";
             VictoryPicture.Size = new Size(788, 444);
             VictoryPicture.TabIndex = 27;
@@ -402,12 +402,12 @@ namespace SwordAndSandals
             // panelLeftWarrior
             // 
             panelLeftWarrior.BackColor = Color.Transparent;
+            panelLeftWarrior.Controls.Add(cmbboxLeftSpell);
             panelLeftWarrior.Controls.Add(btnLeftUse);
             panelLeftWarrior.Controls.Add(pictureBoxPlayer);
             panelLeftWarrior.Controls.Add(WarriorboxLeft);
             panelLeftWarrior.Controls.Add(labelSpelLeft);
             panelLeftWarrior.Controls.Add(labelLeftWarrior);
-            panelLeftWarrior.Controls.Add(cmbboxLeftSpell);
             panelLeftWarrior.Controls.Add(pbLeftMana);
             panelLeftWarrior.Controls.Add(pbLeftHP);
             panelLeftWarrior.Controls.Add(btnLeftAtack);
@@ -436,11 +436,11 @@ namespace SwordAndSandals
             BattleStatsLabel.BorderStyle = BorderStyle.FixedSingle;
             BattleStatsLabel.CausesValidation = false;
             BattleStatsLabel.Font = new Font("Stencil", 16.25F);
-            BattleStatsLabel.Location = new Point(1126, 337);
+            BattleStatsLabel.Location = new Point(501, 351);
             BattleStatsLabel.Name = "BattleStatsLabel";
-            BattleStatsLabel.Size = new Size(93, 28);
+            BattleStatsLabel.Size = new Size(99, 28);
             BattleStatsLabel.TabIndex = 100;
-            BattleStatsLabel.Text = "label1";
+            BattleStatsLabel.Text = "label1 ";
             BattleStatsLabel.TextAlign = ContentAlignment.TopCenter;
             BattleStatsLabel.UseMnemonic = false;
             // 
@@ -471,7 +471,7 @@ namespace SwordAndSandals
             DefeatPicture.BackgroundImage = Properties.Resources.Gemini_Defeat;
             DefeatPicture.BackgroundImageLayout = ImageLayout.Stretch;
             DefeatPicture.InitialImage = null;
-            DefeatPicture.Location = new Point(288, 115);
+            DefeatPicture.Location = new Point(236, 110);
             DefeatPicture.Name = "DefeatPicture";
             DefeatPicture.Size = new Size(788, 444);
             DefeatPicture.TabIndex = 28;
