@@ -68,8 +68,7 @@ namespace SwordAndSandals
             {
                 menuForm.updateForm();
 
-                if (BotFactory.CheckIfBossFight(this.Player))
-                    menuForm.BeforeBossFightLabel.Text = "Za chwilę masz walkę z bossem, przygotuj się.";
+                ShowBossMessage();
 
                 var menuOption = menuForm.ShowDialog();
 
@@ -129,6 +128,19 @@ namespace SwordAndSandals
             {
                 throw new GameException("Game cannot start without warrior");
             }
+        }
+
+
+        public void ShowBossMessage()
+        {
+            if (BotFactory.CheckIfBossFight(this.Player))
+            {
+                menuForm.BeforeBossFightLabel.Visible = true;
+                menuForm.BeforeBossFightLabel.Text = "Za chwilę masz walkę z bossem, przygotuj się.";
+
+            }
+            else
+                menuForm.BeforeBossFightLabel.Visible = false;
         }
     }
 }
