@@ -12,14 +12,14 @@ namespace SwordAndSandalsLogic
         [Description("All")]
         All = 0,
 
-        [Description("Avaiable by level")]
-        AvaiableByLevel = 1,
+        //[Description("Avaiable by level")]
+        //AvaiableByLevel = 1,
 
         [Description("Avaiable by price")]
         AvaiableByPrice = 2,
 
-        [Description("Avaiable by price and level")]
-        AvaiableByPriceAndLevel = 3,
+        //[Description("Avaiable by price and level")]
+        //AvaiableByPriceAndLevel = 3,
 
         [Description("Not avaiable")]
         NotAvaiable = 4,

@@ -45,11 +45,9 @@ namespace SwordAndSandals
 
                 BattleController.Player = this.Player;
 
-
                 battleFormController.BattleForm = this.battleForm;
                 battleFormController.menu = this.menuForm;
                 battleFormController.InitilizeDelegates();
-
 
                 shopFormController.ShopForm = this.shopForm;
                 shopFormController.Player = this.Player;
@@ -57,9 +55,6 @@ namespace SwordAndSandals
 
                 inventoryFormController.inventoryForm = this.inventoryForm;
                 inventoryFormController.Player = this.Player;
-
-
-
                 
                 shopFormController.InitializeDelegates();
                 shopFormController.InitilizeShopFormControls();
@@ -86,8 +81,8 @@ namespace SwordAndSandals
                     FormEnum nextForm = menuForm.nextForm;
                     switch (nextForm) {
                         case (FormEnum.Shop):
+                            shopFormController.updateMoney();
                             shopForm.ShowDialog();
-                            //shopFormController.InitilizeShopFormControls();
                             break;
                         case (FormEnum.Battle):
                             // Wygenerowanie bota odpowiadającego graczowi
@@ -110,9 +105,6 @@ namespace SwordAndSandals
                         case (FormEnum.Inventory):
                             inventoryFormController.InitilizeInventoryFormControls();
                             inventoryFormController.inventoryForm.ShowDialog();
-                            
-
-                            //menuForm.updateForm();
                             break;
                     }
                     
@@ -142,14 +134,6 @@ namespace SwordAndSandals
 
         public void ShowBossMessage()
         {
-            if (BotFactory.CheckIfBossFight(this.Player))
-            {
-                menuForm.BeforeBossFightLabel.Visible = true;
-                menuForm.BeforeBossFightLabel.Text = "Za chwilę masz walkę z bossem, przygotuj się.";
-
-            }
-            else
-                menuForm.BeforeBossFightLabel.Visible = false;
         }
     }
 }

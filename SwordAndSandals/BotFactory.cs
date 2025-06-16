@@ -19,15 +19,8 @@ namespace SwordAndSandals
 
         public static Warrior GenerateBot(Warrior Player)
         {
-            bool isBossFight = CheckIfBossFight(Player);
-            if (isBossFight)
-            {
-                return GenerateBoss(Player);
-            }
-            else
-            {
-                return GenerateRegularBot(Player);
-            }
+         
+            return GenerateRegularBot(Player);
         }
 
         private static Warrior GenerateRegularBot(Warrior Player)

@@ -30,8 +30,6 @@ namespace SwordAndSandals.FormControllers
             {
                 return;
             }
-            //inventoryForm = new InventoryForm();
-
 
 
             // Set player items to comboboxes
@@ -96,21 +94,6 @@ namespace SwordAndSandals.FormControllers
                 inventoryForm.sandalsLabel.Text = Player.Boots.Name;
                 inventoryForm.comboBoxSandals.SelectedValue = Player.Boots.Id;
             }
-
-
-       
-
-
-            //Console.WriteLine(Player.Weapons.ToString());
-            //inventoryForm.comboBoxWeapon.DisplayMember = "Name";
-            //inventoryForm.comboBoxWeapon.ValueMember = "Id";
-
-            //ShopForm.comboBoxWeaponEnum.DataSource = weaponItems;
-            //ShopForm.comboBoxWeaponEnum.DisplayMember = "Name";  // co użytkownik widzi
-            //ShopForm.comboBoxWeaponEnum.ValueMember = "Value";
-
-            //this.inventoryForm.Update();
-            //this.inventoryForm.Refresh();
         }
 
         private void saveEquipment(object s, EventArgs e)
@@ -127,9 +110,7 @@ namespace SwordAndSandals.FormControllers
             Player.Shield = selectedShield; 
             Player.Boots = selectedBoots;
 
-            //MessageBox.Show(Player.Weapons.Count.ToString());
             this.InitilizeInventoryFormControls();
-            //MessageBox.Show(Player.Weapons.ToString());
         }
     }
 }

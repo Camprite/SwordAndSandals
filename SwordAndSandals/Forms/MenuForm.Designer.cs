@@ -186,6 +186,7 @@
             label5.Size = new Size(75, 26);
             label5.TabIndex = 7;
             label5.Text = "Level";
+            label5.Visible = false;
             // 
             // label6
             // 
@@ -197,6 +198,7 @@
             label6.Size = new Size(39, 26);
             label6.TabIndex = 7;
             label6.Text = "XP";
+            label6.Visible = false;
             label6.Click += label6_Click;
             // 
             // label7
@@ -231,6 +233,7 @@
             xpLabel.Size = new Size(25, 26);
             xpLabel.TabIndex = 7;
             xpLabel.Text = "0";
+            xpLabel.Visible = false;
             xpLabel.Click += xpLabel_Click;
             // 
             // levelLabel
@@ -243,6 +246,7 @@
             levelLabel.Size = new Size(25, 26);
             levelLabel.TabIndex = 7;
             levelLabel.Text = "0";
+            levelLabel.Visible = false;
             levelLabel.Click += xpLabel_Click;
             // 
             // label8
@@ -378,6 +382,7 @@
             LevelUp.TabIndex = 6;
             LevelUp.Text = "LevelUp";
             LevelUp.UseVisualStyleBackColor = true;
+            LevelUp.Visible = false;
             LevelUp.Click += StartGameButton_Click;
             // 
             // saveGameButton
@@ -395,14 +400,11 @@
             // 
             BeforeBossFightLabel.AutoSize = true;
             BeforeBossFightLabel.BackColor = Color.NavajoWhite;
-            strLabel.Font = new Font("Stencil", 16.25F);
             BeforeBossFightLabel.Location = new Point(593, 245);
             BeforeBossFightLabel.Name = "BeforeBossFightLabel";
             BeforeBossFightLabel.Size = new Size(0, 15);
             BeforeBossFightLabel.TabIndex = 8;
             BeforeBossFightLabel.Visible = false;
-
-
             // 
             // Menu
             // 

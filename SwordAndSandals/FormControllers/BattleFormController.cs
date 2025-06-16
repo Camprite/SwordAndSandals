@@ -84,12 +84,6 @@ namespace SwordAndSandals.FormControllers
             OnMoveForward = HandleMoveForward;
             OnMoveBackward = HandleMoveBackward;
 
-           
-
-           
-
-            //added
-
             BattleForm.labelRightWarrior.Text = BattleController.Bot.Name;
             BattleForm.pbRightHP.Minimum = 0;
             BattleForm.pbRightHP.Maximum = BattleController.Bot.MaxHealth;
@@ -121,13 +115,9 @@ namespace SwordAndSandals.FormControllers
             {
                 BattleForm.ConsoleTextBox.AppendText("[P] Jesteś za daleko, aby zaatakować! \n");
                 BattleForm.ConsoleTextBox.ScrollToCaret();
-
                 return;
             }
 
-
-
-            //int Damage = BattleController.PlayerAttack();
             int Damage = BattleController.PlayerAttack();
 
          
@@ -231,7 +221,6 @@ namespace SwordAndSandals.FormControllers
                 BattleForm.ConsoleTextBox.ScrollToCaret();
                 return;
             }
-            //MessageBox.Show($"test {selectedSpell.Name}");
             if (isSpellUsedBefore(selectedSpell))
             {
                 MessageBox.Show($"You used this spell before");
@@ -244,7 +233,6 @@ namespace SwordAndSandals.FormControllers
                 {
                     BattleForm.ConsoleTextBox.AppendText($"[P] Nie masz wystarczająco many by użyć zaklęcia \n");
                     BattleForm.ConsoleTextBox.ScrollToCaret();
-
                     HandlePlayerRest();
                     BattleController.EndPlayerTurn();
                     return;
@@ -262,8 +250,6 @@ namespace SwordAndSandals.FormControllers
                         BattleController.addPlayerDefence(addditionalDefence);
                         BattleForm.ConsoleTextBox.AppendText($"[P] Użyłeś zaklęcia obronnego, + {addditionalDefence} obrony  \n");
                         BattleForm.ConsoleTextBox.ScrollToCaret();
-
-                        //MessageBox.Show($"Additional def:{BattleController.AdditionalDefence}");
                         
                         break;
                     case SpellEnum.Healing:
@@ -273,17 +259,12 @@ namespace SwordAndSandals.FormControllers
                         BattleForm.ConsoleTextBox.ScrollToCaret();
                         break;
                         }
-
-              
                 spellsUsed.Add(selectedSpell);
                 UpdateHealthBar(BattleController.Bot);
-              
                 UpdateManaBar(BattleController.Player);
                 BattleController.EndPlayerTurn();
                 CheckFightStatus();
                 Task.Delay(500).ContinueWith(_ => BattleForm.Invoke(() => BotTurn()));
-                //spellsUsed = null;
-
             }
      
         }
@@ -291,51 +272,32 @@ namespace SwordAndSandals.FormControllers
         {
             return spellsUsed.Any(s => s.Id == speel.Id);
         }
-
-
-
         public async void CheckFightStatus()
         {
             int status = BattleController.CheckFightStatus();
             if (status == 1)
             {
-
                 BattleForm.VictoryPicture.Visible = true;
-
                 var result = new BattleResult(xp: 250, money: 300, totalDamage: BattleController.TotalDamage);
-                
                 await Task.Delay(1000);
-                
-              
                 ShowStats(result);
-                BattleController.Player.XP += result.EarnedXP;
+                BattleController.Player.Level++;
                 BattleController.Player.Money += result.EarnedMoney;
                 await Task.Delay(2000);
                 ResetGame();
                 BattleForm.VictoryPicture.Visible = false;
-                //Task.Delay(2000).ContinueWith(_ => BattleForm.Invoke(() => ResetGame()));
-
-
             }
             else if (status == -1)
             {
-
                 BattleForm.DefeatPicture.Visible = true;
-
                 var result = new BattleResult(xp: 100, money: 150, totalDamage: BattleController.TotalDamage);
-
                 await Task.Delay(1000);
-
-                
                 ShowStats(result);
-                BattleController.Player.XP += result.EarnedXP;
+                BattleController.Player.Level++;
                 BattleController.Player.Money += result.EarnedMoney;
                 await Task.Delay(2000);
                 BattleForm.DefeatPicture.Visible = false;
                 ResetGame();
-                
-
-                //Task.Delay(2000).ContinueWith(_ => BattleForm.Invoke(() => ResetGame()));
             }
 
 
@@ -344,14 +306,9 @@ namespace SwordAndSandals.FormControllers
 
         private void ShowStats(BattleResult result)
         {
-            //BattleForm.BattleStatsPicture.BringToFront();
-            //BattleForm.BattleStatsPicture.Visible = true;
-            //BattleForm.BattleStatsPanel.BringToFront();
-            //BattleForm.BattleStatsPanel.Visible = true;
             BattleForm.BattleStatsLabel.BringToFront();
             BattleForm.BattleStatsLabel.Visible = true;
             BattleForm.BattleStatsLabel.Text =
-                $"Zdobyte XP : {result.EarnedXP}\n" +
                 $"Zdobyte zloto: {result.EarnedMoney}\n" +
                 $"Zadane obrazenia: {result.TotalDamage}";
 
@@ -361,11 +318,8 @@ namespace SwordAndSandals.FormControllers
         private void BotTurn()
         {
             if (BattleController.Bot.IsDead) return;
-
             if (BattleController.Bot.ActualStamina >= 10)
             {
-
-
                 if (BattleController.CanAttack(BattleForm.panelRightWarrior.Location, BattleForm.panelLeftWarrior.Location))
                 {
 
@@ -378,8 +332,6 @@ namespace SwordAndSandals.FormControllers
                     {
                         BattleForm.ConsoleTextBox.AppendText($"[B]{BattleController.Bot.Name} zadał [{BattleController.Bot.Damage()}] {damage} obrażeń. Twoje zdrowie: {BattleController.Player.ActualHealth} \n");
                     }
-                    
-                    //BattleForm.ConsoleTextBox.AppendText($"Podstawowe {BattleController.Bot.Damage()}");
                     UpdateManaBar(BattleController.Bot);
                     UpdateHealthBar(BattleController.Player);
                 }
@@ -389,10 +341,8 @@ namespace SwordAndSandals.FormControllers
                         BattleForm.panelRightWarrior.Location = BattleController.MoveBackward(BattleForm.panelRightWarrior.Location, BattleController.Bot);
                     else
                         BattleForm.panelRightWarrior.Location = BattleController.MoveForward(BattleForm.panelRightWarrior.Location, BattleController.Bot);
-
                     UpdateManaBar(BattleController.Bot);
                 }
-
             }
             else
             {
@@ -415,12 +365,7 @@ namespace SwordAndSandals.FormControllers
             BattleForm.panelLeftWarrior.Location = new Point(332, 277);
             BattleForm.panelRightWarrior.Location = new Point(740, 277);
             menu.nextForm = FormEnum.None;
-            
             BattleForm.Close();
-
-
-
-
         }
 
         private void UpdateHealthBar(Warrior warrior)

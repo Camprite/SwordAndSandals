@@ -86,11 +86,6 @@ namespace SwordAndSandals
             this.levelLabel.Text = player.Level.ToString();
             this.pointsLabel.Text = player.getAvaiablePoints().ToString();
 
-            //if (player.getAvaiablePoints() <= 0)
-            //{
-            //    this.setNumericUpDisabled();
-            //}
-
             this.intLabel.Text = player.Int.ToString();
             this.strLabel.Text = player.Strenght.ToString();
             this.witLabel.Text = player.Vitality.ToString();

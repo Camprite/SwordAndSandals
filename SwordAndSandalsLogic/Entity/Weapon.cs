@@ -18,7 +18,7 @@ namespace SwordAndSandalsLogic
         public int Rotate {  get; set; } = 0;
         public string Path { get; set; }
         public int Price {  get; set; }
-        public string DisplayText => $"{Name}\t [LVL]:{Lvl}\t [$]:{Price}\t [DMG]:{Damage} ";
+        public string DisplayText => $"{Name}\t [$]:{Price}\t [DMG]:{Damage} ";
         public string InventoryText => $"{Name} [DMG]:{Damage}";
         public int Damage {  get; set; }
 

@@ -160,6 +160,7 @@ namespace SwordAndSandals
             label9.Size = new Size(75, 26);
             label9.TabIndex = 16;
             label9.Text = "Spell";
+            label9.Visible = false;
             // 
             // comboBoxArmour
             // 
@@ -176,6 +177,7 @@ namespace SwordAndSandals
             comboBoxSpell.Name = "comboBoxSpell";
             comboBoxSpell.Size = new Size(193, 23);
             comboBoxSpell.TabIndex = 18;
+            comboBoxSpell.Visible = false;
             // 
             // SearchButtonArmour
             // 
@@ -196,6 +198,7 @@ namespace SwordAndSandals
             SearchButtonSpell.TabIndex = 20;
             SearchButtonSpell.Text = "Search";
             SearchButtonSpell.UseVisualStyleBackColor = true;
+            SearchButtonSpell.Visible = false;
             // 
             // exitButton
             // 

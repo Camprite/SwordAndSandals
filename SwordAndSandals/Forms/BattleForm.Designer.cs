@@ -280,6 +280,7 @@ namespace SwordAndSandals
             btnLeftUse.TabIndex = 21;
             btnLeftUse.Text = "Użyj";
             btnLeftUse.UseVisualStyleBackColor = false;
+            btnLeftUse.Visible = false;
             // 
             // labelSpelLeft
             // 
@@ -291,6 +292,7 @@ namespace SwordAndSandals
             labelSpelLeft.Size = new Size(50, 15);
             labelSpelLeft.TabIndex = 20;
             labelSpelLeft.Text = "Zaklecie";
+            labelSpelLeft.Visible = false;
             // 
             // cmbboxLeftSpell
             // 
@@ -301,6 +303,7 @@ namespace SwordAndSandals
             cmbboxLeftSpell.Name = "cmbboxLeftSpell";
             cmbboxLeftSpell.Size = new Size(211, 23);
             cmbboxLeftSpell.TabIndex = 30;
+            cmbboxLeftSpell.Visible = false;
             // 
             // labelManaLeft
             // 

@@ -95,9 +95,8 @@ namespace SwordAndSandals.FormControllers
         }
         public void InitilizeShopFormControls()
         {
+            ShopForm.currentMoney.Text = "";
             ShopForm.currentMoney.Text = Player.Money.ToString();
-            //ShopForm.cartValue.Text = this.CartValue.ToString();
-
 
             //Define which property 'll be show in listBox
             ShopForm.WeaponSearchResultListBox.DisplayMember = "DisplayText";
@@ -116,8 +115,8 @@ namespace SwordAndSandals.FormControllers
                 .Cast<WeaponEnum>()
                 .Select(w => new
                 {
-                    Name = w.ToString(),     // co będzie widoczne
-                    Value = (int)w           // wartość wewnętrzna
+                    Name = w.ToString(),     
+                    Value = (int)w          
                 })
                 .ToList();
 
@@ -125,8 +124,8 @@ namespace SwordAndSandals.FormControllers
                 .Cast<ArmourEnum>()
                 .Select(w => new
                 {
-                    Name = w.ToString(),     // co będzie widoczne
-                    Value = (int)w           // wartość wewnętrzna
+                    Name = w.ToString(),    
+                    Value = (int)w          
                 })
                 .ToList();
             
@@ -135,8 +134,8 @@ namespace SwordAndSandals.FormControllers
               .Select(w => new
               {
                   Display = w.GetType().GetField(w.ToString()).GetCustomAttribute<DescriptionAttribute>()?.Description ?? w.ToString(),
-                  Name = w.ToString(),     // co będzie widoczne
-                  Value = (int)w           // wartość wewnętrzna
+                  Name = w.ToString(),     
+                  Value = (int)w           
               })
               .ToList();
 
@@ -145,8 +144,8 @@ namespace SwordAndSandals.FormControllers
               .Select(w => new
               {
                   Display = w.GetType().GetField(w.ToString()).GetCustomAttribute<DescriptionAttribute>()?.Description ?? w.ToString(),
-                  Name = w.ToString(),     // co będzie widoczne
-                  Value = (int)w           // wartość wewnętrzna
+                  Name = w.ToString(),     
+                  Value = (int)w           
               })
               .ToList();
             var spellSearchTypes = Enum.GetValues(typeof(SpellSearchEnum))
@@ -154,8 +153,8 @@ namespace SwordAndSandals.FormControllers
               .Select(w => new
               {
                   Display = w.GetType().GetField(w.ToString()).GetCustomAttribute<DescriptionAttribute>()?.Description ?? w.ToString(),
-                  Name = w.ToString(),     // co będzie widoczne
-                  Value = (int)w           // wartość wewnętrzna
+                  Name = w.ToString(),     
+                  Value = (int)w          
               })
               .ToList();
 
@@ -163,8 +162,8 @@ namespace SwordAndSandals.FormControllers
                 .Cast<SpellEnum>()
                 .Select(w => new
                 {
-                    Name = w.ToString(),     // co będzie widoczne
-                    Value = (int)w           // wartość wewnętrzna
+                    Name = w.ToString(),    
+                    Value = (int)w          
                 })
                 .ToList();
 
@@ -209,13 +208,13 @@ namespace SwordAndSandals.FormControllers
 
             ShopForm.comboBoxSpell.SelectedIndex = 0;
             ShopForm.comboBoxSpellTypeEnum.SelectedIndex = 0;
-
-
-          
-
         }
 
-
+        public void updateMoney()
+        {
+            ShopForm.currentMoney.Text = "";
+            ShopForm.currentMoney.Text = Player.Money.ToString();
+        }
 
         public void onWeaponSelect(object o, EventArgs s)
         {
@@ -233,19 +232,9 @@ namespace SwordAndSandals.FormControllers
                         result = WeaponController.GetWeapons();
                         break;
                     }
-                case WeaponSearchEnum.WeaponsAvaiableByLevel:
-                    {
-                        result = WeaponController.GetWeaponsAvaialbeByLevel(Player);
-                        break;
-                    }
                 case WeaponSearchEnum.WeaponsAvaiableByPrice:
                     {
                         result = WeaponController.GetWeaponsAvaialbeByPrice(Player);
-                        break;
-                    }
-                case WeaponSearchEnum.WeaponsAvaiableByPriceAndLevel:
-                    {
-                        result = WeaponController.GetWeaponsAvaialbeByPriceAndLevel(Player);
                         break;
                     }
                 case WeaponSearchEnum.WeaponsByType:
@@ -283,19 +272,9 @@ namespace SwordAndSandals.FormControllers
                         result = ArmourController.getAll(armourEnum);
                         break;
                     }
-                case ArmourSearchEnum.AvaiableByLevel:
-                    {
-                        result = ArmourController.getByLvl(armourEnum, Player);
-                        break;
-                    }
                 case ArmourSearchEnum.AvaiableByPrice:
                     {
                         result = ArmourController.getByPrice(armourEnum, Player);
-                        break;
-                    }
-                case ArmourSearchEnum.AvaiableByPriceAndLevel:
-                    {
-                        result = ArmourController.getByPriceAndLvl(armourEnum, Player);
                         break;
                     }
                 case ArmourSearchEnum.NotAvaiable:
@@ -379,10 +358,7 @@ namespace SwordAndSandals.FormControllers
                 {
                     MessageBox.Show("Not enought money");
                 }
-                else if (weapon.Lvl > Player.Level)
-                {
-                    MessageBox.Show("Not enought level");
-                }
+               
                 else
                 {
                     if (Player.Weapons.Any(w => w.Id == weapon.Id)) {
@@ -393,10 +369,8 @@ namespace SwordAndSandals.FormControllers
                         Player.Weapons.Add(weapon);
                         MessageBox.Show($"Congratulations you just buyed:{weapon.ToString()} ");
                     }
-
                 }
 
-                //MessageBox.Show(ShopForm.WeaponSearchResultListBox.SelectedValue.ToString());
 
             }
             else if (ShopForm.ArmourSearchResultListBox.Visible)
@@ -407,10 +381,7 @@ namespace SwordAndSandals.FormControllers
                 {
                     MessageBox.Show("Not enought money");
                 }
-                else if (armour.Level > Player.Level)
-                {
-                    MessageBox.Show("Not enought level");
-                }
+               
                else
                 {
 
@@ -436,10 +407,7 @@ namespace SwordAndSandals.FormControllers
                 {
                     MessageBox.Show("Not enought money");
                 }
-                else if (spell.Level > Player.Level)
-                {
-                    MessageBox.Show("Not enought level");
-                }
+                
                 else
                 {
                     if (Player.Spells.Any(s => s.Id == spell.Id))

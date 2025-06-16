@@ -20,7 +20,7 @@ namespace SwordAndSandalsLogic
         public ArmourEnum ArmourType { get; set; }
         public int Defence { get; set; }
         public string InventoryText => $"{Name}\t [DEF]:{Defence}";
-        public string DisplayText => $"{Name}\t [LVL]{Level}\t [$]{Price}\t [DEF]:{Defence}";
+        public string DisplayText => $"{Name}\t [$]{Price}\t [DEF]:{Defence}";
         public string IconPath { get; set; }
         public int Price { get; set; }
         public Armour()

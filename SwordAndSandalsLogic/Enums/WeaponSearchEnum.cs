@@ -12,14 +12,14 @@ namespace SwordAndSandalsLogic
         [Description("All weapons")]
         AllWeapons = 0,
 
-        [Description("Weapons avaiable by level")]
-        WeaponsAvaiableByLevel = 1,
+        //[Description("Weapons avaiable by level")]
+        //WeaponsAvaiableByLevel = 1,
 
         [Description("Weapons avaiable by price")]
         WeaponsAvaiableByPrice = 2,
 
-        [Description("Weapons avaiable by price and level")]
-        WeaponsAvaiableByPriceAndLevel = 3,
+        //[Description("Weapons avaiable by price and level")]
+        //WeaponsAvaiableByPriceAndLevel = 3,
 
         [Description("Weapons by type")]
         WeaponsByType = 4,
