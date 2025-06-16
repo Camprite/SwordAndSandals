@@ -56,6 +56,7 @@
             aglIncrement = new Label();
             LevelUp = new Button();
             saveGameButton = new Button();
+            BeforeBossFightLabel = new Label();
             ((System.ComponentModel.ISupportInitialize)WarriorboxRight).BeginInit();
             SuspendLayout();
             // 
@@ -390,6 +391,18 @@
             saveGameButton.UseVisualStyleBackColor = true;
             saveGameButton.Click += StartGameButton_Click;
             // 
+            // BeforeBossFightLabel
+            // 
+            BeforeBossFightLabel.AutoSize = true;
+            BeforeBossFightLabel.BackColor = Color.NavajoWhite;
+            strLabel.Font = new Font("Stencil", 16.25F);
+            BeforeBossFightLabel.Location = new Point(593, 245);
+            BeforeBossFightLabel.Name = "BeforeBossFightLabel";
+            BeforeBossFightLabel.Size = new Size(0, 15);
+            BeforeBossFightLabel.TabIndex = 8;
+
+
+            // 
             // Menu
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -397,6 +410,7 @@
             BackgroundImage = Properties.Resources.MenuBackground1;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1425, 804);
+            Controls.Add(BeforeBossFightLabel);
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label4);
@@ -462,5 +476,6 @@
         public Label aglIncrement;
         public Button LevelUp;
         public Button saveGameButton;
+        public Label BeforeBossFightLabel;
     }
 }

@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Media;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -63,12 +64,18 @@ namespace SwordAndSandals
             while (true)
             {
                 menuForm.updateForm();
+
+                if (BotFactory.CheckIfBossFight(this.Player))
+                    menuForm.BeforeBossFightLabel.Text = "Za chwilę masz walkę z bossem, przygotuj się.";
+
                 var menuOption = menuForm.ShowDialog();
-                
 
                 if (menuOption == DialogResult.Cancel) {
                     return 0;
                 }
+
+                
+
                 if (menuOption == DialogResult.OK) {
                     FormEnum nextForm = menuForm.nextForm;
                     switch (nextForm) {

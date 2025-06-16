@@ -12,12 +12,15 @@ namespace SwordAndSandals
     {
         private static Random random = new Random();
 
+
+        public static bool CheckIfBossFight(Warrior Player)
+        {
+            return Player.WinsCounter > 0 && Player.WinsCounter % 2 == 0;
+        }
+
         public static Warrior GenerateBot(Warrior Player)
         {
-            
-
-            bool isBossFight = Player.WinsCounter > 0 && Player.WinsCounter % 5 == 0; 
-
+            bool isBossFight = CheckIfBossFight(Player); 
             if (isBossFight)
             {
                 return GenerateBoss(Player);
@@ -31,10 +34,10 @@ namespace SwordAndSandals
         private static Warrior GenerateRegularBot(Warrior Player)
         {
             var name = NameRepository.GetNames()[random.Next(NameRepository.GetNames().Count)];
-            int strength = RandomizeStat(Player.Strenght, 0.4, 0.6);
-            int agility = RandomizeStat(Player.Agility, 0.4, 0.6);
-            int inteligence = RandomizeStat(Player.Int, 0.4, 0.6);
-            int vitality = RandomizeStat(Player.Vitality, 0.4, 0.6);
+            int strength = RandomizeStat(Player.Strenght, 0.4, 0.5);
+            int agility = RandomizeStat(Player.Agility, 0.4, 0.5);
+            int inteligence = RandomizeStat(Player.Int, 0.4, 0.5);
+            int vitality = RandomizeStat(Player.Vitality, 0.4, 0.5);
 
             var weapon = GetRandomWeapon(Player.Level);
             Warrior bot = new Warrior(name, strength, agility, inteligence, vitality, CharacterEnum.Bot);
@@ -46,10 +49,10 @@ namespace SwordAndSandals
         private static Warrior GenerateBoss(Warrior Player)
         {
             var name = "Boss " + NameRepository.GetNames()[random.Next(NameRepository.GetNames().Count)];
-            int strength = RandomizeStat(Player.Strenght, 1.0, 1.5);
-            int agility = RandomizeStat(Player.Agility, 1.0, 1.5);
-            int inteligence = RandomizeStat(Player.Int, 1.0, 1.5);
-            int vitality = RandomizeStat(Player.Vitality, 1.0, 1.5);
+            int strength = RandomizeStat(Player.Strenght, 0.7, 1.0);
+            int agility = RandomizeStat(Player.Agility, 0.7, 1.0);
+            int inteligence = RandomizeStat(Player.Int, 0.7, 1.0);
+            int vitality = RandomizeStat(Player.Vitality, 0.7, 1.0);
 
             var weapon = GetRandomWeapon(Player.Level + 1); 
             Warrior boss = new Warrior(name, strength, agility, inteligence, vitality, CharacterEnum.Bot);
