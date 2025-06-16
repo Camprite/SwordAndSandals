@@ -49,6 +49,31 @@ namespace SwordAndSandals.FormControllers
             inventoryForm.comboBoxSandals.DataSource = Player.getArmourByType(ArmourEnum.Boots);
             inventoryForm.comboBoxShield.DataSource = Player.getArmourByType(ArmourEnum.Shield);
 
+
+            // Set view properties
+            inventoryForm.comboBoxWeapon.DisplayMember = "InventoryText";
+            inventoryForm.comboBoxWeapon.ValueMember = "Id";
+            inventoryForm.comboBoxWeapon.Update();
+
+            inventoryForm.comboBoxChestplate.DisplayMember = "InventoryText";
+            inventoryForm.comboBoxChestplate.ValueMember = "Id";
+            inventoryForm.comboBoxChestplate.Update();
+
+            inventoryForm.comboBoxHelmet.DisplayMember = "InventoryText";
+            inventoryForm.comboBoxHelmet.ValueMember = "Id";
+            inventoryForm.comboBoxHelmet.Update();
+
+            inventoryForm.comboBoxSandals.DisplayMember = "InventoryText";
+            inventoryForm.comboBoxSandals.ValueMember = "Id";
+            inventoryForm.comboBoxSandals.Update();
+
+            inventoryForm.comboBoxShield.DisplayMember = "InventoryText";
+            inventoryForm.comboBoxShield.ValueMember = "Id";
+            inventoryForm.comboBoxShield.Update();
+
+
+
+
             //Check if already have any armour
 
             if (Player.Weapon != null) {
@@ -71,28 +96,6 @@ namespace SwordAndSandals.FormControllers
                 inventoryForm.sandalsLabel.Text = Player.Boots.Name;
                 inventoryForm.comboBoxSandals.SelectedValue = Player.Boots.Id;
             }
-
-
-            // Set view properties
-            inventoryForm.comboBoxWeapon.DisplayMember = "InventoryText";
-            inventoryForm.comboBoxWeapon.ValueMember = "Id";
-            inventoryForm.comboBoxWeapon.Update();
-            
-            inventoryForm.comboBoxChestplate.DisplayMember = "InventoryText";
-            inventoryForm.comboBoxChestplate.ValueMember = "Id";
-            inventoryForm.comboBoxChestplate.Update();
-
-            inventoryForm.comboBoxHelmet.DisplayMember = "InventoryText";
-            inventoryForm.comboBoxHelmet.ValueMember = "Id";
-            inventoryForm.comboBoxHelmet.Update();
-
-            inventoryForm.comboBoxSandals.DisplayMember = "InventoryText";
-            inventoryForm.comboBoxSandals.ValueMember = "Id";
-            inventoryForm.comboBoxSandals.Update();
-            
-            inventoryForm.comboBoxShield.DisplayMember = "InventoryText";
-            inventoryForm.comboBoxShield.ValueMember = "Id";
-            inventoryForm.comboBoxShield.Update();
 
 
        
@@ -124,7 +127,7 @@ namespace SwordAndSandals.FormControllers
             Player.Shield = selectedShield; 
             Player.Boots = selectedBoots;
 
-            MessageBox.Show(Player.Weapons.Count.ToString());
+            //MessageBox.Show(Player.Weapons.Count.ToString());
             this.InitilizeInventoryFormControls();
             //MessageBox.Show(Player.Weapons.ToString());
         }

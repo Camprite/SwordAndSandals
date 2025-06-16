@@ -395,9 +395,9 @@ namespace SwordAndSandals
             VictoryPicture.BackColor = Color.Transparent;
             VictoryPicture.BackgroundImage = Properties.Resources.Gemini_Victory;
             VictoryPicture.BackgroundImageLayout = ImageLayout.Stretch;
-            VictoryPicture.Location = new Point(287, 115);
+            VictoryPicture.Location = new Point(288, 115);
             VictoryPicture.Name = "VictoryPicture";
-            VictoryPicture.Size = new Size(789, 444);
+            VictoryPicture.Size = new Size(788, 444);
             VictoryPicture.TabIndex = 27;
             VictoryPicture.TabStop = false;
             VictoryPicture.Visible = false;
@@ -472,9 +472,9 @@ namespace SwordAndSandals
             BattleStatsPicture.BackColor = Color.Transparent;
             BattleStatsPicture.BackgroundImage = Properties.Resources.BattleStatistic;
             BattleStatsPicture.BackgroundImageLayout = ImageLayout.Stretch;
-            BattleStatsPicture.Location = new Point(275, 115);
+            BattleStatsPicture.Location = new Point(288, 115);
             BattleStatsPicture.Name = "BattleStatsPicture";
-            BattleStatsPicture.Size = new Size(789, 444);
+            BattleStatsPicture.Size = new Size(788, 444);
             BattleStatsPicture.TabIndex = 29;
             BattleStatsPicture.TabStop = false;
             BattleStatsPicture.Visible = false;

@@ -42,8 +42,9 @@ namespace SwordAndSandals
             this.ShopButton.Click += (o, s) => { this.returnNextForm(FormEnum.Shop);  };
             this.InventoryButton.Click += (o, s) => { this.returnNextForm(FormEnum.Inventory);  };
             this.BattleButton.Click += (o, s) => { this.returnNextForm(FormEnum.Battle);  };
+         
 
-           
+
             this.LevelUp.Click += (o, s) => {
 
                 if(player.CanLevelUp())

@@ -49,40 +49,47 @@ namespace SwordAndSandals.FormControllers
                 ShopForm.Close();
             };
             // Set callback for weapon
-            ShopForm.SearchButtonWeapon.Click -= null;
             ShopForm.SearchButtonWeapon.Click += (o, s) => { onWeaponSelect(o, s); };
 
             //Set callback for armour
             ShopForm.SearchButtonArmour.Click += (o, s) => { onArmourSelect(o, s); };
-            ShopForm.SearchButtonArmour.Click += (o, s) => { onArmourSelect(o, s); };
 
             //Set callback for spell
-            ShopForm.SearchButtonSpell.Click += (o, s) => { onSpellSelect(o, s); };
             ShopForm.SearchButtonSpell.Click += (o, s) => { onSpellSelect(o, s); };
 
             ShopForm.comboBoxWeapon.SelectedIndexChanged += (o, s) =>
             {
-                var weaponSelectType = (WeaponSearchEnum)ShopForm.comboBoxWeapon.SelectedValue;
-                if (weaponSelectType == WeaponSearchEnum.WeaponsByType)
+                try
                 {
-                    ShopForm.comboBoxWeaponEnum.Visible = true;
+                    var weaponSelectType = (WeaponSearchEnum)ShopForm.comboBoxWeapon.SelectedValue;
+                    if (weaponSelectType == WeaponSearchEnum.WeaponsByType)
+                    {
+                        ShopForm.comboBoxWeaponEnum.Visible = true;
+                    }
+                    else
+                    {
+                        ShopForm.comboBoxWeaponEnum.Visible = false;
+                    }
                 }
-                else
-                {
-                    ShopForm.comboBoxWeaponEnum.Visible = false;
-                }
+                catch(Exception e) { }
+              
             };
 
             ShopForm.comboBoxSpell.SelectedIndexChanged += (o, s) => {
-                var spellSelectType = (SpellSearchEnum)ShopForm.comboBoxSpell.SelectedValue;
-                if (spellSelectType == SpellSearchEnum.ByType || spellSelectType == SpellSearchEnum.AvaiableAndByType)
+                try
                 {
-                    ShopForm.comboBoxSpellTypeEnum.Visible = true;
+                    var spellSelectType = (SpellSearchEnum)ShopForm.comboBoxSpell.SelectedValue;
+                    if (spellSelectType == SpellSearchEnum.ByType || spellSelectType == SpellSearchEnum.AvaiableAndByType)
+                    {
+                        ShopForm.comboBoxSpellTypeEnum.Visible = true;
+                    }
+                    else
+                    {
+                        ShopForm.comboBoxSpellTypeEnum.Visible = false;
+                    }
                 }
-                else
-                {
-                    ShopForm.comboBoxSpellTypeEnum.Visible = false;
-                }
+                catch (Exception e) { }
+             
 
             };
         }

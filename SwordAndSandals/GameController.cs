@@ -38,6 +38,7 @@ namespace SwordAndSandals
             {
                 this.Player = this.getPlayer();
                 menuForm.player = this.Player;
+                menuForm.updateForm();
 
                 BattleController.Player = this.Player;
 
