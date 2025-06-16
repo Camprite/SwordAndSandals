@@ -12,7 +12,6 @@ namespace SwordAndSandals
     {
         private static Random random = new Random();
 
-
         public static bool CheckIfBossFight(Warrior Player)
         {
             return Player.WinsCounter > 0 && Player.WinsCounter % 2 == 0;
@@ -34,19 +33,17 @@ namespace SwordAndSandals
         private static Warrior GenerateRegularBot(Warrior Player)
         {
             var name = NameRepository.GetNames()[random.Next(NameRepository.GetNames().Count)];
-            int strength = RandomizeStat(Player.Strenght, 0.4, 0.5);
-            int agility = RandomizeStat(Player.Agility, 0.4, 0.5);
-            int inteligence = RandomizeStat(Player.Int, 0.4, 0.5);
-            int vitality = RandomizeStat(Player.Vitality, 0.4, 0.5);
-
-
+            int strength = RandomizeStat(Player.Strenght, 0.7, 0.8);
+            int agility = RandomizeStat(Player.Agility, 0.7, 0.8);
+            int inteligence = RandomizeStat(Player.Int, 0.7, 0.8);
+            int vitality = RandomizeStat(Player.Vitality, 0.7, 0.8);
 
             Warrior bot = new Warrior(name, strength, agility, inteligence, vitality, CharacterEnum.Bot);
+
             bot.Weapon = GetRandomWeapon(Player.Level);
-            bot.Boots = GetRandomBoot(Player.Level);
-            bot.Helmet = GetRandomHelmet(Player.Level);
-            bot.Chestplate = GetRandomChestplate(Player.Level);
-            bot.Shield = GetRandomShield(Player.Level);
+
+            
+            EquipRandomArmour(bot, Player.Level, 0.75); 
 
             return bot;
         }
@@ -54,14 +51,17 @@ namespace SwordAndSandals
         private static Warrior GenerateBoss(Warrior Player)
         {
             var name = "Boss " + NameRepository.GetNames()[random.Next(NameRepository.GetNames().Count)];
-            int strength = RandomizeStat(Player.Strenght, 0.7, 1.0);
-            int agility = RandomizeStat(Player.Agility, 0.7, 1.0);
-            int inteligence = RandomizeStat(Player.Int, 0.7, 1.0);
-            int vitality = RandomizeStat(Player.Vitality, 0.7, 1.0);
+            int strength = RandomizeStat(Player.Strenght, 1.0, 1.5);
+            int agility = RandomizeStat(Player.Agility, 1.0, 1.5);
+            int inteligence = RandomizeStat(Player.Int, 1.0, 1.5);
+            int vitality = RandomizeStat(Player.Vitality, 1.0, 1.5);
 
-            var weapon = GetRandomWeapon(Player.Level + 1);
             Warrior boss = new Warrior(name, strength, agility, inteligence, vitality, CharacterEnum.Bot);
-            boss.Weapon = weapon;
+
+            boss.Weapon = GetRandomWeapon(Player.Level + 1);
+
+           
+            EquipRandomArmour(boss, Player.Level + 1, 1.0);
 
             return boss;
         }
@@ -81,6 +81,7 @@ namespace SwordAndSandals
             if (viableWeapons.Count == 0)
             {
                 viableWeapons = allWeapons;
+                if (viableWeapons.Count == 0) return null;
             }
             return viableWeapons[random.Next(viableWeapons.Count)];
         }
@@ -92,6 +93,7 @@ namespace SwordAndSandals
             if (viableBoots.Count == 0)
             {
                 viableBoots = allBoots;
+                if (viableBoots.Count == 0) return null;
             }
             return viableBoots[random.Next(viableBoots.Count)];
         }
@@ -132,21 +134,70 @@ namespace SwordAndSandals
             return viableShields[random.Next(viableShields.Count)];
         }
 
-
-        /*
-         * private static int RandomizeStat(int value)
+      
+        private static void EquipRandomArmour(Warrior bot, int level, double chanceToEquip)
         {
-            double[] multipliers = { 0.5, 0.6, 0.7};
-            double multiplier = multipliers[random.Next(multipliers.Length)];
-            int randomizedValue = (int)(value * multiplier);
-            return Math.Max(1, randomizedValue);
+           
+            List<ArmourEnum> armourTypes = new List<ArmourEnum>
+            {
+                ArmourEnum.Helmet,
+                ArmourEnum.Chestplate,
+                ArmourEnum.Shield,
+                ArmourEnum.Boots
+              
+            };
+
+            foreach (var armourType in armourTypes)
+            {
+                if (random.NextDouble() < chanceToEquip)
+                {
+                    Armour randomArmour = null;
+
+                    switch (armourType)
+                    {
+                        case ArmourEnum.Helmet:
+                            randomArmour = GetRandomHelmet(level);
+                            break;
+                        case ArmourEnum.Chestplate:
+                            randomArmour = GetRandomChestplate(level);
+                            break;
+                        case ArmourEnum.Shield:
+                            randomArmour = GetRandomShield(level);
+                            break;
+                        case ArmourEnum.Boots:
+                            randomArmour = GetRandomBoot(level);
+                            break;
+                        
+                        default:
+                            break; 
+                    }
+
+                    if (randomArmour != null)
+                    {
+                        
+                        switch (armourType)
+                        {
+                            case ArmourEnum.Helmet:
+                                bot.Helmet = randomArmour;
+                                break;
+                            case ArmourEnum.Chestplate:
+                                bot.Chestplate = randomArmour;
+                                break;
+                            case ArmourEnum.Shield:
+                                bot.Shield = randomArmour;
+                                break;
+                            case ArmourEnum.Boots:
+                                bot.Boots = randomArmour;
+                                break;
+                           
+                            default:
+                                break;
+                        }
+                    }
+                }
+            }
         }
-         * */
-
-
-
     }
-
 
 
 }
