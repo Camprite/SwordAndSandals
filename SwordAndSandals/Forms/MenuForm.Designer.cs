@@ -400,6 +400,7 @@
             BeforeBossFightLabel.Name = "BeforeBossFightLabel";
             BeforeBossFightLabel.Size = new Size(0, 15);
             BeforeBossFightLabel.TabIndex = 8;
+            BeforeBossFightLabel.Visible = false;
 
 
             // 
