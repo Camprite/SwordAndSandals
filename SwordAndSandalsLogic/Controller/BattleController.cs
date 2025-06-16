@@ -46,6 +46,15 @@ namespace SwordAndSandalsLogic
             Player.ActualStamina -= 10;
             return damage;
         }
+         public int PlayerMagicAttack(int damage)
+        {
+            if (Player.IsDead || Player.ActualStamina < 10) return 0;
+
+            TotalDamage += damage;
+            Bot.TakeDamage(damage);
+            Player.ActualStamina -= 10;
+            return damage;
+        }
 
         public int BotAttack()
         {
