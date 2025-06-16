@@ -20,7 +20,7 @@ namespace SwordAndSandals
 
         public static Warrior GenerateBot(Warrior Player)
         {
-            bool isBossFight = CheckIfBossFight(Player); 
+            bool isBossFight = CheckIfBossFight(Player);
             if (isBossFight)
             {
                 return GenerateBoss(Player);
@@ -39,9 +39,14 @@ namespace SwordAndSandals
             int inteligence = RandomizeStat(Player.Int, 0.4, 0.5);
             int vitality = RandomizeStat(Player.Vitality, 0.4, 0.5);
 
-            var weapon = GetRandomWeapon(Player.Level);
+
+
             Warrior bot = new Warrior(name, strength, agility, inteligence, vitality, CharacterEnum.Bot);
-            bot.Weapon = weapon;
+            bot.Weapon = GetRandomWeapon(Player.Level);
+            bot.Boots = GetRandomBoot(Player.Level);
+            bot.Helmet = GetRandomHelmet(Player.Level);
+            bot.Chestplate = GetRandomChestplate(Player.Level);
+            bot.Shield = GetRandomShield(Player.Level);
 
             return bot;
         }
@@ -54,7 +59,7 @@ namespace SwordAndSandals
             int inteligence = RandomizeStat(Player.Int, 0.7, 1.0);
             int vitality = RandomizeStat(Player.Vitality, 0.7, 1.0);
 
-            var weapon = GetRandomWeapon(Player.Level + 1); 
+            var weapon = GetRandomWeapon(Player.Level + 1);
             Warrior boss = new Warrior(name, strength, agility, inteligence, vitality, CharacterEnum.Bot);
             boss.Weapon = weapon;
 
@@ -80,6 +85,53 @@ namespace SwordAndSandals
             return viableWeapons[random.Next(viableWeapons.Count)];
         }
 
+        private static Armour GetRandomBoot(int level)
+        {
+            var allBoots = ArmourRepository.GetBoots();
+            var viableBoots = allBoots.Where(b => b.Level <= level).ToList();
+            if (viableBoots.Count == 0)
+            {
+                viableBoots = allBoots;
+            }
+            return viableBoots[random.Next(viableBoots.Count)];
+        }
+
+        private static Armour GetRandomHelmet(int level)
+        {
+            var allHelmets = ArmourRepository.GetHelmets();
+            var viableHelmets = allHelmets.Where(h => h.Level <= level).ToList();
+            if (viableHelmets.Count == 0)
+            {
+                viableHelmets = allHelmets;
+                if (viableHelmets.Count == 0) return null;
+            }
+            return viableHelmets[random.Next(viableHelmets.Count)];
+        }
+
+        private static Armour GetRandomChestplate(int level)
+        {
+            var allChestplates = ArmourRepository.GetChestplates();
+            var viableChestplates = allChestplates.Where(c => c.Level <= level).ToList();
+            if (viableChestplates.Count == 0)
+            {
+                viableChestplates = allChestplates;
+                if (viableChestplates.Count == 0) return null;
+            }
+            return viableChestplates[random.Next(viableChestplates.Count)];
+        }
+
+        private static Armour GetRandomShield(int level)
+        {
+            var allShields = ArmourRepository.GetShields();
+            var viableShields = allShields.Where(s => s.Level <= level).ToList();
+            if (viableShields.Count == 0)
+            {
+                viableShields = allShields;
+                if (viableShields.Count == 0) return null;
+            }
+            return viableShields[random.Next(viableShields.Count)];
+        }
+
 
         /*
          * private static int RandomizeStat(int value)
@@ -91,7 +143,7 @@ namespace SwordAndSandals
         }
          * */
 
-        
+
 
     }
 
