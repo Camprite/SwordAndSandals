@@ -38,6 +38,9 @@ namespace SwordAndSandals
             {
                 this.Player = this.getPlayer();
                 menuForm.player = this.Player;
+
+                this.Player.UpdateStats();
+
                 menuForm.updateForm();
 
                 BattleController.Player = this.Player;
@@ -94,7 +97,7 @@ namespace SwordAndSandals
                             battleFormController.BattleController.Bot = BattleController.Bot;
 
                             battleFormController.BattleController.Player = this.Player;
-
+                            
                             battleFormController.InitilizeBattleFormControls();
                             battleFormController.BattleForm.ShowDialog();
                             break;

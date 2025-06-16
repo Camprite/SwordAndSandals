@@ -25,7 +25,7 @@ namespace SwordAndSandalsLogic
 
         public virtual int Damage()
         {
-            return Strenght+1;
+            return 1;
         }
 
         public Entity(int id, int xPos, bool arenaSide, int maxhealth, int actualhealth, int maxstamina, int actualstamina, int @int, int strenght, int agility, int vitality)
@@ -55,7 +55,7 @@ namespace SwordAndSandalsLogic
                 {
                     case StatisticsEnum.Strenght:
                         this.Strenght++;
-                        break;
+                       break;
                     case StatisticsEnum.Vitality:
                         this.Vitality++;
                         break;
@@ -66,8 +66,11 @@ namespace SwordAndSandalsLogic
                         this.Int++;
                         break;
                 }
+                UpdateStats();
             }
         }
+
+        public virtual void UpdateStats() { }
 
         public virtual void TakeDamage(int damage)
         {

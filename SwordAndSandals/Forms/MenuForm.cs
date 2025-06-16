@@ -38,6 +38,7 @@ namespace SwordAndSandals
             this.witIncrement.Click += (o, s) => { player.addPoint(StatisticsEnum.Vitality); this.updateForm(); };
             this.aglIncrement.Click += (o, s) => { player.addPoint(StatisticsEnum.Agility); this.updateForm(); };
             this.strIncrement.Click += (o, s) => { player.addPoint(StatisticsEnum.Strenght); this.updateForm(); };
+            
 
             this.ShopButton.Click += (o, s) => { this.returnNextForm(FormEnum.Shop);  };
             this.InventoryButton.Click += (o, s) => { this.returnNextForm(FormEnum.Inventory);  };
