@@ -65,9 +65,10 @@ namespace SwordAndSandalsLogic
 
             int damage = getRealDamage(true);
             TotalDamage += damage;
-            Bot.TakeDamage(damage);
+
             Player.ActualStamina -= 10;
-            return damage;
+
+            return Bot.TakeDamage(damage);
         }
         public void addPlayerDefence(int defence)
         {
@@ -93,11 +94,11 @@ namespace SwordAndSandalsLogic
             {
                 damage = getDamagedamageAfterAdditionalDefence(damage);
             }
-            Player.TakeDamage(damage);
+            
 
             Bot.ActualStamina -= 10;
 
-            return damage;
+            return Player.TakeDamage(damage); 
         }
         public int getRealDamage(bool IsPlayerTurn)
         {

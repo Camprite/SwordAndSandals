@@ -69,20 +69,21 @@ namespace SwordAndSandalsLogic
             return baseDamage + weaponBonus;
         }
 
-        public override void TakeDamage(int damage)
+        public override int TakeDamage(int damage)
         {
-            if(TryDodge())
-            //if(true)
+         
+            if (TryDodge())
+       
             {
                 Console.WriteLine($"{Name} unika ataku!");
-                return;
+                return 0;
             }
 
             //int defence = TotalArmourDefence();
             //int reducedDamage = Math.Max(damage - defence, 1);
-            
 
-            base.TakeDamage(damage);
+
+            return base.TakeDamage(damage);
         }
 
         private bool TryDodge()
@@ -91,7 +92,7 @@ namespace SwordAndSandalsLogic
             double dodgeChance = Agility * 0.5;
             double maxDodgeChance = 75;
             dodgeChance = Math.Min(dodgeChance, maxDodgeChance);
-            return rnd.Next(0,101) < dodgeChance;
+            return rnd.Next(0,50) < dodgeChance;
         }
 
         public int TotalArmourDefence()

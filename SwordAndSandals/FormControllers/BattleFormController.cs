@@ -133,7 +133,16 @@ namespace SwordAndSandals.FormControllers
          
 
             UpdateHealthBar(BattleController.Bot);
-            BattleForm.ConsoleTextBox.AppendText($"[P] Zadałeś przeciwnikowi: [{BattleController.Player.Damage()}] {Damage} obrażeń  Pozostało mu: {BattleController.Bot.ActualHealth}  \n");
+
+            if (Damage == 0)
+            {
+                BattleForm.ConsoleTextBox.AppendText($"[P] Przeciwnik zdołał uniknąć Twojego ciosu\n");
+            }
+            else
+            {
+                BattleForm.ConsoleTextBox.AppendText($"[P] Zadałeś przeciwnikowi: [{BattleController.Player.Damage()}] {Damage} obrażeń  Pozostało mu: {BattleController.Bot.ActualHealth}  \n");
+            }
+           
             BattleForm.ConsoleTextBox.ScrollToCaret();
 
             UpdateManaBar(BattleController.Player);
@@ -361,7 +370,15 @@ namespace SwordAndSandals.FormControllers
                 {
 
                     int damage = BattleController.BotAttack();
-                    BattleForm.ConsoleTextBox.AppendText($"[B]{BattleController.Bot.Name} zadał [{BattleController.Bot.Damage()}] {damage} obrażeń. Twoje zdrowie: {BattleController.Player.ActualHealth} \n");
+                    if(damage == 0)
+                    {
+                        BattleForm.ConsoleTextBox.AppendText($"[B]{BattleController.Bot.Name} próbował zadać cios ale zdołałeś go uniknąć\n");
+                    }
+                    else
+                    {
+                        BattleForm.ConsoleTextBox.AppendText($"[B]{BattleController.Bot.Name} zadał [{BattleController.Bot.Damage()}] {damage} obrażeń. Twoje zdrowie: {BattleController.Player.ActualHealth} \n");
+                    }
+                    
                     //BattleForm.ConsoleTextBox.AppendText($"Podstawowe {BattleController.Bot.Damage()}");
                     UpdateManaBar(BattleController.Bot);
                     UpdateHealthBar(BattleController.Player);

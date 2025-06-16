@@ -72,10 +72,11 @@ namespace SwordAndSandalsLogic
 
         public virtual void UpdateStats() { }
 
-        public virtual void TakeDamage(int damage)
+        public virtual int TakeDamage(int damage)
         {
             int realDamage = Math.Max(damage, 0);
             ActualHealth = Math.Max(ActualHealth - realDamage, 0);
+            return realDamage;
         }
         public int getAvaiablePoints()
         {
