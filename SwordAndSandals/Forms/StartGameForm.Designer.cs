@@ -45,8 +45,13 @@
             label1 = new Label();
             NameTextBox = new TextBox();
             panel1 = new Panel();
+            label12 = new Label();
+            label11 = new Label();
+            label10 = new Label();
+            label9 = new Label();
             openFromFileButton = new Button();
             testButton = new Button();
+            label8 = new Label();
             ((System.ComponentModel.ISupportInitialize)VitalityUpDown).BeginInit();
             ((System.ComponentModel.ISupportInitialize)AgilityUpDown).BeginInit();
             ((System.ComponentModel.ISupportInitialize)StrenghtUpDown).BeginInit();
@@ -208,6 +213,10 @@
             // 
             panel1.BackgroundImage = Properties.Resources.backgroundFrame;
             panel1.BackgroundImageLayout = ImageLayout.Stretch;
+            panel1.Controls.Add(label12);
+            panel1.Controls.Add(label11);
+            panel1.Controls.Add(label10);
+            panel1.Controls.Add(label9);
             panel1.Controls.Add(openFromFileButton);
             panel1.Controls.Add(StartGameButton);
             panel1.Controls.Add(VitalityUpDown);
@@ -225,10 +234,54 @@
             panel1.Controls.Add(ResetStatsButton);
             panel1.Controls.Add(label6);
             panel1.Controls.Add(label3);
-            panel1.Location = new Point(319, 91);
+            panel1.Location = new Point(314, 129);
             panel1.Name = "panel1";
             panel1.Size = new Size(817, 425);
             panel1.TabIndex = 1;
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.BackColor = Color.Transparent;
+            label12.Font = new Font("Stencil", 16.25F);
+            label12.Location = new Point(453, 237);
+            label12.Name = "label12";
+            label12.Size = new Size(154, 26);
+            label12.TabIndex = 11;
+            label12.Text = "4. Zwyciezaj";
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.BackColor = Color.Transparent;
+            label11.Font = new Font("Stencil", 16.25F);
+            label11.Location = new Point(453, 208);
+            label11.Name = "label11";
+            label11.Size = new Size(230, 26);
+            label11.TabIndex = 10;
+            label11.Text = "3. Rozwijaj postac";
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.BackColor = Color.Transparent;
+            label10.Font = new Font("Stencil", 16.25F);
+            label10.Location = new Point(453, 179);
+            label10.Name = "label10";
+            label10.Size = new Size(285, 26);
+            label10.TabIndex = 9;
+            label10.Text = "2. Zdobywaj ekwipunek";
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.BackColor = Color.Transparent;
+            label9.Font = new Font("Stencil", 16.25F);
+            label9.Location = new Point(453, 146);
+            label9.Name = "label9";
+            label9.Size = new Size(227, 26);
+            label9.TabIndex = 8;
+            label9.Text = "1. Walcz na arenie";
             // 
             // openFromFileButton
             // 
@@ -250,7 +303,19 @@
             testButton.TabIndex = 2;
             testButton.Text = "Test";
             testButton.UseVisualStyleBackColor = true;
+            testButton.Visible = false;
             testButton.Click += testButton_Click;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.BackColor = Color.Transparent;
+            label8.Font = new Font("Stencil", 36.25F);
+            label8.Location = new Point(390, 18);
+            label8.Name = "label8";
+            label8.Size = new Size(625, 59);
+            label8.TabIndex = 8;
+            label8.Text = "Sword And Sandals UwS";
             // 
             // StartGameForm
             // 
@@ -259,6 +324,7 @@
             BackgroundImage = Properties.Resources.battleBackground;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1420, 583);
+            Controls.Add(label8);
             Controls.Add(panel1);
             ForeColor = SystemColors.ControlText;
             Icon = (Icon)resources.GetObject("$this.Icon");
@@ -271,6 +337,7 @@
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -290,7 +357,12 @@
         public Label label7;
         public Button ResetStatsButton;
         public Panel panel1;
-        public Button testButton;
         public Button openFromFileButton;
+        public Button testButton;
+        public Label label12;
+        public Label label11;
+        public Label label10;
+        public Label label9;
+        public Label label8;
     }
 }
