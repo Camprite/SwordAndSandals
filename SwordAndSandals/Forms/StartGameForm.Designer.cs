@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            Button testButton;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StartGameForm));
             VitalityUpDown = new NumericUpDown();
             AgilityUpDown = new NumericUpDown();
@@ -250,6 +251,7 @@
             testButton.TabIndex = 2;
             testButton.Text = "Test";
             testButton.UseVisualStyleBackColor = true;
+            testButton.Visible = false;
             testButton.Click += testButton_Click;
             // 
             // StartGameForm
